@@ -10,10 +10,10 @@ def create_menu(master, tearoff=None):
     """
     return tk.Menu(master, tearoff=tearoff)
 
-def create_label(master, text, x, y, font="Helvetica 10"):
+def create_label(master, text, x, y, font="Helvetica 10", justify=None):
     """
     Creates a Label widget
     """
-    label = tk.Label(master, text=text, font=font)
+    label = tk.Label(master, text=text, font=font, justify=justify)
     label.place(x=x, y=y)
     return 

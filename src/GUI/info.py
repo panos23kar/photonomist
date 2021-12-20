@@ -33,6 +33,8 @@ class Info():
         self.__info.grab_set()
 
         self.__title()
+        self.__aim()
+        self.__name()
 
     def __info_window(self):
         """
@@ -49,3 +51,14 @@ class Info():
         |
         """
         self.__title_label = create_label(self.__info, text=en.INFO_TITLE, x=10, y=10, font="Helvetica 16 bold italic")
+    
+    def __aim(self):
+        """
+        Draws the aim for the Info window
+        """
+        self.__aim_label = create_label(self.__info, text=en.INFO_AIM, x=10, y=40, justify="left")
+    
+    def __name(self):
+        self.__name_title_label = create_label(self.__info, text=en.INFO_NAME_TITLE, x=10, y=170)
+
+        self.__name_label = create_label(self.__info, text=en.INFO_NAME, x=10, y=190, justify="left")
