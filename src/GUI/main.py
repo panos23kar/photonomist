@@ -37,8 +37,18 @@ class Main:
         self.__gui.mainloop()
     
     def __quit(self):
+        """
+        Quits the applicaton
+        |
+        """
         if messagebox.askyesno("", en.QUIT_MESSAGE):
             self.__gui.destroy()
+    
+    def __menu(self):
+        """
+        Menu on top of the window
+        |
+        """
 
 
 if __name__ == "__main__":
