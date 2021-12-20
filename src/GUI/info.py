@@ -59,6 +59,6 @@ class Info():
         self.__aim_label = create_label(self.__info, text=en.INFO_AIM, x=10, y=40, justify="left")
     
     def __name(self):
-        self.__name_title_label = create_label(self.__info, text=en.INFO_NAME_TITLE, x=10, y=170)
+        self.__name_title_label = create_label(self.__info, text=en.INFO_NAME_TITLE, x=10, y=170, font="Helvetica 10 bold")
 
         self.__name_label = create_label(self.__info, text=en.INFO_NAME, x=10, y=190, justify="left")
