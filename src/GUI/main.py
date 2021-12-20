@@ -5,6 +5,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 from languages import en
+from widgets import create_menu
 
 class Main:
     """
@@ -49,6 +50,9 @@ class Main:
         Menu on top of the window
         |
         """
+        #Main menu
+        self.__main_menu = create_menu(self.__gui)
+        self.__gui.config(menu=self.__main_menu)
 
 
 if __name__ == "__main__":
