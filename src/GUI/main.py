@@ -64,6 +64,10 @@ class Main:
         self.__sub_menu_file.add_separator()
         self.__sub_menu_file.add_command(label=en.MAIN_MENU_QUIT, underline=0, command=self.__quit)
 
+        #SubMenu Info
+        #TODO Connect it with info_window
+        #self.__main_menu.add_command(label=en.MAIN_MENU_INFO, command=InfoWindow(self.__gui).info_app, underline=1)
+
 
 if __name__ == "__main__":
     Main()
