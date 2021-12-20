@@ -18,6 +18,7 @@ class Main:
         """
         self.__gui = tk.Tk()
         self.__main_window()
+        self.__start_gui() 
     
     def __main_window(self):
         """
@@ -26,3 +27,10 @@ class Main:
         """
         self.__gui.title(en.MAIN_TITLE)
         self.__gui.geometry("440x420")
+    
+    def __start_gui(self):
+        """
+        Starts the graphical user interface
+        |
+        """
+        self.__gui.mainloop()
