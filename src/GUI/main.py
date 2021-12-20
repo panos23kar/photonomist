@@ -34,3 +34,7 @@ class Main:
         |
         """
         self.__gui.mainloop()
+
+
+if __name__ == "__main__":
+    Main()
