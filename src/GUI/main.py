@@ -2,6 +2,7 @@
 Hosts the code for the main window
 """
 import tkinter as tk
+from tkinter import messagebox
 
 from languages import en
 
@@ -34,6 +35,10 @@ class Main:
         |
         """
         self.__gui.mainloop()
+    
+    def __quit(self):
+        if messagebox.askyesno("", en.QUIT_MESSAGE):
+            self.__gui.destroy()
 
 
 if __name__ == "__main__":
