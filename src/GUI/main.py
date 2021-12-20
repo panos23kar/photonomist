@@ -60,7 +60,7 @@ class Main:
         self.__sub_menu_file = create_menu(self.__main_menu, tearoff=0)
         self.__main_menu.add_cascade(label=en.MAIN_MENU_FILE, menu=self.__sub_menu_file, underline=0)
 
-        # separator is here!
+        # Separator
         self.__sub_menu_file.add_separator()
         self.__sub_menu_file.add_command(label=en.MAIN_MENU_QUIT, underline=0, command=self.__quit)
 
