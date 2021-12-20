@@ -24,5 +24,5 @@ class Main:
         Title and dimensions for the main window
         |
         """
-        self.__gui.title("Photonomist")
+        self.__gui.title(en.MAIN_TITLE)
         self.__gui.geometry("440x420")
