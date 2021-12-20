@@ -67,7 +67,7 @@ class Main:
         self.__sub_menu_file.add_command(label=en.MAIN_MENU_QUIT, underline=0, command=self.__quit)
 
         ## SubMenu Info
-        self.__main_menu.add_command(label=en.MAIN_MENU_INFO, command=Info(self.__gui).info_app, underline=1)
+        self.__main_menu.add_command(label=en.MAIN_MENU_INFO, command=Info(self.__gui).show_info_window, underline=1)
 
 
 if __name__ == "__main__":
