@@ -4,6 +4,8 @@ Hosts the code for the main window
 import tkinter as tk
 from tkinter import messagebox
 
+from info import Info
+
 from languages import en
 from widgets import create_menu
 
@@ -64,9 +66,8 @@ class Main:
         self.__sub_menu_file.add_separator()
         self.__sub_menu_file.add_command(label=en.MAIN_MENU_QUIT, underline=0, command=self.__quit)
 
-        #SubMenu Info
-        #TODO Connect it with info_window
-        #self.__main_menu.add_command(label=en.MAIN_MENU_INFO, command=InfoWindow(self.__gui).info_app, underline=1)
+        ## SubMenu Info
+        self.__main_menu.add_command(label=en.MAIN_MENU_INFO, command=Info(self.__gui).info_app, underline=1)
 
 
 if __name__ == "__main__":
