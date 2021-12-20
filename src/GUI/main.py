@@ -50,9 +50,14 @@ class Main:
         Menu on top of the window
         |
         """
-        #Main menu
+        #  Main menu
         self.__main_menu = create_menu(self.__gui)
         self.__gui.config(menu=self.__main_menu)
+
+        #  SubMenu
+        ## SubMenu File
+        self.__sub_menu_file = create_menu(self.__main_menu, tearoff=0)
+        self.__main_menu.add_cascade(label="File", menu=self.__sub_menu_file, underline=0)
 
 
 if __name__ == "__main__":
