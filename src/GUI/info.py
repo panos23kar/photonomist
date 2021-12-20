@@ -7,7 +7,7 @@ import webbrowser
 
 from languages import en
 
-from widgets import create_label
+from widgets import create_label, create_text
 
 
 class Info():
@@ -36,6 +36,8 @@ class Info():
         self.__aim()
         self.__name()
         self.__github()
+
+        self.__email()
 
     def __info_window(self):
         """
@@ -81,3 +83,14 @@ class Info():
     
     def __open_url(self, url):
         webbrowser.open_new(url)
+
+    def __email(self):
+        """
+        Draws the email info in the Info window
+        |
+        """
+        self.__email_text = create_text(self.__info, text=en.INFO_EMAIL, insert_num=0.1, width=26, height=1, x=10, y=245)
+        # Gets the background color of the info window and applies it on the text-widget background
+        self.__email_text.configure(bg=self.__info.cget('bg'), relief="flat")
+
+        self.__email_label = create_label(self.__info, text=en.INFO_EMAIL_GOALS, x=10, y=265, justify="left")
