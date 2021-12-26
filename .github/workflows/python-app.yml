@@ -36,13 +36,23 @@ jobs:
     #   run: |
     #     pytest
 
-    - name: Build photonomist.exe
-      run: |
-        pyinstaller --noconsole --onefile /home/runner/work/photonomist/photonomist/src/GUI/main.py
-        mv /home/runner/work/photonomist/photonomist/dist/main /home/runner/work/photonomist/photonomist/dist/main.exe
+    # - name: Build photonomist.exe
+    #   run: |
+    #     pyinstaller --noconsole --onefile /home/runner/work/photonomist/photonomist/src/GUI/main.py
+    #     mv /home/runner/work/photonomist/photonomist/dist/main /home/runner/work/photonomist/photonomist/dist/main.exe
 
-    - name: Upload photonomist.exe into dist
-      uses: actions/upload-artifact@v2
+    # - name: Upload photonomist.exe into dist
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: photonomist
+    #     path: dist
+
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-windows@main
       with:
-        name: photonomist.exe
+        path: src/GUI
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: photonomist
         path: dist
