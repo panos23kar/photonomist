@@ -18,11 +18,13 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: "3.6"
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -33,21 +35,12 @@ jobs:
     #   run: |
     #     pytest
 
-    # - name: Build Graphical User Interface
-    #   uses: JackMcKew/pyinstaller-action-windows@main
-    #   with:
-    #     path: src/GUI
-
-    # - uses: actions/upload-artifact@v2
-    #   with:
-    #     name: photonomist
-    #     path: src/dist/gui_folder
     - name: Build photonomist.exe
       run: |
         pyinstaller --noconsole --onefile /home/runner/work/photonomist/photonomist/src/GUI/main.py
+
     - name: Upload photonomist.exe into dist
       uses: actions/upload-artifact@v2
       with:
-        name: dir for photonomist.exe
-        path: |
-          dist
+        name: photonomist.exe
+        path: '**/*.exe'
