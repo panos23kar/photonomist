@@ -5,9 +5,7 @@ name: Test, Documentation and Build Photonomist
 
 on:
   push:
-    branches: [ master, gui ]
-  pull_request:
-    branches: [ master ]
+    branches: [ gui ]
 
 jobs:
   build:
@@ -38,7 +36,7 @@ jobs:
     - name: Build Graphical User Interface
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
-        path: src/GUI/main.py
+        path: src/GUI
 
     - uses: actions/upload-artifact@v2
       with:
