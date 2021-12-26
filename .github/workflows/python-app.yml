@@ -43,5 +43,5 @@ jobs:
     #     name: photonomist
     #     path: src/dist/gui_folder
     - name: Build photonomist.exe
-    run: |
-      pyinstaller --noconsole --onefile src\GUI\main.py
+      run: |
+        pyinstaller --noconsole --onefile src\GUI\main.py
