@@ -46,8 +46,8 @@ jobs:
       run: |
         pyinstaller --noconsole --onefile /home/runner/work/photonomist/photonomist/src/GUI/main.py
     - name: Upload photonomist.exe into dist
-        uses: actions/upload-artifact@v2
-        with:
-          name: dir for photonomist.exe
-          path: |
-            dist
+      uses: actions/upload-artifact@v2
+      with:
+        name: dir for photonomist.exe
+        path: |
+          dist
