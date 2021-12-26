@@ -33,12 +33,15 @@ jobs:
     #   run: |
     #     pytest
 
-    - name: Build Graphical User Interface
-      uses: JackMcKew/pyinstaller-action-windows@main
-      with:
-        path: src/GUI
+    # - name: Build Graphical User Interface
+    #   uses: JackMcKew/pyinstaller-action-windows@main
+    #   with:
+    #     path: src/GUI
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: photonomist
-        path: src/dist/gui_folder
+    # - uses: actions/upload-artifact@v2
+    #   with:
+    #     name: photonomist
+    #     path: src/dist/gui_folder
+    - name: Build photonomist.exe
+    run: |
+      pyinstaller --noconsole --onefile src\GUI\main.py
