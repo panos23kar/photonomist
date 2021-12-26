@@ -38,9 +38,9 @@ jobs:
     - name: Build photonomist.exe
       run: |
         pyinstaller --noconsole --onefile /home/runner/work/photonomist/photonomist/src/GUI/main.py
+        mv /home/runner/work/photonomist/photonomist/dist/main /home/runner/work/photonomist/photonomist/dist/main.exe
 
     - name: Upload photonomist.exe into dist
       uses: actions/upload-artifact@v2
       with:
         name: photonomist.exe
-        path: photonomist.exe
