@@ -48,3 +48,13 @@ def create_entry(master, x, y, w, textvariable):
     entry = tk.Entry(master, textvariable=textvariable)
     entry.place(x=x,y=y,width=w)
     return entry
+
+
+def create_button(master, x, y, h, text, command):
+    """
+    Creates a Button widget
+    |
+    """
+    button = tk.Button(master, text=text, command = command)
+    button.place(x=x, y=y, height=h)
+    return button
