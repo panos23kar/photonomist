@@ -87,3 +87,10 @@ def create_check_button(master, text, x, y, variable):
     check_button = tk.Checkbutton(master, text=text, variable=variable)
     check_button.place(x=x, y=y)
     return check_button
+
+def create_int_var():
+    """
+    Create a Int variable widget
+    |
+    """
+    return tk.IntVar()
