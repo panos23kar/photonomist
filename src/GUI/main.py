@@ -47,6 +47,7 @@ class Main:
         """
         self.__main_window()
         self.__input_path()
+        self.__export_path()
 
     def __input_path(self):
         """
@@ -54,7 +55,7 @@ class Main:
         |
         """
         #Label
-        self.__input_label = create_label(self.__gui, text=en.MAIN_INPUT_PATH, x=20, y=22)
+        self.__input_label = create_label(self.__gui, text=en.MAIN_INPUT_PATH, x=15, y=22)
 
         #String Variable
         self.__input_path_value = create_string_variable()
@@ -65,7 +66,25 @@ class Main:
 
         #Button
         #TODO command
-        self.__input_path_button = create_button(self.__gui, x=395, y=20, h=21, text=en.MAIN_INPUT_PATH_BUTTON, command="TODO")
+        self.__input_path_button = create_button(self.__gui, x=395, y=20, h=21, text=en.MAIN_PATH_BUTTON, command="TODO")
+
+    def __export_path(self):
+        """
+        Draws the export folder path widgets
+        |
+        """
+        #Label
+        self.__export_label = create_label(self.__gui, text=en.MAIN_EXPORT_PATH, x=10, y=140)
+
+        #String Variable
+        self.__export_path_value = create_string_variable()
+
+        #Entry
+        self.__export_path_entry = create_entry(self.__gui, x=90, y=142, w=300, textvariable=self.__export_path_value)
+
+        #Button
+        #TODO command
+        self.__export_path_button = create_button(self.__gui, x=395, y=140, h=21, text=en.MAIN_PATH_BUTTON, command="TODO")
 
     def __menu(self):
         """

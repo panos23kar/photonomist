@@ -8,7 +8,8 @@ MAIN_MENU_QUIT = "Quit"
 MAIN_MENU_INFO = "Info..."
 
 MAIN_INPUT_PATH = "Input path: "
-MAIN_INPUT_PATH_BUTTON = "..."
+MAIN_PATH_BUTTON = "..."
+MAIN_EXPORT_PATH = "Export path: "
 
 # Info window
 INFO_WINDOW_TITLE = "Photonomist Info"
