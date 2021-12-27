@@ -11,13 +11,14 @@ def create_menu(master, tearoff=None):
     return tk.Menu(master, tearoff=tearoff)
 
 
-def create_label(master, text, x, y, font="Helvetica 10", justify=None, fg=None, cursor=None):
+def create_label(master, text, x=0, y=0, font="Helvetica 10", justify=None, fg=None, cursor=None):
     """
     Creates a Label widget
     |
     """
     label = tk.Label(master, text=text, font=font, justify=justify, fg=fg, cursor=cursor)
-    label.place(x=x, y=y)
+    if x and y:
+        label.place(x=x, y=y)
     return label
 
 
@@ -58,3 +59,12 @@ def create_button(master, x, y, h, text, command):
     button = tk.Button(master, text=text, command = command)
     button.place(x=x, y=y, height=h)
     return button
+
+def create_frame(master, x, y, bd=0):
+    """
+    Creates a Frame widget
+    |
+    """
+    frame = tk.Frame(master, bd=2)
+    frame.place(x=x, y=y)
+    return frame
