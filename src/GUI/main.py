@@ -25,14 +25,6 @@ class Main:
         self.__menu()
         self.__start_gui() 
     
-    def __main_window(self):
-        """
-        Title and dimensions for the main window
-        |
-        """
-        self.__gui.title(en.MAIN_TITLE)
-        self.__gui.geometry("440x420")
-    
     def __start_gui(self):
         """
         Starts the graphical user interface
@@ -51,6 +43,15 @@ class Main:
         self.__export_path()
         self.__group_by_buttons()
         self.__folder_name_pattern()
+        self.__run_button()
+
+    def __main_window(self):
+        """
+        Title and dimensions for the main window
+        |
+        """
+        self.__gui.title(en.MAIN_TITLE)
+        self.__gui.geometry("440x420")
 
     def __input_path(self):
         """
@@ -145,6 +146,13 @@ class Main:
         self.__people_int_variable = create_int_var()
         create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_PEOPLE, x=20, y=330, variable=self.__people_int_variable)
 
+    def __run_button(self):
+        """
+        Draws the run application button
+        |
+        """
+        #TODO command
+        create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, command="TODO", state="disabled")
 
     def __menu(self):
         """

@@ -21,9 +21,11 @@ MAIN_YEAR_RADIO_BUTTON = "Year"
 MAIN_YEAR_RADIO_BUTTON_VALUE = "year"
 
 MAIN_NAME_PATTERN_LABEL = "Click the labels that you want to add in the name of your photo folders: "
-MAIN_NAME_PATTERN_PLACE = '_place'
-MAIN_NAME_PATTERN_REASON = '_reason'
-MAIN_NAME_PATTERN_PEOPLE = '_people'
+MAIN_NAME_PATTERN_PLACE = "_place"
+MAIN_NAME_PATTERN_REASON = "_reason"
+MAIN_NAME_PATTERN_PEOPLE = "_people"
+
+MAIN_RUN_APP_BUTTON = "Run Forrest, run!!"
 
 # Info window
 INFO_WINDOW_TITLE = "Photonomist Info"

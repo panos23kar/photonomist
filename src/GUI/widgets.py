@@ -51,7 +51,7 @@ def create_entry(master, x, y, w, textvariable):
     return entry
 
 
-def create_button(master, x, y, h, text, command, state='enabled'):
+def create_button(master, x, y, h, text, command, state='active'):
     """
     Creates a Button widget
     |
