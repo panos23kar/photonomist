@@ -216,5 +216,21 @@ class Main:
         self.__run_button["state"] = "disabled"
         change_color(self.__find_photos_button,'lightpink')
 
+    def __group_option(self):
+        """
+        Specifies if the photos will be ordered by day, year or month
+        depending on user's option
+        |
+        """
+        #TODO Use it later in run_app
+        user_option = self.__group_by_string_variable.get()
+        if user_option == 'month':
+            return False, True
+        elif user_option == 'year':
+            return True, False
+        else:
+            return False, False
+
+
 if __name__ == "__main__":
     Main()
