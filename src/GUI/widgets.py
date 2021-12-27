@@ -38,3 +38,13 @@ def create_string_variable():
     |
     """
     return tk.StringVar()
+
+
+def create_entry(master, x, y, w, textvariable):
+    """
+    Creates an Entry widget
+    |
+    """
+    entry = tk.Entry(master, textvariable=textvariable)
+    entry.place(x=x,y=y,width=w)
+    return entry
