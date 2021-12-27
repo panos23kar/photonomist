@@ -4,7 +4,7 @@
 block_cipher = None
 
 
-a = Analysis(['/home/runner/work/photonomist/photonomist/src/GUI/main.py'],
+a = Analysis(['main.py'],
              pathex=[],
              binaries=[],
              datas=[],
