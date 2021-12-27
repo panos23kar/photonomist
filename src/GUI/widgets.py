@@ -51,12 +51,12 @@ def create_entry(master, x, y, w, textvariable):
     return entry
 
 
-def create_button(master, x, y, h, text, command):
+def create_button(master, x, y, h, text, command, state='enabled'):
     """
     Creates a Button widget
     |
     """
-    button = tk.Button(master, text=text, command = command)
+    button = tk.Button(master, text=text, command = command, state=state)
     button.place(x=x, y=y, height=h)
     return button
 
