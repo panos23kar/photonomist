@@ -94,3 +94,11 @@ def create_int_var():
     |
     """
     return tk.IntVar()
+
+
+def change_color(widget, color):
+    """
+    Gets a widget and changes its background color
+    |
+    """
+    widget.config(background=color)

@@ -10,7 +10,9 @@ from functools import partial
 from info import Info
 
 from languages import en
-from widgets import create_menu, create_label, create_string_variable, create_entry, create_button, create_frame, create_radio_button, create_check_button, create_int_var
+from widgets import create_menu, create_label, create_string_variable, \
+                    create_entry, create_button, create_frame, create_radio_button, \
+                    create_check_button, create_int_var, change_color
 
 class Main:
     """
@@ -69,7 +71,9 @@ class Main:
 
         #Entry
         self.__input_path_entry = create_entry(self.__gui, x=90, y=22, w=300, textvariable=self.__input_path_value)
-        #TODO self.__check_input_entry
+
+        #Constantly checks if the user has specified an input path
+        self.__input_path_value.trace('w', self.__check_input_path)
 
         #Button
         self.__input_path_button = create_button(self.__gui, x=395, y=20, h=21, text=en.MAIN_PATH_BUTTON, command=partial(self.__file_explorer, 'input'))
@@ -80,7 +84,7 @@ class Main:
         |
         """
         #TODO command
-        create_button(self.__gui, x=340, y=70, h=21, text=en.MAIN_FIND_PHOTOS_BUTTON, command="TODO")
+        self.__find_photos_button = create_button(self.__gui, x=340, y=70, h=21, text=en.MAIN_FIND_PHOTOS_BUTTON, command="TODO")
 
     def __export_path(self):
         """
@@ -200,6 +204,17 @@ class Main:
         #In case that a user has already specify a folder-path and clicks again the input folder path button
         if mode == 'input':
             self.__run_button["state"] = "disabled"
+    
+    def __check_input_path(self, *args):
+        """
+        Whenever the user specifies a new input path, it disables the run button and changes the color
+        of the find photos button to indicate that the user has to click it!
+        |
+        """
+        # *args is there to deal with the error --> TypeError: __check_input_path() takes 1 positional argument but 4 were given
+
+        self.__run_button["state"] = "disabled"
+        change_color(self.__find_photos_button,'lightpink')
 
 if __name__ == "__main__":
     Main()
