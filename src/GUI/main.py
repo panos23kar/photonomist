@@ -7,7 +7,7 @@ from tkinter import messagebox
 from info import Info
 
 from languages import en
-from widgets import create_menu, create_label, create_string_variable, create_entry, create_button, create_frame, create_radio_button
+from widgets import create_menu, create_label, create_string_variable, create_entry, create_button, create_frame, create_radio_button, create_check_button, create_int_var
 
 class Main:
     """
@@ -49,6 +49,7 @@ class Main:
         self.__input_path()
         self.__export_path()
         self.__group_by_buttons()
+        self.__folder_name_pattern()
 
     def __input_path(self):
         """
@@ -114,6 +115,26 @@ class Main:
         #Year Radio Button
         self.__year_radio_button = create_radio_button(self.__group_by_frame, text=en.MAIN_YEAR_RADIO_BUTTON, row=1, column=2, width=8,
                                                       variable=self.__group_by_string_variable, value=en.MAIN_YEAR_RADIO_BUTTON_VALUE, indicatoron=0, bd=2)
+
+    def __folder_name_pattern(self):
+        """
+        Draws the checkboxes '_place', '_reason', '_people' which define a folder's name pattern
+        |
+        """
+        #Label
+        self.__name_pattern_label = create_label(self.__gui, text=en.MAIN_NAME_PATTERN_LABEL, x=20, y=270)
+
+        #Place
+        self.__place_int_variable = create_int_var()
+        create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_PLACE, x=20, y=290, variable=self.__place_int_variable)
+
+        #Reason
+        self.__reason_int_variable = create_int_var()
+        create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_REASON, x=20, y=310, variable=self.__reason_int_variable)
+
+        #People
+        self.__people_int_variable = create_int_var()
+        create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_PEOPLE, x=20, y=330, variable=self.__people_int_variable)
 
 
     def __menu(self):
