@@ -3,6 +3,9 @@ Hosts the code for the main window
 """
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import filedialog
+
+from functools import partial
 
 from info import Info
 
@@ -69,8 +72,7 @@ class Main:
         #TODO self.__check_input_entry
 
         #Button
-        #TODO command
-        self.__input_path_button = create_button(self.__gui, x=395, y=20, h=21, text=en.MAIN_PATH_BUTTON, command="TODO")
+        self.__input_path_button = create_button(self.__gui, x=395, y=20, h=21, text=en.MAIN_PATH_BUTTON, command=partial(self.__file_explorer, 'input'))
 
     def __find_photos_button(self):
         """
@@ -95,8 +97,7 @@ class Main:
         self.__export_path_entry = create_entry(self.__gui, x=90, y=142, w=300, textvariable=self.__export_path_value)
 
         #Button
-        #TODO command
-        self.__export_path_button = create_button(self.__gui, x=395, y=140, h=21, text=en.MAIN_PATH_BUTTON, command="TODO")
+        self.__export_path_button = create_button(self.__gui, x=395, y=140, h=21, text=en.MAIN_PATH_BUTTON, command=partial(self.__file_explorer, 'export'))
 
     def __group_by_buttons(self):
         """
@@ -152,7 +153,7 @@ class Main:
         |
         """
         #TODO command
-        create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, command="TODO", state="disabled")
+        self.__run_button = create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, command="TODO", state="disabled")
 
     def __menu(self):
         """
@@ -182,6 +183,23 @@ class Main:
         """
         if messagebox.askyesno("", en.QUIT_MESSAGE):
             self.__gui.destroy()
+    
+    def __file_explorer(self, mode):
+        """
+        Opens file dialog in order the user to open a folder path
+        |
+        """
+        folder_path = filedialog.askdirectory(initialdir = "/",title=en.MAIN_FILE_EXPLORER_MESSAGE)
+        
+        if mode == 'input':
+            self.__input_path_value.set(folder_path)
+        
+        if mode == 'export':
+            self.__export_path_value.set(folder_path)
+        
+        #In case that a user has already specify a folder-path and clicks again the input folder path button
+        if mode == 'input':
+            self.__run_button["state"] = "disabled"
 
 if __name__ == "__main__":
     Main()

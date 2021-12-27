@@ -11,6 +11,7 @@ MAIN_INPUT_PATH = "Input path: "
 MAIN_PATH_BUTTON = "..."
 MAIN_FIND_PHOTOS_BUTTON = "Find Photos"
 MAIN_EXPORT_PATH = "Export path: "
+MAIN_FILE_EXPLORER_MESSAGE = "Select Folder"
 
 MAIN_GROUP_BY_LABEL = "I 'll group your photos by.."
 MAIN_DAY_RADIO_BUTTON = "Day"
