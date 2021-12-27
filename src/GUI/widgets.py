@@ -78,3 +78,12 @@ def create_radio_button(master, text, row, column, width, variable, value, indic
     radio_button.config(indicatoron=indicatoron, bd=bd, width=width, value=value)
     radio_button.grid(row=row, column=column)
     return radio_button
+
+def create_check_button(master, text, x, y, variable):
+    """
+    Create a Check Button widget
+    |
+    """
+    check_button = tk.Checkbutton(master, text=text, variable=variable)
+    check_button.place(x=x, y=y)
+    return check_button
