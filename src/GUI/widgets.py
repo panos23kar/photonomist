@@ -30,3 +30,11 @@ def create_text(master, text, insert_num, width, height, x, y, font="Helvetica 1
     txt.insert(insert_num, text)
     txt.place(x=x,y=y)
     return txt
+
+
+def create_string_variable():
+    """
+    Creates a string variable which dynamically changes the value of the Entry widget
+    |
+    """
+    return tk.StringVar()
