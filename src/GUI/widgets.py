@@ -68,3 +68,13 @@ def create_frame(master, x, y, bd=0):
     frame = tk.Frame(master, bd=2)
     frame.place(x=x, y=y)
     return frame
+
+def create_radio_button(master, text, row, column, width, variable, value, indicatoron=None, bd=None):
+    """
+    Create a Radio Button widget
+    |
+    """
+    radio_button = tk.Radiobutton(master, text=text, variable=variable)
+    radio_button.config(indicatoron=indicatoron, bd=bd, width=width, value=value)
+    radio_button.grid(row=row, column=column)
+    return radio_button
