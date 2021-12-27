@@ -7,6 +7,9 @@ MAIN_MENU_FILE = "File"
 MAIN_MENU_QUIT = "Quit"
 MAIN_MENU_INFO = "Info..."
 
+MAIN_INPUT_PATH = "Input path: "
+MAIN_INPUT_PATH_BUTTON = "..."
+
 # Info window
 INFO_WINDOW_TITLE = "Photonomist Info"
 
