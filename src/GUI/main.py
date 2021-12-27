@@ -47,6 +47,7 @@ class Main:
         """
         self.__main_window()
         self.__input_path()
+        self.__find_photos_button()
         self.__export_path()
         self.__group_by_buttons()
         self.__folder_name_pattern()
@@ -69,6 +70,14 @@ class Main:
         #Button
         #TODO command
         self.__input_path_button = create_button(self.__gui, x=395, y=20, h=21, text=en.MAIN_PATH_BUTTON, command="TODO")
+
+    def __find_photos_button(self):
+        """
+        Draws the find photos button
+        |
+        """
+        #TODO command
+        create_button(self.__gui, x=340, y=70, h=21, text=en.MAIN_FIND_PHOTOS_BUTTON, command="TODO")
 
     def __export_path(self):
         """

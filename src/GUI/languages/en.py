@@ -9,6 +9,7 @@ MAIN_MENU_INFO = "Info..."
 
 MAIN_INPUT_PATH = "Input path: "
 MAIN_PATH_BUTTON = "..."
+MAIN_FIND_PHOTOS_BUTTON = "Find Photos"
 MAIN_EXPORT_PATH = "Export path: "
 
 MAIN_GROUP_BY_LABEL = "I 'll group your photos by.."
@@ -23,6 +24,7 @@ MAIN_NAME_PATTERN_LABEL = "Click the labels that you want to add in the name of 
 MAIN_NAME_PATTERN_PLACE = '_place'
 MAIN_NAME_PATTERN_REASON = '_reason'
 MAIN_NAME_PATTERN_PEOPLE = '_people'
+
 # Info window
 INFO_WINDOW_TITLE = "Photonomist Info"
 
