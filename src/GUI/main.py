@@ -7,7 +7,7 @@ from tkinter import messagebox
 from info import Info
 
 from languages import en
-from widgets import create_menu, create_label, create_string_variable, create_entry, create_button
+from widgets import create_menu, create_label, create_string_variable, create_entry, create_button, create_frame, create_radio_button
 
 class Main:
     """
@@ -48,6 +48,7 @@ class Main:
         self.__main_window()
         self.__input_path()
         self.__export_path()
+        self.__group_by_buttons()
 
     def __input_path(self):
         """
@@ -85,6 +86,35 @@ class Main:
         #Button
         #TODO command
         self.__export_path_button = create_button(self.__gui, x=395, y=140, h=21, text=en.MAIN_PATH_BUTTON, command="TODO")
+
+    def __group_by_buttons(self):
+        """
+        Draws the group by 'day', 'month', 'year' radio buttons
+        |
+        """
+        #Frame
+        self.__group_by_frame = create_frame(self.__gui, x=20, y=190, bd=2)
+        
+        #Label
+        self.__group_by_label = create_label(self.__group_by_frame, text=en.MAIN_GROUP_BY_LABEL)
+        self.__group_by_label.grid(row=0, column=0, columnspan=3, sticky="w", pady=5)
+
+        #String Variable
+        self.__group_by_string_variable = create_string_variable()
+
+        #Day Radio Button
+        self.__day_radio_button = create_radio_button(self.__group_by_frame, text=en.MAIN_DAY_RADIO_BUTTON, row=1, column=0, width=8,
+                                                      variable=self.__group_by_string_variable, value=en.MAIN_DAY_RADIO_BUTTON_VALUE, indicatoron=0, bd=2)
+        self.__group_by_string_variable.set(en.MAIN_DAY_RADIO_BUTTON_VALUE)
+
+        #Month Radio Button
+        self.__month_radio_button = create_radio_button(self.__group_by_frame, text=en.MAIN_MONTH_RADIO_BUTTON, row=1, column=1, width=8,
+                                                      variable=self.__group_by_string_variable, value=en.MAIN_MONTH_RADIO_BUTTON_VALUE, indicatoron=0, bd=2)
+
+        #Year Radio Button
+        self.__year_radio_button = create_radio_button(self.__group_by_frame, text=en.MAIN_YEAR_RADIO_BUTTON, row=1, column=2, width=8,
+                                                      variable=self.__group_by_string_variable, value=en.MAIN_YEAR_RADIO_BUTTON_VALUE, indicatoron=0, bd=2)
+
 
     def __menu(self):
         """

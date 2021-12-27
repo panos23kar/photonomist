@@ -11,6 +11,16 @@ MAIN_INPUT_PATH = "Input path: "
 MAIN_PATH_BUTTON = "..."
 MAIN_EXPORT_PATH = "Export path: "
 
+MAIN_GROUP_BY_LABEL = "I 'll group your photos by.."
+MAIN_DAY_RADIO_BUTTON = "Day"
+MAIN_DAY_RADIO_BUTTON_VALUE = "day"
+MAIN_MONTH_RADIO_BUTTON = "Month"
+MAIN_MONTH_RADIO_BUTTON_VALUE = "month"
+MAIN_YEAR_RADIO_BUTTON = "Year"
+MAIN_YEAR_RADIO_BUTTON_VALUE = "year"
+
+MAIN_NAME_PATTERN_LABEL = "Click the labels that you want to add in the name of your photo folders: "
+
 # Info window
 INFO_WINDOW_TITLE = "Photonomist Info"
 
