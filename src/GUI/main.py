@@ -140,16 +140,16 @@ class Main:
         self.__name_pattern_label = create_label(self.__gui, text=en.MAIN_NAME_PATTERN_LABEL, x=20, y=270)
 
         #Place
-        self.__place_int_variable = create_int_var()
-        create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_PLACE, x=20, y=290, variable=self.__place_int_variable)
+        self.__int_variable_place = create_int_var()
+        self.__check_button_place = create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_PLACE, x=20, y=290, variable=self.__int_variable_place)
 
         #Reason
-        self.__reason_int_variable = create_int_var()
-        create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_REASON, x=20, y=310, variable=self.__reason_int_variable)
+        self.__int_variable_reason = create_int_var()
+        self.__check_button_reason = create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_REASON, x=20, y=310, variable=self.__int_variable_reason)
 
         #People
-        self.__people_int_variable = create_int_var()
-        create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_PEOPLE, x=20, y=330, variable=self.__people_int_variable)
+        self.__int_variable_people = create_int_var()
+        self.__check_button_people = create_check_button(self.__gui, text=en.MAIN_NAME_PATTERN_PEOPLE, x=20, y=330, variable=self.__int_variable_people)
 
     def __run_button(self):
         """
@@ -224,12 +224,28 @@ class Main:
         """
         #TODO Use it later in run_app
         user_option = self.__group_by_string_variable.get()
+
         if user_option == 'month':
             return False, True
         elif user_option == 'year':
             return True, False
         else:
             return False, False
+
+    def __create_name_pattern(self):
+        """
+        Constructs the name pattern to be user as folders' name
+        |
+        """
+        #TODO Use it later in run_app
+        #TODO Hardcoded --> store name_pattern variables in a dict and dynamically get their names
+        name_pattern = ""
+        for var_name in [(self.__int_variable_place, '_place'), 
+                         (self.__int_variable_reason, '_reason'), 
+                         (self.__int_variable_people, '_people')]:
+            if var_name[0].get():
+                name_pattern += var_name[1]
+        return name_pattern
 
 
 if __name__ == "__main__":
