@@ -27,6 +27,7 @@ class Main:
         |
         """
         self.__gui = tk.Tk()
+        self.__initiate_exclude_window()
         self.__draw_main_window()
         self.__menu()
         self.__start_gui() 
@@ -38,6 +39,13 @@ class Main:
         """
         self.__gui.mainloop()
     
+    def __initiate_exclude_window(self):
+        """
+        Initiates the exclude window
+        |
+        """
+        self.excl_w = Exclude(self.__gui)
+
     def __draw_main_window(self):
         """
         Draws the whole layout of the main window
@@ -84,8 +92,7 @@ class Main:
         Draws the find photos button
         |
         """
-        #TODO command
-        self.__find_photos_button = create_button(self.__gui, x=340, y=70, h=21, text=en.MAIN_FIND_PHOTOS_BUTTON, command="TODO")
+        self.__find_photos_button = create_button(self.__gui, x=340, y=70, h=21, text=en.MAIN_FIND_PHOTOS_BUTTON, command=self.excl_w.draw_exclude_window)
 
     def __export_path(self):
         """
@@ -188,13 +195,6 @@ class Main:
         """
         if messagebox.askyesno("", en.QUIT_MESSAGE):
             self.__gui.destroy()
-
-    def __initiate_exclude_window(self):
-        """
-        Initiates the exclude window
-        |
-        """
-        self.__excl_w = Exclude(self.__gui)
 
     def __file_explorer(self, mode):
         """

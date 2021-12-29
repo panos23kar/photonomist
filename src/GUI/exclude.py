@@ -11,14 +11,14 @@ class Exclude:
     |
     """
 
-    def __init__(self) -> None:
+    def __init__(self, main_window) -> None:
         """
         Initializes the exclude window
         |
         """
-        self.__draw_exclude_window()
+        self.__main_window = main_window
 
-    def __draw_exclude_window(self):
+    def draw_exclude_window(self):
         """
         Draws the whole layout of the exclude window
         |
@@ -30,7 +30,7 @@ class Exclude:
         Title and dimensions for the exclude window
         |
         """
-        self.__exclude = tk.Toplevel(self.__main_window_instance._Gui__gui)
+        self.__exclude = tk.Toplevel(self.__main_window)
         self.__exclude.title(en.EXCl_TITLE)
         # Gets the 'full' focus of the app
         self.__exclude.grab_set()
