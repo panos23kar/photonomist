@@ -5,7 +5,7 @@ import tkinter as tk
 
 from languages import en
 
-from widgets import create_canvas, create_frame
+from widgets import create_canvas, create_frame, create_scrollbar
 
 class Exclude:
     """
@@ -28,6 +28,8 @@ class Exclude:
         self.__exclude_window()
         self.__draws_canvas()
         self.__draws_frame()
+        self.__canvas_create_window()
+        self.__draws_scrollbar()
 
     def __exclude_window(self):
         """
@@ -54,9 +56,9 @@ class Exclude:
         Frame, in combination with the canvas, is needed for the scrollbar
         |
         """
-        self.____exclude_frame = create_frame(self.__exclude_canvas, padx=40)
-        self.____exclude_frame.bind("<Configure>", lambda event, canvas=self.__exclude_canvas: self.__on_frame_configure())
-    
+        self.__exclude_frame = create_frame(self.__exclude_canvas, padx=40)
+        self.__exclude_frame.bind("<Configure>", lambda event, canvas=self.__exclude_canvas: self.__on_frame_configure())
+
     def __on_mousewheel(self, event):
         """
         It listens for mouse's wheel scrolling. 
@@ -66,10 +68,36 @@ class Exclude:
         |
         """
         self.__exclude_canvas.yview_scroll(int(-1*(event.delta/120)), "units")
-    
+
     def __on_frame_configure(self):
         """
         Resets the scroll region to encompass the inner frame
         |
         """
         self.__exclude_canvas.configure(scrollregion=self.__exclude_canvas.bbox("all"))
+
+    def __canvas_create_window(self):
+        """
+        It creates a canvas object, similar to a line, rectangle, image, etc. 
+        Like a line or rectangle, this canvas object has attributes that define what it looks like. 
+        In the case of a window object, one of the attributes is window which specifies a widget to 
+        be displayed as the object.
+
+        If you add a frame in a canvas with pack, place, or grid it will appear inside the canvas but 
+        it won't be part of the canvas. That means that if you attach scrollbars to the canvas, the 
+        frame will not scroll. By using create_window, the frame becomes part of the canvas, and can 
+        be manipulated and scrolled like any other canvas object.
+
+        The value returned from calling create_window is an integer index which can be used later to refer to this object.
+
+        https://stackoverflow.com/questions/58009398/tkinter-what-is-a-window-when-calling-tk-canvas-create-window
+        |
+        """
+        self.__exclude_canvas.create_window((1,1), window=self.__exclude_frame, anchor="n")
+
+    def __draws_scrollbar(self):
+        """
+        Draws the scrollbar for the exclude window
+        |
+        """
+        self.__exclude_scrollbar = create_scrollbar(self.__exclude, command=self.__exclude_canvas.yview)
