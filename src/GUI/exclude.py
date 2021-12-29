@@ -15,3 +15,9 @@ class Exclude:
         |
         """
         self.__draw_exclude_window()
+
+    def __draw_exclude_window(self):
+        """
+        Draws the whole layout of the exclude window
+        |
+        """
