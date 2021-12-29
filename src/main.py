@@ -6,7 +6,7 @@
 """
 import os, shutil, subprocess
 import collections
-from photonomist.photo import Photo
+from photo import Photo
 
 
 def path_string(path:str)->str:
@@ -23,6 +23,7 @@ def path_string(path:str)->str:
     if (path is None) or (type(path) != str) or (len(path)<3):
         raise Exception("Your input is not a valid path!") #TODO Log it
     return path
+
 
 def clean_path(path:str)->str:
     """
@@ -42,6 +43,7 @@ def clean_path(path:str)->str:
         path = path[:-1]
     return path
 
+
 def path_exists(path:str):
     """
     Verifies that the provided path exists.
@@ -53,6 +55,7 @@ def path_exists(path:str):
     if not os.path.exists(path):
         raise FileNotFoundError("The provided path was not found!")#TODO Log it
 
+
 def path_items(path:str):
     """
     Verifies that the provided path contains files (not only photos).
@@ -63,6 +66,7 @@ def path_items(path:str):
     """
     if not os.listdir(path):
         raise Exception("The provided path does not contain any files!")#TODO Log it
+
 
 def traverse_photos_path(photos_path:str)->list:
     """
@@ -86,6 +90,7 @@ def traverse_photos_path(photos_path:str)->list:
     
     return photos_roots
 
+
 def path_photos(photos_roots:dict):
     """
     Prints the photo paths. If there aren't any, it raises an error.
@@ -99,6 +104,7 @@ def path_photos(photos_roots:dict):
     else:#TODO Log it
         print('I found photos in: ')
         #print(*photos_roots, sep = "\n")
+
 
 def photos_size(photos_roots:dict)->int:
     """
@@ -119,6 +125,7 @@ def photos_size(photos_roots:dict)->int:
              total_size += os.stat(photo).st_size
     return total_size
 
+
 def paths_same_disk(photos_path:str, export_path:str)->bool:
     """
     Checks if the provided input path and the export path are "located" on the same disk.
@@ -130,6 +137,7 @@ def paths_same_disk(photos_path:str, export_path:str)->bool:
     |
     """
     return True if photos_path[0].lower() == export_path[0].lower() else False
+
 
 def disk_space(export_path:str, photos_total_size:int):
     """
@@ -147,6 +155,7 @@ def disk_space(export_path:str, photos_total_size:int):
         print('You have enough free disk space!')
     else:
         raise Exception(f"You need at least {photos_total_size + 1073741824} free bytes but you only have {free} avaialable!")#TODO Log it
+
 
 def photo_dir_name(date:str, year:bool=False, month:bool=False, name_pattern:str="_place_reason_people")->str:
     """
@@ -183,6 +192,7 @@ def photo_dir_name(date:str, year:bool=False, month:bool=False, name_pattern:str
         year, month, day = date.split(':')
         return f"{year}_{month}_{day}" + name_pattern
 
+
 def dir_name_exists(dir_name:str, export_path:str)->bool:
     """
     Checks if a folder's name already contains the date of a photo
@@ -198,6 +208,7 @@ def dir_name_exists(dir_name:str, export_path:str)->bool:
             return True
     return False
 
+
 def create_photo_dir(dir_name:str, export_path:str):
     """
     Creates a folder with the specified name
@@ -209,6 +220,7 @@ def create_photo_dir(dir_name:str, export_path:str):
     |
     """
     os.makedirs(os.path.join(export_path, dir_name))
+
 
 def write_not_transferred_photos(photo_path:str, export_path:str):
     """
@@ -222,6 +234,7 @@ def write_not_transferred_photos(photo_path:str, export_path:str):
     """
     with open(os.path.join(export_path, "not_transferred.txt"), "a") as myfile:
         myfile.write(photo_path + "\n")
+
 
 def transfer_photo(photo_path:str, export_path:str, year:bool=False, month:bool=False, name_pattern:str="_place_reason_people"):
     """
@@ -251,6 +264,7 @@ def transfer_photo(photo_path:str, export_path:str, year:bool=False, month:bool=
     else:
         write_not_transferred_photos(photo_path, export_path)
 
+
 def input_path_validation(photos_path:str)->list:
     """
     Validates if the provided input path:
@@ -273,6 +287,7 @@ def input_path_validation(photos_path:str)->list:
     path_photos(photos_roots)
     return photos_roots
 
+
 def export_path_validation(export_path:str, photos_path:str, photos_roots:dict):
     """
     Validates if the export path:
@@ -294,6 +309,7 @@ def export_path_validation(export_path:str, photos_path:str, photos_roots:dict):
         photos_total_size = photos_size(photos_roots)
         disk_space(export_path, photos_total_size)
 
+
 def tidy_photos(export_path:str, photos_roots:dict, year:bool=False, month:bool=False, name_pattern:str="_place_reason_people"):
     """
     Initiates the transfer process for each photo
@@ -310,11 +326,11 @@ def tidy_photos(export_path:str, photos_roots:dict, year:bool=False, month:bool=
     :type name_pattern: str
     |
     """
-
     # Iterate over list of photos
     for photo_list in photos_roots.values():
         for photo in photo_list:
             transfer_photo(photo, export_path, year=year, month=month, name_pattern=name_pattern)
+
 
 def replace_backslashes(path:str):
     """
@@ -329,6 +345,7 @@ def replace_backslashes(path:str):
     """
     return path.replace("/", "\\")
 
+
 def open_export_folder(export_path:str):
     """
     Opens the export path on file explorer to inform the users that the process is done
@@ -341,11 +358,12 @@ def open_export_folder(export_path:str):
     # subprocess.Popen(f'explorer "{export_path}"')
     subprocess.Popen(f'explorer "{replace_backslashes(export_path)}"')
 
+
 def filter_user_input(user_input):
     if user_input.lower().rstrip() != "n" and user_input.lower().rstrip()!="no" and user_input.lower().rstrip() !="false" and user_input.rstrip()!="0":
         return True
     return False
-    
+
 
 def group_by_(option):
     """
@@ -360,12 +378,14 @@ def group_by_(option):
     user_desire = (input(message))
     return filter_user_input(user_desire)
 
+
 def group_by_message():
     """
     It prints a message which explains the grouping options of the user
     |
     """
     print("\nDear user,\nYou can group your photos by:\n\t1)Day\n\t2)Month\n\t3)Year\nPlease let me know your option!")
+
 
 def group_option():
     """
@@ -390,6 +410,7 @@ def group_option():
     
     return year, month
 
+
 def name_convention():
     """
     It 's called by the main function. It asks the user how she wants to name the photo folders
@@ -408,7 +429,6 @@ def name_convention():
             name_pattern += "_" + option
     
     return name_pattern
-
 
 
 def main():
