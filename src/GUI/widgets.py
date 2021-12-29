@@ -60,13 +60,14 @@ def create_button(master, x, y, h, text, command, state='active'):
     button.place(x=x, y=y, height=h)
     return button
 
-def create_frame(master, x, y, bd=0):
+def create_frame(master, x=0, y=0, bd=0, background="grey95"):
     """
     Creates a Frame widget
     |
     """
-    frame = tk.Frame(master, bd=2)
-    frame.place(x=x, y=y)
+    frame = tk.Frame(master, bd=bd, background=background)
+    if x and y:
+        frame.place(x=x, y=y)
     return frame
 
 def create_radio_button(master, text, row, column, width, variable, value, indicatoron=None, bd=None):
@@ -110,16 +111,6 @@ def create_canvas(master, borderwidth=0, side='left', fill='both', expand=True):
     |
     """
     canvas = tk.Canvas(master, borderwidth=borderwidth)
-    canvas.bind_all("<MouseWheel>", on_mousewheel(canvas))
+    
     canvas.pack(side=side, fill=fill, expand=expand)
     return canvas
-
-def on_mousewheel(canvas, event):
-    """
-    It listens for mouse's wheel scrolling. 
-    Connected with a canvas widget.
-
-    https://stackoverflow.com/questions/17355902/tkinter-binding-mousewheel-to-scrollbar 
-    |
-    """
-    canvas.yview_scroll(int(-1*(event.delta/120)), "units")
