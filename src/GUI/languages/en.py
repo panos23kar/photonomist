@@ -7,6 +7,27 @@ MAIN_MENU_FILE = "File"
 MAIN_MENU_QUIT = "Quit"
 MAIN_MENU_INFO = "Info..."
 
+MAIN_INPUT_PATH = "Input path: "
+MAIN_PATH_BUTTON = "..."
+MAIN_FIND_PHOTOS_BUTTON = "Find Photos"
+MAIN_EXPORT_PATH = "Export path: "
+MAIN_FILE_EXPLORER_MESSAGE = "Select Folder"
+
+MAIN_GROUP_BY_LABEL = "I 'll group your photos by.."
+MAIN_DAY_RADIO_BUTTON = "Day"
+MAIN_DAY_RADIO_BUTTON_VALUE = "day"
+MAIN_MONTH_RADIO_BUTTON = "Month"
+MAIN_MONTH_RADIO_BUTTON_VALUE = "month"
+MAIN_YEAR_RADIO_BUTTON = "Year"
+MAIN_YEAR_RADIO_BUTTON_VALUE = "year"
+
+MAIN_NAME_PATTERN_LABEL = "Click the labels that you want to add in the name of your photo folders: "
+MAIN_NAME_PATTERN_PLACE = "_place"
+MAIN_NAME_PATTERN_REASON = "_reason"
+MAIN_NAME_PATTERN_PEOPLE = "_people"
+
+MAIN_RUN_APP_BUTTON = "Run Forrest, run!!"
+
 # Info window
 INFO_WINDOW_TITLE = "Photonomist Info"
 
@@ -23,3 +44,6 @@ INFO_GITHUB_URL = "https://github.com/panos23kar/Photonomist/blob/master/README.
 
 INFO_EMAIL_GOALS = "  - ask for extra functionality \n  - report errors \n  - send your endless love"
 INFO_EMAIL = "photonomist.23@gmail.com"
+
+# Exclude window
+EXCl_TITLE = "Photos Folders"

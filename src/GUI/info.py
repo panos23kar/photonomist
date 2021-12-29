@@ -10,7 +10,7 @@ from languages import en
 from widgets import create_label, create_text
 
 
-class Info():
+class Info:
     """
     Draws the Info window
     |
