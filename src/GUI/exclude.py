@@ -5,6 +5,8 @@ import tkinter as tk
 
 from languages import en
 
+from widgets import create_canvas, create_frame
+
 class Exclude:
     """
     Draws the Exclude window
@@ -24,6 +26,7 @@ class Exclude:
         |
         """
         self.__exclude_window()
+        self.__draws_canvas()
 
     def __exclude_window(self):
         """
@@ -34,3 +37,11 @@ class Exclude:
         self.__exclude.title(en.EXCl_TITLE)
         # Gets the 'full' focus of the app
         self.__exclude.grab_set()
+
+    def __draws_canvas(self):
+        """
+        Draws the canvas for the exclude window.
+        Canvas (in combination with the frame) is needed for the scrollbar.
+        |
+        """
+        self.__exclude_canvas = create_canvas(self.__exclude)
