@@ -114,3 +114,13 @@ def create_canvas(master, borderwidth=0, side='left', fill='both', expand=True):
     
     canvas.pack(side=side, fill=fill, expand=expand)
     return canvas
+
+
+def create_scrollbar(master, command, orient='vertical', side='right', fill='y'):
+    """
+    Create a scrollbar widget
+    |
+    """
+    scrollbar = tk.Scrollbar(master, orient=orient, command=command)
+    scrollbar.pack(side=side, fill=fill)
+    return scrollbar
