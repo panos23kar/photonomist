@@ -8,6 +8,7 @@ from tkinter import filedialog
 from functools import partial
 
 from info import Info
+from exclude import Exclude
 
 from languages import en
 from widgets import create_menu, create_label, create_string_variable, \
@@ -187,7 +188,14 @@ class Main:
         """
         if messagebox.askyesno("", en.QUIT_MESSAGE):
             self.__gui.destroy()
-    
+
+    def __initiate_exclude_window(self):
+        """
+        Initiates the exclude window
+        |
+        """
+        self.__excl_w = Exclude(self.__gui)
+
     def __file_explorer(self, mode):
         """
         Opens file dialog in order the user to open a folder path
