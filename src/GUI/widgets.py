@@ -90,7 +90,7 @@ def create_check_button(master, text, x, y, variable):
 
 def create_int_var():
     """
-    Create a Int variable widget
+    Create an Int variable widget
     |
     """
     return tk.IntVar()
@@ -102,3 +102,24 @@ def change_color(widget, color):
     |
     """
     widget.config(background=color)
+
+
+def create_canvas(master, borderwidth=0, side='left', fill='both', expand=True):
+    """
+    Create a Canvas widget
+    |
+    """
+    canvas = tk.Canvas(master, borderwidth=borderwidth)
+    canvas.bind_all("<MouseWheel>", on_mousewheel(canvas))
+    canvas.pack(side=side, fill=fill, expand=expand)
+    return canvas
+
+def on_mousewheel(canvas, event):
+    """
+    It listens for mouse's wheel scrolling. 
+    Connected with a canvas widget.
+
+    https://stackoverflow.com/questions/17355902/tkinter-binding-mousewheel-to-scrollbar 
+    |
+    """
+    canvas.yview_scroll(int(-1*(event.delta/120)), "units")
