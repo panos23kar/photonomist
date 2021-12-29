@@ -44,3 +44,6 @@ INFO_GITHUB_URL = "https://github.com/panos23kar/Photonomist/blob/master/README.
 
 INFO_EMAIL_GOALS = "  - ask for extra functionality \n  - report errors \n  - send your endless love"
 INFO_EMAIL = "photonomist.23@gmail.com"
+
+# Exclude window
+EXCl_TITLE = "Photos Folders"
