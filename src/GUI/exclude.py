@@ -54,7 +54,7 @@ class Exclude:
         Frame, in combination with the canvas, is needed for the scrollbar
         |
         """
-        self.____exclude_frame = create_frame(self.__exclude_canvas)
+        self.____exclude_frame = create_frame(self.__exclude_canvas, padx=40)
         self.____exclude_frame.bind("<Configure>", lambda event, canvas=self.__exclude_canvas: self.__on_frame_configure())
     
     def __on_mousewheel(self, event):

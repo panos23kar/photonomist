@@ -60,12 +60,12 @@ def create_button(master, x, y, h, text, command, state='active'):
     button.place(x=x, y=y, height=h)
     return button
 
-def create_frame(master, x=0, y=0, bd=0, background="grey95"):
+def create_frame(master, x=0, y=0, bd=0, background="grey95", padx=0):
     """
     Creates a Frame widget
     |
     """
-    frame = tk.Frame(master, bd=bd, background=background)
+    frame = tk.Frame(master, bd=bd, background=background, padx=padx)
     if x and y:
         frame.place(x=x, y=y)
     return frame
