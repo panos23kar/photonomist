@@ -51,15 +51,16 @@ def create_entry(master, x, y, w, textvariable):
     return entry
 
 
-def create_button(master, h, text, command, x=0, y=0, state='active'):
+def create_button(master, text, command, x=0, y=0, h=0, state='active'):
     """
     Creates a Button widget
     |
     """
     button = tk.Button(master, text=text, command = command, state=state)
-    if x and y:
+    if x and y and h:
         button.place(x=x, y=y, height=h)
     return button
+
 
 def create_frame(master, x=0, y=0, bd=0, background="grey95", padx=0):
     """
@@ -70,6 +71,7 @@ def create_frame(master, x=0, y=0, bd=0, background="grey95", padx=0):
     if x and y:
         frame.place(x=x, y=y)
     return frame
+
 
 def create_radio_button(master, text, row, column, width, variable, value, indicatoron=None, bd=None):
     """
@@ -96,7 +98,7 @@ def create_int_var(value=0):
     Create an Int variable widget
     |
     """
-    return tk.IntVar()
+    return tk.IntVar(value=value)
 
 
 def change_color(widget, color):
