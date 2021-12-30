@@ -5,7 +5,7 @@ import tkinter as tk
 
 from languages import en
 
-from widgets import create_canvas, create_frame, create_scrollbar
+from widgets import create_label, create_canvas, create_frame, create_scrollbar, create_check_button, create_int_var
 
 class Exclude:
     """
@@ -31,6 +31,8 @@ class Exclude:
         self.__draws_frame()
         self.__canvas_create_window()
         self.__draws_scrollbar()
+        self.__draws_label()
+        self.__draws_checkboxes()
 
     def __exclude_window(self):
         """
@@ -108,5 +110,16 @@ class Exclude:
         Calculates the number of photos inside the photo_roots
         |
         """
+        self.__number_of_photos = 0
         for photo_list in self.__photo_roots.values():
             self.__number_of_photos += len(photo_list)
+
+    def __draws_label(self):
+        """
+        Draws the label/title for the exclude window
+        |
+        """
+        self.__calculate_number_photos()
+        self.__exclude_number_photos_label = create_label(self.__exclude_frame, text=str(self.__number_of_photos) + en.EXCL_NUMBER_PHOTOS_LABEL, justify="center")
+        self.__exclude_number_photos_label.pack(anchor="center")
+
