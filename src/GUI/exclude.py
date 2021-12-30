@@ -123,3 +123,21 @@ class Exclude:
         self.__exclude_number_photos_label = create_label(self.__exclude_frame, text=str(self.__number_of_photos) + en.EXCL_NUMBER_PHOTOS_LABEL, justify="center")
         self.__exclude_number_photos_label.pack(anchor="center")
 
+    def __draws_checkboxes(self):
+        """
+        Draws the checkboxes to exclude photo folders from tidying
+        |
+        """
+        # Dictionary which will dynamically host a check button for every folder
+        self.__check_buttons ={}
+        # Dictionary which will dynamically host the int variable for every check button
+        self.__check_button_variables ={}
+        # Dictionary which will dynamically host the link(label) for each check button
+        self.__check_button_links ={}
+
+        self.__photos_folders = set(self.__photo_roots.keys())
+        
+        for photo_folder in self.__photos_folders:
+            self.__create_check_button(photo_folder)
+    
+
