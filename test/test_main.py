@@ -10,7 +10,7 @@ environment or setuptools develop mode to test against the development version.
 """
 import pytest
 import os, shutil
-from photonomist.__main__ import path_exists, path_items, clean_path, path_string,\
+from src.main import path_exists, path_items, clean_path, path_string,\
      path_photos, traverse_photos_path, photos_size, disk_space, photo_dir_name,\
           dir_name_exists, create_photo_dir, transfer_photo, paths_same_disk,\
                input_path_validation, export_path_validation, tidy_photos, replace_backslashes,\
@@ -91,7 +91,7 @@ def test_path_contains_files_extensions_jpg_nef_cr2(capsys):
     captured = capsys.readouterr()
     assert r'test\data\testing_folder_with_photos\bla\blanef\blablanef\blablablanef' in captured.out
     assert r'test\data\testing_folder_with_photos\bla\blabla\blablabla' in captured.out
-    assert r'C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blablacr2' in captured.out
+    assert r'C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blablacr2' in captured.out
 
 def test_photos_total_size():
     """Test src\\photonomist\\__main__ > photos_size
@@ -240,9 +240,9 @@ def test_transfer_photo_to_another_folder_if_it_has_valid_date_year_keyword(move
 
 @pytest.fixture()
 def move_canon_photo_del_folder():
-    move_canon_photo_del_folder = r"C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blablacr2\IMG_5494.CR2"
+    move_canon_photo_del_folder = r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blablacr2\IMG_5494.CR2"
     yield move_canon_photo_del_folder
-    shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_10_25_place_reason_people\IMG_5494.CR2", r"C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blablacr2\IMG_5494.CR2")
+    shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_10_25_place_reason_people\IMG_5494.CR2", r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blablacr2\IMG_5494.CR2")
     os.rmdir(r"test\data\testing_folder_with_photos\move_folder\2020_10_25_place_reason_people")
     os.rmdir(r"test\data\testing_folder_with_photos\move_folder")
 
@@ -347,11 +347,11 @@ def test_export_path_validation_path_exists():
 
 @pytest.fixture()
 def move_photos_del_folders():
-    photo_roots = traverse_photos_path(r"C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blabla")
+    photo_roots = traverse_photos_path(r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blabla")
     yield photo_roots
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2019_12_14_place_reason_people\DSC_0262.NEF", r"test\data\testing_folder_with_photos\bla\blabla\DSC_0262.NEF")
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_04_24_place_reason_people\DSC_1402.JPG", r"test\data\testing_folder_with_photos\bla\blabla\blablabla\DSC_1402.JPG")
-    shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_10_25_place_reason_people\IMG_5494.CR2", r"C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blabla\IMG_5494.CR2")
+    shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_10_25_place_reason_people\IMG_5494.CR2", r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blabla\IMG_5494.CR2")
     os.rmdir(r"test\data\testing_folder_with_photos\move_folder\2019_12_14_place_reason_people")
     os.rmdir(r"test\data\testing_folder_with_photos\move_folder\2020_04_24_place_reason_people")
     os.rmdir(r"test\data\testing_folder_with_photos\move_folder\2020_10_25_place_reason_people")
@@ -369,7 +369,7 @@ def test_move_all_photos_of_all_folders(move_photos_del_folders):
 
 @pytest.fixture()
 def move_photos_del_folders_month():
-    photo_roots = traverse_photos_path(r"C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blabla")
+    photo_roots = traverse_photos_path(r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blabla")
     yield photo_roots
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2019_12_place_reason_people\DSC_0262.NEF", r"test\data\testing_folder_with_photos\bla\blabla\DSC_0262.NEF")
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_04_place_reason_people\DSC_1402.JPG", r"test\data\testing_folder_with_photos\bla\blabla\blablabla\DSC_1402.JPG")
@@ -391,7 +391,7 @@ def test_move_all_photos_of_all_folders_month(move_photos_del_folders_month):
 
 @pytest.fixture()
 def move_photos_del_folders_year():
-    photo_roots = traverse_photos_path(r"C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blabla")
+    photo_roots = traverse_photos_path(r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blabla")
     yield photo_roots
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2019_place_reason_people\DSC_0262.NEF", r"test\data\testing_folder_with_photos\bla\blabla\DSC_0262.NEF")
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_place_reason_people\DSC_1402.JPG", r"test\data\testing_folder_with_photos\bla\blabla\blablabla\DSC_1402.JPG")
@@ -412,7 +412,7 @@ def test_move_all_photos_of_all_folders_year(move_photos_del_folders_year):
 
 @pytest.fixture()
 def move_photos_del_folders_place():
-    photo_roots = traverse_photos_path(r"C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blabla")
+    photo_roots = traverse_photos_path(r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blabla")
     yield photo_roots
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2019_place\DSC_0262.NEF", r"test\data\testing_folder_with_photos\bla\blabla\DSC_0262.NEF")
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_place\DSC_1402.JPG", r"test\data\testing_folder_with_photos\bla\blabla\blablabla\DSC_1402.JPG")
@@ -433,7 +433,7 @@ def test_move_all_photos_of_all_folders_place(move_photos_del_folders_place):
 
 @pytest.fixture()
 def move_photos_del_folders_place_reason():
-    photo_roots = traverse_photos_path(r"C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blabla")
+    photo_roots = traverse_photos_path(r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blabla")
     yield photo_roots
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2019_place_reason\DSC_0262.NEF", r"test\data\testing_folder_with_photos\bla\blabla\DSC_0262.NEF")
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_place_reason\DSC_1402.JPG", r"test\data\testing_folder_with_photos\bla\blabla\blablabla\DSC_1402.JPG")
@@ -454,7 +454,7 @@ def test_move_all_photos_of_all_folders_place_reason(move_photos_del_folders_pla
 
 @pytest.fixture()
 def move_photos_del_folders_place_people():
-    photo_roots = traverse_photos_path(r"C:\repos\photonomist\test\data\testing_folder_with_photos\bla\blabla")
+    photo_roots = traverse_photos_path(r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blabla")
     yield photo_roots
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2019_place_people\DSC_0262.NEF", r"test\data\testing_folder_with_photos\bla\blabla\DSC_0262.NEF")
     shutil.move(r"test\data\testing_folder_with_photos\move_folder\2020_place_people\DSC_1402.JPG", r"test\data\testing_folder_with_photos\bla\blabla\blablabla\DSC_1402.JPG")
