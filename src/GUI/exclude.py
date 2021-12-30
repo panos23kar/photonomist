@@ -139,5 +139,13 @@ class Exclude:
         
         for photo_folder in self.__photos_folders:
             self.__create_check_button(photo_folder)
-    
+
+    def __create_check_button(self, photo_folder):
+        """
+        Creates an Int var together with a Checkbutton
+        |
+        """
+        self.__check_button_variables[photo_folder] = create_int_var(value=1)
+        self.__check_buttons[photo_folder] = create_check_button(self.__exclude_frame, text=photo_folder, variable=self.__check_button_variables[photo_folder])
+        self.__check_buttons[photo_folder].pack(anchor="w")    
 
