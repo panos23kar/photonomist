@@ -79,7 +79,7 @@ def test_path_does_not_contain_jpg_jpeg_nef_cr2_files():
     """Test src\\photonomist\\__main__ > path_photos
     """
     sample_photo_roots = traverse_photos_path(r'test\data\testing_empty_folder')
-    with pytest.raises(Exception, match="The provided path does not contain any files with .jpg, .jpeg, .nef or .cr2 extension!"):
+    with pytest.raises(Exception, match="The provided path does not contain any .jpg, .jpeg, .nef or .cr2 files"):
         path_photos(sample_photo_roots)
 
 @pytest.mark.skip(reason="commented it out")
