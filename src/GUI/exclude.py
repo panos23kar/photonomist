@@ -4,8 +4,10 @@ Hosts the code for the exclude window
 import tkinter as tk
 
 from languages import en
+from widgets import create_label, create_canvas, create_frame, create_scrollbar, \
+                    create_check_button, create_int_var
 
-from widgets import create_label, create_canvas, create_frame, create_scrollbar, create_check_button, create_int_var
+from src.app.main import open_export_folder
 
 class Exclude:
     """
@@ -150,7 +152,7 @@ class Exclude:
         """
         self.__check_button_variables[photo_folder] = create_int_var(value=1)
         self.__check_buttons[photo_folder] = create_check_button(self.__exclude_frame, text=photo_folder, variable=self.__check_button_variables[photo_folder])
-        self.__check_buttons[photo_folder].pack(anchor="w")    
+        self.__check_buttons[photo_folder].pack(anchor="w")
 
     def __create_check_button_link(self, photo_folder):
         """
@@ -159,6 +161,7 @@ class Exclude:
         """
         self.__check_button_links[photo_folder] = create_label(self.__exclude_frame, text=en.EXCL_LINK, font="Helvetica 8 bold", 
                                                                fg="blue", cursor="hand2", y=self.__y_check_button_link, x=self.__calculate_x_coord(len(photo_folder)))
+        self.__check_button_links[photo_folder].bind("<Button-1>", lambda e, photo_folder=photo_folder:self.__open_folder(photo_folder))
 
     def __calculate_x_coord(self, num_of_chars):
         """
@@ -167,3 +170,6 @@ class Exclude:
         """
         l = [6.8, 6.8, 6.7, 6.25, 6.35, 6.2, 6.15, 6.2, 6.05, 6.05, 6, 5.9, 5.85]
         return int(num_of_chars*l[min(num_of_chars//10, 12)])
+
+    def __open_folder(self, photo_folder):
+        open_export_folder(photo_folder)
