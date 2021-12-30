@@ -100,10 +100,7 @@ def path_photos(photos_roots:dict):
     |
     """
     if not photos_roots:
-        raise Exception("The provided path does not contain any files with .jpg, .jpeg, .nef or .cr2 extension!")#TODO Log it
-    else:#TODO Log it
-        print('I found photos in: ')
-        #print(*photos_roots, sep = "\n")
+        raise Exception("The provided path does not contain any .jpg, .jpeg, .nef or .cr2 files")#TODO Log it
 
 
 def photos_size(photos_roots:dict)->int:
