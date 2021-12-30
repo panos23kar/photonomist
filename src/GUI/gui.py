@@ -15,8 +15,7 @@ from widgets import create_menu, create_label, create_string_variable, \
                     create_entry, create_button, create_frame, create_radio_button, \
                     create_check_button, create_int_var, change_color
 
-from src.main import input_path_validation
-
+from src.app.main import input_path_validation
 
 class Main:
     """
@@ -96,10 +95,7 @@ class Main:
         self.__input_path_invalid_value = create_string_variable()
 
         ##Label
-        self.__input_path_invalid_label = create_label(self.__gui, textvariable=self.__input_path_invalid_value, fg="red")
-
-
-
+        self.__input_path_invalid_label = create_label(self.__gui, text='',x=20, y=47, textvariable=self.__input_path_invalid_value, fg="red")
 
     def __find_photos_button(self):
         """
@@ -272,6 +268,7 @@ class Main:
     def __validate_input_path(self):
         try:
             self.__photos_roots = input_path_validation(self.__input_path_invalid_value.get())
+            pass
         except Exception as e:
             self.__photos_roots = ""
             self.__input_path_invalid_value.set(str(e))
