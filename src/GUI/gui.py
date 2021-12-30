@@ -31,7 +31,6 @@ class Main:
         self.__gui = tk.Tk()
         self.__initiate_exclude_window()
         self.__draw_main_window()
-        self.photos_roots = {}
         self.__menu()
         self.__start_gui() 
     
@@ -272,16 +271,16 @@ class Main:
         validate_input_path and tirggers exclude window
         |
         """
+        self.photos_roots = {}
         self.__validate_input_path()
         
         if self.photos_roots:
-            self.excl_w.draw_exclude_window()
+            self.excl_w.draw_exclude_window(self.photos_roots)
 
     def __validate_input_path(self):
         try:
             self.photos_roots = input_path_validation(self.__input_path_value.get())
         except Exception as e:
-            self.__photos_roots = ""
             self.__input_path_invalid_value.set(str(e))
         else:
             self.__input_path_invalid_value.set("")
