@@ -12,7 +12,7 @@ environment or setuptools develop mode to test against the development version.
 
 import pytest
 import os, shutil
-from src.photo import Photo
+from app.photo import Photo
 
 @pytest.fixture
 def my_photo():

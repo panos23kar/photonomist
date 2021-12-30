@@ -10,7 +10,7 @@ environment or setuptools develop mode to test against the development version.
 """
 import pytest
 import os, shutil
-from src.main import path_exists, path_items, clean_path, path_string,\
+from app.main import path_exists, path_items, clean_path, path_string,\
      path_photos, traverse_photos_path, photos_size, disk_space, photo_dir_name,\
           dir_name_exists, create_photo_dir, transfer_photo, paths_same_disk,\
                input_path_validation, export_path_validation, tidy_photos, replace_backslashes,\
