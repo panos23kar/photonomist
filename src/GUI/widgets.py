@@ -80,16 +80,17 @@ def create_radio_button(master, text, row, column, width, variable, value, indic
     radio_button.grid(row=row, column=column)
     return radio_button
 
-def create_check_button(master, text, x, y, variable):
+def create_check_button(master, text, variable, x=0, y=0, onvalue = 1,  offvalue = 0):
     """
     Create a Check Button widget
     |
     """
-    check_button = tk.Checkbutton(master, text=text, variable=variable)
-    check_button.place(x=x, y=y)
+    check_button = tk.Checkbutton(master, text=text, variable=variable, onvalue=onvalue, offvalue=offvalue)
+    if x and y:
+        check_button.place(x=x, y=y)
     return check_button
 
-def create_int_var():
+def create_int_var(value=0):
     """
     Create an Int variable widget
     |
