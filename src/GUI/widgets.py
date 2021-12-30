@@ -51,13 +51,14 @@ def create_entry(master, x, y, w, textvariable):
     return entry
 
 
-def create_button(master, x, y, h, text, command, state='active'):
+def create_button(master, h, text, command, x=0, y=0, state='active'):
     """
     Creates a Button widget
     |
     """
     button = tk.Button(master, text=text, command = command, state=state)
-    button.place(x=x, y=y, height=h)
+    if x and y:
+        button.place(x=x, y=y, height=h)
     return button
 
 def create_frame(master, x=0, y=0, bd=0, background="grey95", padx=0):

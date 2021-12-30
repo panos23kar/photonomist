@@ -5,7 +5,7 @@ import tkinter as tk
 
 from languages import en
 from widgets import create_label, create_canvas, create_frame, create_scrollbar, \
-                    create_check_button, create_int_var
+                    create_check_button, create_int_var, create_button
 
 from src.app.main import open_export_folder
 
@@ -36,6 +36,8 @@ class Exclude:
         self.__draws_scrollbar()
         self.__draws_label()
         self.__draws_checkboxes()
+        self.__draws_run_button()
+        self.__resize_canvas()
 
     def __exclude_window(self):
         """
@@ -172,4 +174,25 @@ class Exclude:
         return int(num_of_chars*l[min(num_of_chars//10, 12)])
 
     def __open_folder(self, photo_folder):
+        """
+        Opens the corresponding photos folder
+        |
+        """
         open_export_folder(photo_folder)
+    
+    def __resize_canvas(self):
+        """
+        Resizes the canvas in order the photo folders to fit nicely
+        |
+        """
+        self.__exclude_frame.update()
+        self.__exclude_canvas.configure(width=self.__exclude_frame.winfo_width())
+        self.__exclude_canvas.configure(height=self.__exclude_frame.winfo_height())
+
+    def __draws_run_button(self):
+        """
+        Draws the 'Good2Go' button
+        |
+        """
+        self.__exclude_run_button = create_button(self.__exclude_frame, text=en.EXCL_RUN_BUTTON, command=self.__exclude_paths  )
+
