@@ -102,3 +102,11 @@ class Exclude:
         |
         """
         self.__exclude_scrollbar = create_scrollbar(self.__exclude, command=self.__exclude_canvas.yview)
+    
+    def __calculate_number_photos(self):
+        """
+        Calculates the number of photos inside the photo_roots
+        |
+        """
+        for photo_list in self.__photo_roots.values():
+            self.__number_of_photos += len(photo_list)
