@@ -271,13 +271,13 @@ class Main:
 
     def __validate_input_path(self):
         try:
-            self.__photos_roots = input_path_validation(self.__widgets["input_path_value"].get())
+            self.__photos_roots = input_path_validation(self.__input_path_invalid_value.get())
         except Exception as e:
             self.__photos_roots = ""
-            self.__widgets["input_invalid_path_value"].set(str(e))
+            self.__input_path_invalid_value.set(str(e))
             self.__input_invalid_path_value
         else:
-            self.__widgets["input_invalid_path_value"].set("")
+            self.__input_path_invalid_value.set("")
 
 
 if __name__ == "__main__":
