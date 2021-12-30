@@ -206,3 +206,13 @@ class Exclude:
             if  self.__check_button_variables[check_button.replace('\\\\','\\')].get() == 0:
                 if check_button in self.__photo_roots:
                     del self.__photo_roots[check_button]
+        
+        self.__close_toplevel()
+    
+    def __close_toplevel(self):
+        """
+        Closes the exclude window
+        |
+        """
+        self.__exclude.destroy()
+        self.__exclude.update()
