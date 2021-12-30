@@ -7,5 +7,5 @@ setup(
     author='Panagiotis Karydakis',
     author_email='photonomist.23@gmail.com',
     package_dir= {'': 'src'},
-    packages=find_packages('photonomist'),
+    packages=find_packages('src'),
 )
