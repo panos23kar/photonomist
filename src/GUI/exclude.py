@@ -18,6 +18,7 @@ class Exclude:
         Initializes the exclude window
         |
         """
+        self.__y_check_button_link = 57
         self.__main_window = main_window
 
     def draw_exclude_window(self, photos_roots):
@@ -139,6 +140,8 @@ class Exclude:
         
         for photo_folder in self.__photos_folders:
             self.__create_check_button(photo_folder)
+            self.__create_check_button_link(photo_folder)
+            self.__y_check_button_link +=25
 
     def __create_check_button(self, photo_folder):
         """
@@ -149,3 +152,18 @@ class Exclude:
         self.__check_buttons[photo_folder] = create_check_button(self.__exclude_frame, text=photo_folder, variable=self.__check_button_variables[photo_folder])
         self.__check_buttons[photo_folder].pack(anchor="w")    
 
+    def __create_check_button_link(self, photo_folder):
+        """
+        Creates the link close to checkbutton label for opening the corresponding folder
+        |
+        """
+        self.__check_button_links[photo_folder] = create_label(self.__exclude_frame, text=en.EXCL_LINK, font="Helvetica 8 bold", 
+                                                               fg="blue", cursor="hand2", y=self.__y_check_button_link, x=self.__calculate_x_coord(len(photo_folder)))
+
+    def __calculate_x_coord(self, num_of_chars):
+        """
+        Calculates the x "coordinate" of the link for each folder
+        |
+        """
+        l = [6.8, 6.8, 6.7, 6.25, 6.35, 6.2, 6.15, 6.2, 6.05, 6.05, 6, 5.9, 5.85]
+        return int(num_of_chars*l[min(num_of_chars//10, 12)])
