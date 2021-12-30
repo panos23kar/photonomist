@@ -194,5 +194,15 @@ class Exclude:
         Draws the 'Good2Go' button
         |
         """
-        self.__exclude_run_button = create_button(self.__exclude_frame, text=en.EXCL_RUN_BUTTON, command=self.__exclude_paths  )
+        self.__exclude_run_button = create_button(self.__exclude_frame, text=en.EXCL_RUN_BUTTON, command=self.__exclude_paths)
+        self.__exclude_run_button.pack(side="bottom", padx=5, pady=5)
 
+    def __exclude_paths(self):
+        """
+        Excludes the folders that the user has specifed from the tidying process
+        |
+        """
+        for check_button in self.__check_buttons:
+            if  self.__check_button_variables[check_button.replace('\\\\','\\')].get() == 0:
+                if check_button in self.__photo_roots:
+                    del self.__photo_roots[check_button]
