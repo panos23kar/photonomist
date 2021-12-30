@@ -20,11 +20,12 @@ class Exclude:
         """
         self.__main_window = main_window
 
-    def draw_exclude_window(self):
+    def draw_exclude_window(self, photos_roots):
         """
         Draws the whole layout of the exclude window
         |
         """
+        self.__photo_roots = photos_roots
         self.__exclude_window()
         self.__draws_canvas()
         self.__draws_frame()
