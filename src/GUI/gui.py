@@ -31,6 +31,7 @@ class Main:
         self.__gui = tk.Tk()
         self.__initiate_exclude_window()
         self.__draw_main_window()
+        self.__photos_roots = {}
         self.__menu()
         self.__start_gui() 
     
@@ -102,7 +103,7 @@ class Main:
         Draws the find photos button
         |
         """
-        self.__find_photos_button = create_button(self.__gui, x=340, y=70, h=21, text=en.MAIN_FIND_PHOTOS_BUTTON, command=self.excl_w.draw_exclude_window)
+        self.__find_photos_button = create_button(self.__gui, x=340, y=70, h=21, text=en.MAIN_FIND_PHOTOS_BUTTON, command=self.__trigger_exclude_window)
 
     def __export_path(self):
         """
@@ -265,14 +266,23 @@ class Main:
                 name_pattern += var_name[1]
         return name_pattern
 
+    def __trigger_exclude_window(self):
+        """
+        Checks if the input path is valid and contains photos via 
+        validate_input_path and tirggers exclude window
+        |
+        """
+        self.__validate_input_path()
+        
+        if self.__photos_roots:
+            self.excl_w.draw_exclude_window()
+
     def __validate_input_path(self):
         try:
-            self.__photos_roots = input_path_validation(self.__input_path_invalid_value.get())
-            pass
+            self.__photos_roots = input_path_validation(self.__input_path_value.get())
         except Exception as e:
             self.__photos_roots = ""
             self.__input_path_invalid_value.set(str(e))
-            self.__input_invalid_path_value
         else:
             self.__input_path_invalid_value.set("")
 
