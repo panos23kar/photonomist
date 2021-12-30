@@ -15,6 +15,9 @@ from widgets import create_menu, create_label, create_string_variable, \
                     create_entry, create_button, create_frame, create_radio_button, \
                     create_check_button, create_int_var, change_color
 
+from src.main import input_path_validation
+
+
 class Main:
     """
     Draws the main window of the graphical user interface (GUI)
@@ -86,6 +89,17 @@ class Main:
 
         #Button
         self.__input_path_button = create_button(self.__gui, x=395, y=20, h=21, text=en.MAIN_PATH_BUTTON, command=partial(self.__file_explorer, 'input'))
+
+        #Invalid path
+
+        ##String Variable
+        self.__input_path_invalid_value = create_string_variable()
+
+        ##Label
+        self.__input_path_invalid_label = create_label(self.__gui, textvariable=self.__input_path_invalid_value, fg="red")
+
+
+
 
     def __find_photos_button(self):
         """
@@ -254,6 +268,16 @@ class Main:
             if var_name[0].get():
                 name_pattern += var_name[1]
         return name_pattern
+
+    def __validate_input_path(self):
+        try:
+            self.__photos_roots = input_path_validation(self.__widgets["input_path_value"].get())
+        except Exception as e:
+            self.__photos_roots = ""
+            self.__widgets["input_invalid_path_value"].set(str(e))
+            self.__input_invalid_path_value
+        else:
+            self.__widgets["input_invalid_path_value"].set("")
 
 
 if __name__ == "__main__":
