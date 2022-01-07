@@ -61,6 +61,10 @@ class Loading:
         self.__loading_toplevel.update()
 
     def __loading_window(self):
+        """
+        Toplevel and title for the loading window
+        |
+        """
         self.__loading_toplevel = tk.Toplevel(self.__gui)
         self.__loading_toplevel.title(en.LOAD_TITLE)
         self.__loading_toplevel.grab_set()
