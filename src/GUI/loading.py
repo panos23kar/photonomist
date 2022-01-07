@@ -5,6 +5,7 @@ import tkinter as tk
 
 from byte_stream import BYTESTREAM
 from languages import en
+from widgets import create_canvas
 
 from PIL import ImageTk, Image
 from base64 import b64decode
@@ -49,6 +50,7 @@ class Loading:
             self.__close_toplevel()
         else:
             self.__loading_window()
+            self.__draws_canvas()
             self.__update_load_w = self.__draw_loading_camera().__next__
             self.__load_w_canvas.after(100, self.__update_load_w)
 
@@ -68,3 +70,10 @@ class Loading:
         self.__loading_toplevel = tk.Toplevel(self.__gui)
         self.__loading_toplevel.title(en.LOAD_TITLE)
         self.__loading_toplevel.grab_set()
+
+    def __draws_canvas(self):
+        """
+        Draws the canvas for the loading window
+        |
+        """
+        self.__loading_canvas = create_canvas(self.__loading_toplevel, width=500, height=500)
