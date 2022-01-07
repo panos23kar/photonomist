@@ -28,7 +28,7 @@ class Loading:
         self.main_window = main_window
         self.__angle = 0
         self.__load_image = Image.open(BytesIO(b64decode(BYTESTREAM)))
-    
+
     def start_threads(self, func):
         """
         Starts 2 threads:
@@ -40,7 +40,7 @@ class Loading:
         self.__load_func.start()
         # Loading Image window while photonomist is working on user's request
         self.__load_draw_image()
-    
+
     def __load_draw_image(self):
         """
         Draws rotating image for as long as photonomist is working
@@ -77,3 +77,18 @@ class Loading:
         |
         """
         self.__loading_canvas = create_canvas(self.__loading_toplevel, width=500, height=500)
+
+    def __draw_loading_camera(self):
+        """
+        Draws and rotates the loading image window while photonomist is working
+        |
+        """
+        while self.__load_func.is_alive():
+            self.__tkimage = ImageTk.PhotoImage(self.__load_image.rotate(self.__angle))
+            self.__canvas_obj = self.__loading_canvas.create_image(250, 250, image=self.__tkimage)
+            self.__loading_toplevel.after(30,self.__update_load_w)
+            yield
+            self.__loading_canvas.delete(self.__canvas_obj)
+            self.__angle = (self.__angle-10)%360
+
+        self.__close_toplevel()
