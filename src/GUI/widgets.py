@@ -109,12 +109,15 @@ def change_color(widget, color):
     widget.config(background=color)
 
 
-def create_canvas(master, borderwidth=0, side='left', fill='both', expand=True):
+def create_canvas(master, borderwidth=0, side='left', fill='both', expand=True, width=None, height=None):
     """
     Create a Canvas widget
     |
     """
-    canvas = tk.Canvas(master, borderwidth=borderwidth)
+    if width and height:
+        canvas = tk.Canvas(master, width=width, height=height, borderwidth=borderwidth)
+    else:
+        canvas = tk.Canvas(master, borderwidth=borderwidth)
     canvas.pack(side=side, fill=fill, expand=expand)
     return canvas
 
