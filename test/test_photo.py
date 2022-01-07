@@ -171,7 +171,7 @@ def test_is_photo_object():
 # def test_date_year_returns_only_year(my_photo, date, expected):
 #     """Test src\\photonomist\\photo.Photo> date_year
 #     """
-    assert my_photo.date_year(date) == expected
+    # assert my_photo.date_year(date) == expected
     
 # Make the script executable.
 if __name__ == "__main__":
