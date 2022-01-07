@@ -283,12 +283,19 @@ class Main:
         if self.photos_roots:
             self.exclude_window.draw_exclude_window(self.photos_roots)
 
+        self.__gui.wait_window(self.exclude_window.exclude_toplevel)
+
+        if self.__gui.exclude_window_state==1:
+            self.__run_button["state"] = "normal"
+            change_color(self.__find_photos_button,'grey95')
+
     def __validate_input_path(self):
         """
         Checks if the provided input path is valid and contains photos.
         If not, it shows an error message
         |
         """
+        self.__gui.exclude_window_state = 0
         try:
             self.photos_roots = input_path_validation(self.__input_path_value.get())
         except Exception as e:
@@ -320,7 +327,7 @@ class Main:
         
         #TODO
         print('------'*30)
-        print(hasattr(self.__gui, 'exclude_window'))
+        print(hasattr(self.__gui, 'exclude_window_state'))
         print(len(self.photos_roots))
         # for root in self.photos_roots:
         #     print(root)
