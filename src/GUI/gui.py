@@ -15,7 +15,7 @@ from widgets import create_menu, create_label, create_string_variable, \
                     create_entry, create_button, create_frame, create_radio_button, \
                     create_check_button, create_int_var, change_color
 
-from src.app.main import input_path_validation
+from src.app.main import input_path_validation, export_path_validation
 
 class Main:
     """
@@ -90,7 +90,6 @@ class Main:
         self.__input_path_button = create_button(self.__gui, x=395, y=20, h=21, text=en.MAIN_PATH_BUTTON, command=partial(self.__file_explorer, 'input'))
 
         #Invalid path
-
         ##String Variable
         self.__input_path_invalid_value = create_string_variable()
 
@@ -120,6 +119,13 @@ class Main:
 
         #Button
         self.__export_path_button = create_button(self.__gui, x=395, y=140, h=21, text=en.MAIN_PATH_BUTTON, command=partial(self.__file_explorer, 'export'))
+
+        #Invalid path
+        ##String Variable
+        self.__export_path_invalid_value = create_string_variable()
+
+        ##Label
+        self.__export_path_invalid_label = create_label(self.__gui, text='',x=20, y=167, textvariable=self.__export_path_invalid_value, fg="red")
 
     def __group_by_buttons(self):
         """
@@ -175,7 +181,7 @@ class Main:
         |
         """
         #TODO command
-        self.__run_button = create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, command=self.update_photo_roots_from_exclude)#state="disabled"
+        self.__run_button = create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, command=self.update_photo_roots_from_exclude, state="disabled")
 
     def __menu(self):
         """
@@ -290,11 +296,28 @@ class Main:
         else:
             self.__input_path_invalid_value.set("")
 
+    def __validate_export_path(self):
+        """
+        Checks if the provided export path is valid and there is enough memory for the photos.
+        If not, it shows an error message
+        |
+        """
+        try:
+            export_path_validation(self.__export_path_value.get(), self.photos_roots)
+        except Exception as e:
+            self.__export_path_invalid_value.set(str(e))
+        else:
+            self.__export_path_invalid_value.set("")
+
     def update_photo_roots_from_exclude(self):
         """
         Gets the photo_roots dict from exclude window without the excluded folders
         Activates the run button
+        |
         """
+        self.__validate_input_path()
+        self.__validate_export_path()
+        
         #TODO
         print('------'*30)
         print(hasattr(self.__gui, 'exclude_window'))
