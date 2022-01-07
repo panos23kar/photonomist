@@ -47,7 +47,7 @@ class Loading:
         if not self.__load_func.is_alive():
             self.__close_toplevel()
         else:
-            self.__load_w_layout()
+            self.__loading_window()
             self.__update_load_w = self.__draw_loading_camera().__next__
             self.__load_w_canvas.after(100, self.__update_load_w)
 
@@ -56,5 +56,10 @@ class Loading:
         Closes the loading window
         |
         """
-        self.__loading_window.destroy()
-        self.__loading_window.update()
+        self.__loading_toplevel.destroy()
+        self.__loading_toplevel.update()
+
+    def __loading_window(self):
+        self.__loading_toplevel = tk.Toplevel(self.__gui)
+        self.__loading_toplevel.title("I'm working on it!!")
+        self.__loading_toplevel.grab_set()
