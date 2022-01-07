@@ -21,7 +21,7 @@ class Exclude:
         |
         """
         self.__y_check_button_link = 57
-        self.__main_window = main_window
+        self.main_window = main_window
 
     def draw_exclude_window(self, photos_roots):
         """
@@ -44,7 +44,7 @@ class Exclude:
         Title and dimensions for the exclude window
         |
         """
-        self.__exclude = tk.Toplevel(self.__main_window)
+        self.__exclude = tk.Toplevel(self.main_window)
         self.__exclude.title(en.EXCl_TITLE)
         # Gets the 'full' focus of the app
         self.__exclude.grab_set()
@@ -214,5 +214,6 @@ class Exclude:
         Closes the exclude window
         |
         """
+        self.main_window.exclude_window = 1
         self.__exclude.destroy()
         self.__exclude.update()
