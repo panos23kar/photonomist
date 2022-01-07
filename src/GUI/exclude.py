@@ -41,7 +41,7 @@ class Exclude:
 
     def __exclude_window(self):
         """
-        Title and dimensions for the exclude window
+        Toplevel and title for the exclude window
         |
         """
         self.exclude_toplevel = tk.Toplevel(self.main_window)
