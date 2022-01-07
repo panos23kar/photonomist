@@ -4,6 +4,7 @@ Hosts the code for the loading window
 import tkinter as tk
 
 from byte_stream import BYTESTREAM
+from languages import en
 
 from PIL import ImageTk, Image
 from base64 import b64decode
@@ -61,5 +62,5 @@ class Loading:
 
     def __loading_window(self):
         self.__loading_toplevel = tk.Toplevel(self.__gui)
-        self.__loading_toplevel.title("I'm working on it!!")
+        self.__loading_toplevel.title(en.LOAD_TITLE)
         self.__loading_toplevel.grab_set()

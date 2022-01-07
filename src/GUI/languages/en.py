@@ -50,3 +50,6 @@ EXCl_TITLE = "Photos Folders"
 EXCL_NUMBER_PHOTOS_LABEL = " photos in the folders below!\nUncheck the folders that you don't want me to touch!\n"
 EXCL_LINK = "link"
 EXCL_RUN_BUTTON = "Good2Go"
+
+# Loading window
+LOAD_TITLE = "I'm working on it"
