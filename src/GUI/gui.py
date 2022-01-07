@@ -9,6 +9,7 @@ from functools import partial
 
 from info import Info
 from exclude import Exclude
+from loading import Loading
 
 from languages import en
 from widgets import create_menu, create_label, create_string_variable, \
@@ -181,7 +182,7 @@ class Main:
         |
         """
         #TODO command
-        self.__run_button = create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, command=self.update_photo_roots_from_exclude, state="disabled")
+        self.__run_button = create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, state="disabled", command=partial(Loading(self.__gui).start_threads, self.__run_app))
 
     def __menu(self):
         """
@@ -316,7 +317,7 @@ class Main:
         else:
             self.__export_path_invalid_value.set("")
 
-    def update_photo_roots_from_exclude(self):
+    def __run_app(self):
         """
         Gets the photo_roots dict from exclude window without the excluded folders
         Activates the run button
