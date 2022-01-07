@@ -181,7 +181,6 @@ class Main:
         Draws the run application button
         |
         """
-        #TODO command
         self.__run_button = create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, state="disabled", command=partial(Loading(self.__gui).start_threads, self.__run_app))
 
     def __menu(self):
