@@ -1,41 +1,41 @@
-# """Test suite for the __main__ module.
+"""Test suite for the __main__ module.
 
-# This test suite aims to test user's input and its validity!
+This test suite aims to test user's input and its validity!
 
-# The script can be executed on its own or incorporated into a larger test suite.
-# However the tests are run, be aware of which version of the module is actually
-# being tested. If the library is installed in site-packages, that version takes
-# precedence over the version in this project directory. Use a virtualenv test
-# environment or setuptools develop mode to test against the development version.
-# """
-# import pytest
-# import os, shutil
-# from app.main import path_exists, path_items, clean_path, path_string,\
-#      path_photos, traverse_photos_path, photos_size, disk_space, photo_dir_name,\
-#           dir_name_exists, create_photo_dir, transfer_photo, paths_same_disk,\
-#                input_path_validation, export_path_validation, tidy_photos, replace_backslashes,\
-#                    group_by_message, group_by_, group_option
+The script can be executed on its own or incorporated into a larger test suite.
+However the tests are run, be aware of which version of the module is actually
+being tested. If the library is installed in site-packages, that version takes
+precedence over the version in this project directory. Use a virtualenv test
+environment or setuptools develop mode to test against the development version.
+"""
+import pytest
+import os, shutil
+from app.main import path_exists, path_items, clean_path, path_string,\
+     path_photos, traverse_photos_path, photos_size, disk_space, photo_dir_name,\
+          dir_name_exists, create_photo_dir, transfer_photo, paths_same_disk,\
+               input_path_validation, export_path_validation, tidy_photos, replace_backslashes,\
+                   group_by_message, group_by_, group_option
 
-# @pytest.mark.parametrize("sample_path", [("blablabla"), 
-#                                          (r'test\data\blablabla'), 
-#                                          (r'test/data/blablabla')])
-# def test_invalid_path(sample_path):
-#     """ Test for src\\photonomist\\__main__ > path_exists
+@pytest.mark.parametrize("sample_path", [("blablabla"), 
+                                         #os.path.abspath('test\data\blablabla'), 
+                                         os.path.abspath('test/data/blablabla')])
+def test_invalid_path(sample_path):
+    """ Test for src\\photonomist\\__main__ > path_exists
 
-#     Parametrized to test invalid str and paths
-#     """
-#     with pytest.raises(FileNotFoundError, match="The provided path was not found!"):
-#         path_exists(sample_path)
+    Parametrized to test invalid str and paths
+    """
+    with pytest.raises(FileNotFoundError, match="The provided path was not found!"):
+        path_exists(sample_path)
 
-# def test_path_contains_photos():
-#     """ Test for src\\photonomist\\__main__ > path_items
+def test_path_contains_photos():
+    """ Test for src\\photonomist\\__main__ > path_items
 
-#     Testing_empty_folder was created in test\\data for testing purposes.
-#     """
-#     #Need an empty dir for testing
-#     sample_path = r'test\data\testing_empty_folder\empty'
-#     with pytest.raises(Exception, match="The provided path does not contain any files!"):
-#         path_items(sample_path)
+    Testing_empty_folder was created in test\\data for testing purposes.
+    """
+    #Need an empty dir for testing
+    sample_path = r'test\data\testing_empty_folder\empty'
+    with pytest.raises(Exception, match="The provided path does not contain any files!"):
+        path_items(sample_path)
 
 # def test_clean_path():
 #     """Test src\\photonomist\\__main__ > clean_path
@@ -522,5 +522,5 @@
 #     assert 'Dear user,\nYou can group your photos by:\n\t1)Day\n\t2)Month\n\t3)Year\nPlease let me know your option!' in captured.out
 
 # # Make the script executable.
-# if __name__ == "__main__":
-#     raise SystemExit(pytest.main([__file__]))
+if __name__ == "__main__":
+    raise SystemExit(pytest.main([__file__]))
