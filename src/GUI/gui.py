@@ -219,7 +219,8 @@ class Main:
         |
         """
         language=importlib.import_module('languages.'+lang)
-        
+        self.__gui.language = lang
+
         self.__gui.title(getattr(language, 'MAIN_TITLE'))
 
         self.__main_menu.entryconfig(1, label=getattr(language, 'MAIN_MENU_FILE'))
@@ -239,8 +240,6 @@ class Main:
         self.__check_button_reason.config(text=getattr(language, 'MAIN_NAME_PATTERN_REASON'))
         self.__check_button_people.config(text=getattr(language, 'MAIN_NAME_PATTERN_PEOPLE'))
         self.__run_button.config(text=getattr(language, 'MAIN_RUN_APP_BUTTON'))
-
-        print(self.exclude_window.EXCl_TITLE)
 
     def __quit(self):
         """
