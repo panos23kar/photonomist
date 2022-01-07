@@ -50,3 +50,11 @@ class Loading:
             self.__load_w_layout()
             self.__update_load_w = self.__draw_loading_camera().__next__
             self.__load_w_canvas.after(100, self.__update_load_w)
+
+    def __close_toplevel(self):
+        """
+        Closes the loading window
+        |
+        """
+        self.__loading_window.destroy()
+        self.__loading_window.update()
