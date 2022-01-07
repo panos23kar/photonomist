@@ -44,10 +44,10 @@ class Exclude:
         Title and dimensions for the exclude window
         |
         """
-        self.__exclude = tk.Toplevel(self.main_window)
-        self.__exclude.title(en.EXCl_TITLE)
+        self.exclude_toplevel = tk.Toplevel(self.main_window)
+        self.exclude_toplevel.title(en.EXCl_TITLE)
         # Gets the 'full' focus of the app
-        self.__exclude.grab_set()
+        self.exclude_toplevel.grab_set()
 
     def __draws_canvas(self):
         """
@@ -55,7 +55,7 @@ class Exclude:
         Canvas, in combination with the frame, is needed for the scrollbar
         |
         """
-        self.__exclude_canvas = create_canvas(self.__exclude)
+        self.__exclude_canvas = create_canvas(self.exclude_toplevel)
         self.__exclude_canvas.bind_all("<MouseWheel>", self.__on_mousewheel)
 
     def __draws_frame(self):
@@ -108,7 +108,7 @@ class Exclude:
         Draws the scrollbar for the exclude window
         |
         """
-        self.__exclude_scrollbar = create_scrollbar(self.__exclude, command=self.__exclude_canvas.yview)
+        self.__exclude_scrollbar = create_scrollbar(self.exclude_toplevel, command=self.__exclude_canvas.yview)
     
     def __calculate_number_photos(self):
         """
@@ -214,6 +214,6 @@ class Exclude:
         Closes the exclude window
         |
         """
-        self.main_window.exclude_window = 1
-        self.__exclude.destroy()
-        self.__exclude.update()
+        self.main_window.exclude_window_state = 1
+        self.exclude_toplevel.destroy()
+        self.exclude_toplevel.update()
