@@ -17,6 +17,7 @@ from app.photo import Photo
 @pytest.fixture
 def my_photo():
     photo_path = r"test\data\testing_folder_with_photos\bla\DSC_0262.NEF"
+    photo_path =  os.path.abspath("test/data/testing_folder_with_photos/bla/DSC_0262.NEF")
     my_photo = Photo(photo_path)
     return my_photo
 
