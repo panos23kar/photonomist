@@ -26,37 +26,37 @@ def test_invalid_path(sample_path):
     with pytest.raises(FileNotFoundError, match="The provided path was not found!"):
         path_exists(sample_path)
 
-def test_path_contains_photos():
-    """ Test for src\\photonomist\\__main__ > path_items
+# def test_path_contains_photos():
+#     """ Test for src\\photonomist\\__main__ > path_items
 
-    Testing_empty_folder was created in test\\data for testing purposes.
+#     Testing_empty_folder was created in test\\data for testing purposes.
+#     """
+#     #Need an empty dir for testing
+#     sample_path = os.path.abspath('test/data/testing_empty_folder/empty')
+#     with pytest.raises(Exception, match="The provided path does not contain any files!"):
+#         path_items(sample_path)
+
+def test_clean_path():
+    """Test src\\photonomist\\__main__ > clean_path
     """
-    #Need an empty dir for testing
-    sample_path = os.path.abspath('test/data/testing_empty_folder/empty')
-    with pytest.raises(Exception, match="The provided path does not contain any files!"):
-        path_items(sample_path)
+    sample_path = r"'test\data\testing_empty_folder'"
+    sample_path = clean_path(sample_path)
+    assert sample_path == r"test\data\testing_empty_folder"
 
-# def test_clean_path():
-#     """Test src\\photonomist\\__main__ > clean_path
-#     """
-#     sample_path = r"'test\data\testing_empty_folder'"
-#     sample_path = clean_path(sample_path)
-#     assert sample_path == r"test\data\testing_empty_folder"
+@pytest.mark.parametrize("sample_path", [(0), 
+                                         (None), 
+                                         (1),
+                                         (1.0),
+                                         (True),
+                                         (False),
+                                         ('0')])
+def test_user_input_is_string(sample_path):
+    """Test src\\photonomist\\__main__ > path_string
 
-# @pytest.mark.parametrize("sample_path", [(0), 
-#                                          (None), 
-#                                          (1),
-#                                          (1.0),
-#                                          (True),
-#                                          (False),
-#                                          ('0')])
-# def test_user_input_is_string(sample_path):
-#     """Test src\\photonomist\\__main__ > path_string
-
-#     Parametrized to test invalid int, floats, boolean and NoneType arguments.
-#     """
-#     with pytest.raises(Exception, match="Your input is not a valid path!"):
-#         path_string(sample_path)
+    Parametrized to test invalid int, floats, boolean and NoneType arguments.
+    """
+    with pytest.raises(Exception, match="Your input is not a valid path!"):
+        path_string(sample_path)
 
 # def test_extracts_0_photo_roots():
 #     """Test src\\photonomist\\__main__ > traverse_photos_path
