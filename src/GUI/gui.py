@@ -46,7 +46,7 @@ class Main:
         Initiates the exclude window
         |
         """
-        self.excl_w = Exclude(self.__gui)
+        self.exclude_window = Exclude(self.__gui)
 
     def __draw_main_window(self):
         """
@@ -175,7 +175,7 @@ class Main:
         |
         """
         #TODO command
-        self.__run_button = create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, command="TODO", state="disabled")
+        self.__run_button = create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, command=self.update_photo_roots_from_exclude)#state="disabled"
 
     def __menu(self):
         """
@@ -275,7 +275,7 @@ class Main:
         self.__validate_input_path()
         
         if self.photos_roots:
-            self.excl_w.draw_exclude_window(self.photos_roots)
+            self.exclude_window.draw_exclude_window(self.photos_roots)
 
     def __validate_input_path(self):
         try:
@@ -284,6 +284,18 @@ class Main:
             self.__input_path_invalid_value.set(str(e))
         else:
             self.__input_path_invalid_value.set("")
+
+    def update_photo_roots_from_exclude(self):
+        """
+        Gets the photo_roots dict from exclude window without the excluded folders
+        Activates the run button
+        """
+        #TODO
+        print('------'*30)
+        print(hasattr(self.__gui, 'exclude_window'))
+        print(len(self.photos_roots))
+        # for root in self.photos_roots:
+        #     print(root)
 
 
 if __name__ == "__main__":
