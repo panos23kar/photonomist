@@ -3,6 +3,8 @@ Hosts the code for the exclude window
 """
 import tkinter as tk
 
+import importlib
+
 from languages import en
 from widgets import create_label, create_canvas, create_frame, create_scrollbar, \
                     create_check_button, create_int_var, create_button
@@ -38,6 +40,8 @@ class Exclude:
         self.__draws_checkboxes()
         self.__draws_run_button()
         self.__resize_canvas()
+        if self.main_window.language!='en':
+            self.__change_language()
 
     def __exclude_window(self):
         """
@@ -218,3 +222,17 @@ class Exclude:
         self.main_window.exclude_window_state = 1
         self.exclude_toplevel.destroy()
         self.exclude_toplevel.update()
+    
+    def __change_language(self):
+        """
+        Changes the language depending on user's preference
+        |
+        """
+        print('mpikaaaa')
+        language=importlib.import_module('languages.'+ self.main_window.language)
+        print('language')
+        
+        self.exclude_toplevel.title(getattr(language, 'EXCl_TITLE'))
+
+        self.__exclude_number_photos_label.config(text=str(self.__number_of_photos) + getattr(language, 'EXCL_NUMBER_PHOTOS_LABEL'))
+        self.__exclude_run_button.config(text=getattr(language, 'EXCL_RUN_BUTTON'))
