@@ -17,7 +17,6 @@ from app.main import path_exists, path_items, clean_path, path_string,\
                    group_by_message, group_by_, group_option
 
 @pytest.mark.parametrize("sample_path", [("blablabla"), 
-                                         #os.path.abspath('test\data\blablabla'), 
                                          os.path.abspath('test/data/blablabla')])
 def test_invalid_path(sample_path):
     """ Test for src\\photonomist\\__main__ > path_exists
@@ -33,7 +32,7 @@ def test_path_contains_photos():
     Testing_empty_folder was created in test\\data for testing purposes.
     """
     #Need an empty dir for testing
-    sample_path = r'test\data\testing_empty_folder\empty'
+    sample_path = os.path.abspath('test/data/testing_empty_folder/empty')
     with pytest.raises(Exception, match="The provided path does not contain any files!"):
         path_items(sample_path)
 
