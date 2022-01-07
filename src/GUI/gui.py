@@ -6,6 +6,7 @@ from tkinter import messagebox
 from tkinter import filedialog
 
 from functools import partial
+import importlib
 
 from info import Info
 from exclude import Exclude
@@ -56,7 +57,7 @@ class Main:
         """
         self.__main_window()
         self.__input_path()
-        self.__find_photos_button()
+        self.__draw_find_photos_button()
         self.__export_path()
         self.__group_by_buttons()
         self.__folder_name_pattern()
@@ -97,7 +98,7 @@ class Main:
         ##Label
         self.__input_path_invalid_label = create_label(self.__gui, text='',x=20, y=47, textvariable=self.__input_path_invalid_value, fg="red")
 
-    def __find_photos_button(self):
+    def __draw_find_photos_button(self):
         """
         Draws the find photos button
         |
@@ -197,12 +198,49 @@ class Main:
         self.__sub_menu_file = create_menu(self.__main_menu, tearoff=0)
         self.__main_menu.add_cascade(label=en.MAIN_MENU_FILE, menu=self.__sub_menu_file, underline=0)
 
+        #Languages        
+        self.__Lang_sub_menu = create_menu(self.__sub_menu_file, tearoff=0)
+        self.__Lang_sub_menu.add_command(label='English', command=partial(self.__change_language, 'en'))
+        self.__Lang_sub_menu.add_command(label='Eλληνικά', command=partial(self.__change_language, 'gr'))
+
+        ##add the File menu to the menubar
+        self.__sub_menu_file.add_cascade(label=en.MAIN_MENU_LANGUAGES,  menu=self.__Lang_sub_menu)
+
         # Separator
         self.__sub_menu_file.add_separator()
         self.__sub_menu_file.add_command(label=en.MAIN_MENU_QUIT, underline=0, command=self.__quit)
 
         ## SubMenu Info
         self.__main_menu.add_command(label=en.MAIN_MENU_INFO, command=Info(self.__gui).show_info_window, underline=1)
+    
+    def __change_language(self, lang):
+        """
+        Changes the language depending on user's preference
+        |
+        """
+        language=importlib.import_module('languages.'+lang)
+        
+        self.__gui.title(getattr(language, 'MAIN_TITLE'))
+
+        self.__main_menu.entryconfig(1, label=getattr(language, 'MAIN_MENU_FILE'))
+        self.__sub_menu_file.entryconfig(0, label=getattr(language, 'MAIN_MENU_LANGUAGES'))
+        self.__sub_menu_file.entryconfig(4, label=getattr(language, 'MAIN_MENU_QUIT'))
+        self.__main_menu.entryconfig(3, label=getattr(language, 'MAIN_MENU_INFO'))
+
+        self.__input_label.config(text=getattr(language, 'MAIN_INPUT_PATH'))
+        self.__find_photos_button.config(text=getattr(language, 'MAIN_FIND_PHOTOS_BUTTON'))
+        self.__export_label.config(text=getattr(language, 'MAIN_EXPORT_PATH'))
+        self.__day_radio_button.config(text=getattr(language, 'MAIN_DAY_RADIO_BUTTON'))
+        self.__month_radio_button.config(text=getattr(language, 'MAIN_MONTH_RADIO_BUTTON'))
+        self.__year_radio_button.config(text=getattr(language, 'MAIN_YEAR_RADIO_BUTTON'))
+        self.__group_by_label.config(text=getattr(language, 'MAIN_GROUP_BY_LABEL'))
+        self.__name_pattern_label.config(text=getattr(language, 'MAIN_NAME_PATTERN_LABEL'))
+        self.__check_button_place.config(text=getattr(language, 'MAIN_NAME_PATTERN_PLACE'))
+        self.__check_button_reason.config(text=getattr(language, 'MAIN_NAME_PATTERN_REASON'))
+        self.__check_button_people.config(text=getattr(language, 'MAIN_NAME_PATTERN_PEOPLE'))
+        self.__run_button.config(text=getattr(language, 'MAIN_RUN_APP_BUTTON'))
+
+        print(self.exclude_window.EXCl_TITLE)
 
     def __quit(self):
         """
