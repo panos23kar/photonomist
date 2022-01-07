@@ -27,12 +27,12 @@ def test_is_photo_object():
     my_photo = Photo(photo_path)
     assert isinstance(my_photo, Photo)
 
-# def test_extract_tags_from_a_valid_photo(my_photo):
-#     """Test src\\photonomist\\photo.Photo> __extract_exif
-#     """
-#     my_photo._Photo__extract_exif_tags()
-#     assert "EXIF DateTimeOriginal" in list(my_photo._Photo__tags.keys())
-#     assert "Image DateTimeOriginal" in list(my_photo._Photo__tags.keys())
+def test_extract_tags_from_a_valid_photo(my_photo):
+    """Test src\\photonomist\\photo.Photo> __extract_exif
+    """
+    my_photo._Photo__extract_exif_tags()
+    assert "EXIF DateTimeOriginal" in list(my_photo._Photo__tags.keys())
+    assert "Image DateTimeOriginal" in list(my_photo._Photo__tags.keys())
 
 # def test_extract_tags_from_a_invalid_photo():
 #     """Test src\\photonomist\\photo.Photo> __extract_exif_tags
