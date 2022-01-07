@@ -278,6 +278,11 @@ class Main:
             self.exclude_window.draw_exclude_window(self.photos_roots)
 
     def __validate_input_path(self):
+        """
+        Checks if the provided input path is valid and contains photos.
+        If not, it shows an error message
+        |
+        """
         try:
             self.photos_roots = input_path_validation(self.__input_path_value.get())
         except Exception as e:
