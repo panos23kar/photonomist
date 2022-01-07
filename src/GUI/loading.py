@@ -52,7 +52,7 @@ class Loading:
             self.__loading_window()
             self.__draws_canvas()
             self.__update_load_w = self.__draw_loading_camera().__next__
-            self.__load_w_canvas.after(100, self.__update_load_w)
+            self.__loading_canvas.after(100, self.__update_load_w)
 
     def __close_toplevel(self):
         """
@@ -67,7 +67,7 @@ class Loading:
         Toplevel and title for the loading window
         |
         """
-        self.__loading_toplevel = tk.Toplevel(self.__gui)
+        self.__loading_toplevel = tk.Toplevel(self.main_window)
         self.__loading_toplevel.title(en.LOAD_TITLE)
         self.__loading_toplevel.grab_set()
 
