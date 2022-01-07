@@ -4,6 +4,7 @@ MAIN_TITLE = "Photonomist"
 QUIT_MESSAGE = "Αλήθεια  τώρα? Θα με κλείσεις?"
 
 MAIN_MENU_FILE = "Αρχείο"
+MAIN_MENU_LANGUAGES = "Γλώσσα"
 MAIN_MENU_QUIT = "'Eξοδος"
 MAIN_MENU_INFO = "Πληροφορίες..."
 
@@ -21,7 +22,7 @@ MAIN_MONTH_RADIO_BUTTON_VALUE = "μήνα"
 MAIN_YEAR_RADIO_BUTTON = "Χρόνο"
 MAIN_YEAR_RADIO_BUTTON_VALUE = "χρόνο"
 
-MAIN_NAME_PATTERN_LABEL = "Κάντε κλικ στις ετικέτες που θέλετε να προσθέσετε στο όνομα των φακέλων φωτογραφιών σας: "
+MAIN_NAME_PATTERN_LABEL = "Eπιλέξτε τις ετικέτες που θέλετε να προσθέσετε στο όνομα των φακέλων σας:"
 MAIN_NAME_PATTERN_PLACE = "_που"
 MAIN_NAME_PATTERN_REASON = "_γιατί"
 MAIN_NAME_PATTERN_PEOPLE = "_ποιος"
