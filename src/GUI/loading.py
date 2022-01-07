@@ -38,3 +38,15 @@ class Loading:
         self.__load_func.start()
         # Loading Image window while photonomist is working on user's request
         self.__load_draw_image()
+    
+    def __load_draw_image(self):
+        """
+        Draws rotating image for as long as photonomist is working
+        |
+        """
+        if not self.__load_func.is_alive():
+            self.__close_toplevel()
+        else:
+            self.__load_w_layout()
+            self.__update_load_w = self.__draw_loading_camera().__next__
+            self.__load_w_canvas.after(100, self.__update_load_w)
