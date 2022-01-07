@@ -49,7 +49,7 @@ INFO_EMAIL = "photonomist.23@gmail.com"
 # Exclude window
 EXCl_TITLE = "Φάκελοι φωτ/ιών"
 EXCL_NUMBER_PHOTOS_LABEL = " photos in the folders below!\nUncheck the folders that you don't want me to touch!\n"
-EXCL_LINK = "άνοιξε άκελο"
+EXCL_LINK = "link"
 EXCL_RUN_BUTTON = "Έτοιμος"
 
 # Loading window
