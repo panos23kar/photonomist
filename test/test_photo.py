@@ -16,7 +16,6 @@ from app.photo import Photo
 
 @pytest.fixture
 def my_photo():
-    photo_path = r"test\data\testing_folder_with_photos\bla\DSC_0262.NEF"
     photo_path =  os.path.abspath("test/data/testing_folder_with_photos/bla/DSC_0262.NEF")
     my_photo = Photo(photo_path)
     return my_photo
@@ -35,44 +34,44 @@ def test_extract_tags_from_a_valid_photo(my_photo):
     assert "EXIF DateTimeOriginal" in list(my_photo._Photo__tags.keys())
     assert "Image DateTimeOriginal" in list(my_photo._Photo__tags.keys())
 
-# def test_extract_tags_from_a_invalid_photo():
-#     """Test src\\photonomist\\photo.Photo> __extract_exif_tags
-#     """
-#     photo_path = r"a\\random\\path\\to\\a\\photo"
-#     my_photo = Photo(photo_path)
-#     my_photo._Photo__extract_exif_tags()
-#     assert my_photo._Photo__tags == {}
+def test_extract_tags_from_a_invalid_photo():
+    """Test src\\photonomist\\photo.Photo> __extract_exif_tags
+    """
+    photo_path = r"a\\random\\path\\to\\a\\photo"
+    my_photo = Photo(photo_path)
+    my_photo._Photo__extract_exif_tags()
+    assert my_photo._Photo__tags == {}
 
-# def test_extract_metadata(my_photo):
-#     """Test src\\photonomist\\photo.Photo> __metadata_dict
-#     """
-#     my_photo._Photo__metadata_dict()
-#     assert "DateTimeOriginal" in list(my_photo.metadata.keys())
+def test_extract_metadata(my_photo):
+    """Test src\\photonomist\\photo.Photo> __metadata_dict
+    """
+    my_photo._Photo__metadata_dict()
+    assert "DateTimeOriginal" in list(my_photo.metadata.keys())
 
-# def test_extract_metadata_does_not_extract_empty_values(my_photo):
-#     """Test src\\photonomist\\photo.Photo> __metadata_dict
-#     """
-#     my_photo._Photo__metadata_dict()
-#     assert "Copyright" not in list(my_photo.metadata.keys())
+def test_extract_metadata_does_not_extract_empty_values(my_photo):
+    """Test src\\photonomist\\photo.Photo> __metadata_dict
+    """
+    my_photo._Photo__metadata_dict()
+    assert "Copyright" not in list(my_photo.metadata.keys())
 
-# def test_extract_metadata_with_extracted_tags(my_photo):
-#     """Test src\\photonomist\\photo.Photo> __metadata_dict
-#     """
-#     my_photo._Photo__extract_exif_tags()
-#     my_photo._Photo__metadata_dict()
-#     assert "DateTimeOriginal" in list(my_photo.metadata.keys())
+def test_extract_metadata_with_extracted_tags(my_photo):
+    """Test src\\photonomist\\photo.Photo> __metadata_dict
+    """
+    my_photo._Photo__extract_exif_tags()
+    my_photo._Photo__metadata_dict()
+    assert "DateTimeOriginal" in list(my_photo.metadata.keys())
 
-# def test_return_date(my_photo):
-#     """Test src\\photonomist\\photo.Photo> get_date
-#     """
-#     assert "2019:12:14" == my_photo.get_date()
+def test_return_date(my_photo):
+    """Test src\\photonomist\\photo.Photo> get_date
+    """
+    assert "2019:12:14" == my_photo.get_date()
 
-# def test_date_return_none_if_no_metadata():
-#     """Test src\\photonomist\\photo.Photo> get_date
-#     """
-#     photo_path = r"a\random\path\to\a\photo"
-#     my_photo = Photo(photo_path)
-#     assert None == my_photo.get_date()
+def test_date_return_none_if_no_metadata():
+    """Test src\\photonomist\\photo.Photo> get_date
+    """
+    photo_path = r"a\random\path\to\a\photo"
+    my_photo = Photo(photo_path)
+    assert None == my_photo.get_date()
 
 # @pytest.mark.parametrize("year, month, expected", [
 #     (False, True, "2019:12"),
