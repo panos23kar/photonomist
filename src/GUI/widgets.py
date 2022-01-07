@@ -115,7 +115,6 @@ def create_canvas(master, borderwidth=0, side='left', fill='both', expand=True):
     |
     """
     canvas = tk.Canvas(master, borderwidth=borderwidth)
-    
     canvas.pack(side=side, fill=fill, expand=expand)
     return canvas
 

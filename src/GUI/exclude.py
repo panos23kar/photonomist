@@ -109,6 +109,7 @@ class Exclude:
         |
         """
         self.__exclude_scrollbar = create_scrollbar(self.exclude_toplevel, command=self.__exclude_canvas.yview)
+        self.__exclude_canvas.configure(yscrollcommand=self.__exclude_scrollbar.set)
     
     def __calculate_number_photos(self):
         """
