@@ -117,7 +117,8 @@ def move_photo_del_folder():
 def test_move_to_photo_to_other_folder(move_photo_del_folder):
     """Test src\\photonomist\\photo.Photo> move_to_folder
     """
-    new_dir = r"test\data\testing_folder_with_photos\move_folder"
+    #new_dir = r"test\data\testing_folder_with_photos\move_folder"
+    new_dir = os.path.abspath("test/data/testing_folder_with_photos/move_folder")
     move_photo_del_folder.move_to_folder(new_dir)
     file_list = os.listdir(new_dir)
     assert "DSC_0262.NEF" in file_list
