@@ -383,7 +383,7 @@ def move_photos_del_folders():
 def test_move_all_photos_of_all_folders(move_photos_del_folders):
     """ Test for src//photonomist//__main__ > tidy_photos
     """
-    export_path = r"test/data/testing_folder_with_photos/move_folder"
+    export_path = os.path.abspath('test/data/testing_folder_with_photos/move_folder')
     tidy_photos(export_path, move_photos_del_folders)
     assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_12_14_place_reason_people'))
     assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_04_24_place_reason_people'))
@@ -405,7 +405,7 @@ def move_photos_del_folders_month():
 def test_move_all_photos_of_all_folders_month(move_photos_del_folders_month):
     """ Test for src//photonomist//__main__ > tidy_photos
     """
-    export_path = r"test/data/testing_folder_with_photos/move_folder"
+    export_path = os.path.abspath('test/data/testing_folder_with_photos/move_folder')
     tidy_photos(export_path, move_photos_del_folders_month, year=False, month=True)
     assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_12_place_reason_people'))
     assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_04_place_reason_people'))
@@ -426,7 +426,7 @@ def move_photos_del_folders_year():
 def test_move_all_photos_of_all_folders_year(move_photos_del_folders_year):
     """ Test for src//photonomist//__main__ > tidy_photos
     """
-    export_path = r"test/data/testing_folder_with_photos/move_folder"
+    export_path = os.path.abspath('test/data/testing_folder_with_photos/move_folder')
     tidy_photos(export_path, move_photos_del_folders_year, year=True, month=False)
     assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_reason_people'))
     assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason_people'))
@@ -489,31 +489,31 @@ def move_photos_del_folders_place_people():
 def test_move_all_photos_of_all_folders_place_people(move_photos_del_folders_place_people):
     """ Test for src//photonomist//__main__ > tidy_photos
     """
-    export_path = r"test/data/testing_folder_with_photos/move_folder"
+    export_path = os.path.abspath('test/data/testing_folder_with_photos/move_folder')
     tidy_photos(export_path, move_photos_del_folders_place_people, year=True, month=False, name_pattern="_place_people")
     assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_people'))
     assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_people'))
     assert "IMG_5494.CR2" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_people'))
 
-# @pytest.mark.parametrize("random_slashes_path, expected", [
-#     ("this/is/a/random/path/with/backslashes", "this//is//a//random//path//with//backslashes"),
-#     ("this/is//a//random/path/with/backslashes", "this//is//a//random//path//with//backslashes"),
-#     ("this//is/a/random/path/with//backslashes", "this//is//a//random//path//with//backslashes"),
-#     ("this//is//a//random//path//without//backslashes", "this//is//a//random//path//without//backslashes"),
-#     ("thisisarandompathwithbackslashes", "thisisarandompathwithbackslashes"),
-# ])
-# def test_a_path_does_not_have_backslashes(random_slashes_path, expected):
-#     """ Test for src//photonomist//__main__ > replace_backslashes
-#     Parametrized to test different paths with and without backslashes
-#     """
-#     assert replace_backslashes(random_slashes_path) == expected
+@pytest.mark.parametrize("random_slashes_path, expected", [
+    ("this/is/a/random/path/with/backslashes", "this\\is\\a\\random\\path\\with\\backslashes"),
+    ("this/is\\a\\random/path/with/backslashes", "this\\is\\a\\random\\path\\with\\backslashes"),
+    ("this\\is/a/random/path/with\\backslashes", "this\\is\\a\\random\\path\\with\\backslashes"),
+    ("this\\is\\a\\random\\path\\without\\backslashes", "this\\is\\a\\random\\path\\without\\backslashes"),
+    ("thisisarandompathwithbackslashes", "thisisarandompathwithbackslashes"),
+])
+def test_a_path_does_not_have_backslashes(random_slashes_path, expected):
+    """ Test for src//photonomist//__main__ > replace_backslashes
+    Parametrized to test different paths with and without backslashes
+    """
+    assert replace_backslashes(random_slashes_path) == expected
 
-# def test_informative_print_message_for_grouping_options(capsys):
-#     """ Test for src//photonomist//__main__ > group_by_message
-#     """
-#     group_by_message()
-#     captured = capsys.readouterr()
-#     assert 'Dear user,/nYou can group your photos by:/n/t1)Day/n/t2)Month/n/t3)Year/nPlease let me know your option!' in captured.out
+def test_informative_print_message_for_grouping_options(capsys):
+    """ Test for src//photonomist//__main__ > group_by_message
+    """
+    group_by_message()
+    captured = capsys.readouterr()
+    assert 'Dear user,\nYou can group your photos by:\n\t1)Day\n\t2)Month\n\t3)Year\nPlease let me know your option!' in captured.out
 
 @pytest.mark.parametrize("user_input, expected", [
     ("blabla", True),
@@ -535,13 +535,13 @@ def test_group_by_returns_true_or_false_on_user_value(monkeypatch, user_input, e
     monkeypatch.setattr('builtins.input', lambda _: user_input)
     assert group_by_(user_input) == expected
 
-# def test_group_option_prints_group_message(capsys, monkeypatch):
-#     """ Test for src//photonomist//__main__ > group_option
-#     """
-#     monkeypatch.setattr('builtins.input', lambda _: "kati")
-#     group_option()
-#     captured = capsys.readouterr()
-#     assert 'Dear user,/nYou can group your photos by:/n/t1)Day/n/t2)Month/n/t3)Year/nPlease let me know your option!' in captured.out
+def test_group_option_prints_group_message(capsys, monkeypatch):
+    """ Test for src//photonomist//__main__ > group_option
+    """
+    monkeypatch.setattr('builtins.input', lambda _: "kati")
+    group_option()
+    captured = capsys.readouterr()
+    assert 'Dear user,\nYou can group your photos by:\n\t1)Day\n\t2)Month\n\t3)Year\nPlease let me know your option!' in captured.out
 
 # # Make the script executable.
 if __name__ == "__main__":
