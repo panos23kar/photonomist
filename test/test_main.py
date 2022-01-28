@@ -85,40 +85,40 @@ def test_extracts_0_photo_roots(delete_create_empty_test_files):
     sample_path =  r'test\data\testing_empty_folder'
     assert len(traverse_photos_path(sample_path)) == 0
 
-# def test_extracts_photo_roots():
-#     """Test src\\photonomist\\__main__ > traverse_photos_path
-#     """
-#     sample_path =  r'test\data\testing_folder_with_photos'
-#     num_of_photos = 0
-#     for photo_list in traverse_photos_path(sample_path).values():
-#         print(photo_list)
-#         num_of_photos += len(photo_list)
-#     assert num_of_photos == 9
+def test_extracts_photo_roots():
+    """Test src\\photonomist\\__main__ > traverse_photos_path
+    """
+    sample_path =  r'test\data\testing_folder_with_photos'
+    num_of_photos = 0
+    for photo_list in traverse_photos_path(sample_path).values():
+        print(photo_list)
+        num_of_photos += len(photo_list)
+    assert num_of_photos == 9
 
-# def test_path_does_not_contain_jpg_jpeg_nef_cr2_files():
-#     """Test src\\photonomist\\__main__ > path_photos
-#     """
-#     sample_photo_roots = traverse_photos_path(r'test\data\testing_empty_folder')
-#     with pytest.raises(Exception, match="The provided path does not contain any .jpg, .jpeg, .nef or .cr2 files"):
-#         path_photos(sample_photo_roots)
+def test_path_does_not_contain_jpg_jpeg_nef_cr2_files():
+    """Test src\\photonomist\\__main__ > path_photos
+    """
+    sample_photo_roots = traverse_photos_path(r'test\data\testing_empty_folder')
+    with pytest.raises(Exception, match="The provided path does not contain any .jpg, .jpeg, .nef or .cr2 files"):
+        path_photos(sample_photo_roots)
 
-# @pytest.mark.skip(reason="commented it out")
-# def test_path_contains_files_extensions_jpg_nef_cr2(capsys):
-#     """Test src\\photonomist\\__main__ > path_photos
-#     """
-#     sample_photo_roots = traverse_photos_path(r'test\data\testing_folder_with_photos')
-#     path_photos(sample_photo_roots)
-#     captured = capsys.readouterr()
-#     assert r'test\data\testing_folder_with_photos\bla\blanef\blablanef\blablablanef' in captured.out
-#     assert r'test\data\testing_folder_with_photos\bla\blabla\blablabla' in captured.out
-#     assert r'C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\blablacr2' in captured.out
+@pytest.mark.skip(reason="commented it out")
+def test_path_contains_files_extensions_jpg_nef_cr2(capsys):
+    """Test src\\photonomist\\__main__ > path_photos
+    """
+    sample_photo_roots = traverse_photos_path(r'test\data\testing_folder_with_photos')
+    path_photos(sample_photo_roots)
+    captured = capsys.readouterr()
+    assert r'test\data\testing_folder_with_photos\bla\blanef\blablanef\blablablanef' in captured.out
+    assert r'test\data\testing_folder_with_photos\bla\blabla\blablabla' in captured.out
+    assert r'test\data\testing_folder_with_photos\bla\blablacr2' in captured.out
 
-# def test_photos_total_size():
-#     """Test src\\photonomist\\__main__ > photos_size
-#     """
-#     sample_photo_roots = traverse_photos_path(r'test\data\testing_folder_with_photos')
-#     photos_total_size = photos_size(sample_photo_roots)
-#     assert photos_total_size == 140855708
+def test_photos_total_size():
+    """Test src\\photonomist\\__main__ > photos_size
+    """
+    sample_photo_roots = traverse_photos_path(r'test\data\testing_folder_with_photos')
+    photos_total_size = photos_size(sample_photo_roots)
+    assert photos_total_size == 140855708
 
 # def test_enough_free_disk_space(capsys):
 #     """Test src\\photonomist\\__main__ > disk_space
