@@ -261,9 +261,9 @@ def test_transfer_photo_to_another_folder_if_it_has_valid_date_year_keyword(move
 
 @pytest.fixture()
 def move_canon_photo_del_folder():
-    move_canon_photo_del_folder = os.path.abspath('C:/repos/photonomist_new/test/data/testing_folder_with_photos/bla/blablacr2/IMG_5494.CR2')
+    move_canon_photo_del_folder = os.path.abspath('test/data/testing_folder_with_photos/bla/blablacr2/IMG_5494.CR2')
     yield move_canon_photo_del_folder
-    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_10_25_place_reason_people/IMG_5494.CR2'), os.path.abspath('C:/repos/photonomist_new/test/data/testing_folder_with_photos/bla/blablacr2/IMG_5494.CR2'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_10_25_place_reason_people/IMG_5494.CR2'), os.path.abspath('test/data/testing_folder_with_photos/bla/blablacr2/IMG_5494.CR2'))
     os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_10_25_place_reason_people'))
     os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder'))
 
@@ -348,152 +348,152 @@ def test_input_path_validation_path_items(delete_create_empty_test_file):
     with pytest.raises(Exception, match="The provided path does not contain any files!"):
         input_path_validation(sample_path)
 
-# def test_input_path_validation_traverse_photos_path():
-#     """ Test for src//photonomist//__main__ > input_path_validation
-#     """
-#     sample_path =  r'test/data/testing_folder_with_photos'
-#     num_of_photos = 0
-#     for photo_list in traverse_photos_path(sample_path).values():
-#         print(photo_list)
-#         num_of_photos += len(photo_list)
-#     assert num_of_photos == 9
+def test_input_path_validation_traverse_photos_path():
+    """ Test for src//photonomist//__main__ > input_path_validation
+    """
+    sample_path =  os.path.abspath('test/data/testing_folder_with_photos')
+    num_of_photos = 0
+    for photo_list in traverse_photos_path(sample_path).values():
+        print(photo_list)
+        num_of_photos += len(photo_list)
+    assert num_of_photos == 9
 
-# def test_export_path_validation_path_exists():
-#     """ Test for src//photonomist//__main__ > export_path_validation
-#     """
-#     export_path = "blablabla"
-#     input_path = "blablabla"
-#     path_roots = ["blablabla"]
-#     with pytest.raises(FileNotFoundError, match="The provided path was not found!"):
-#         export_path_validation(export_path, input_path, path_roots)
+def test_export_path_validation_path_exists():
+    """ Test for src//photonomist//__main__ > export_path_validation
+    """
+    export_path = "blablabla"
+    input_path = "blablabla"
+    path_roots = ["blablabla"]
+    with pytest.raises(FileNotFoundError, match="The provided path was not found!"):
+        export_path_validation(export_path, input_path, path_roots)
 
-# @pytest.fixture()
-# def move_photos_del_folders():
-#     photo_roots = traverse_photos_path(r"C:/repos/photonomist_new/test/data/testing_folder_with_photos/bla/blabla")
-#     yield photo_roots
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2019_12_14_place_reason_people/DSC_0262.NEF", r"test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_04_24_place_reason_people/DSC_1402.JPG", r"test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_10_25_place_reason_people/IMG_5494.CR2", r"C:/repos/photonomist_new/test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2019_12_14_place_reason_people")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2020_04_24_place_reason_people")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2020_10_25_place_reason_people")
-#     os.remove(r"test/data/testing_folder_with_photos/move_folder/not_transferred.txt")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder")
+@pytest.fixture()
+def move_photos_del_folders():
+    photo_roots = traverse_photos_path(os.path.abspath('test/data/testing_folder_with_photos/bla/blabla'))
+    yield photo_roots
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_12_14_place_reason_people/DSC_0262.NEF'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_04_24_place_reason_people/DSC_1402.JPG'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_10_25_place_reason_people/IMG_5494.CR2'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_12_14_place_reason_people'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_04_24_place_reason_people'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_10_25_place_reason_people'))
+    os.remove(os.path.abspath('test/data/testing_folder_with_photos/move_folder/not_transferred.txt'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder'))
 
-# def test_move_all_photos_of_all_folders(move_photos_del_folders):
-#     """ Test for src//photonomist//__main__ > tidy_photos
-#     """
-#     export_path = r"test/data/testing_folder_with_photos/move_folder"
-#     tidy_photos(export_path, move_photos_del_folders)
-#     assert "DSC_0262.NEF" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2019_12_14_place_reason_people")
-#     assert "DSC_1402.JPG" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_04_24_place_reason_people")
-#     assert "IMG_5494.CR2" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_10_25_place_reason_people")
+def test_move_all_photos_of_all_folders(move_photos_del_folders):
+    """ Test for src//photonomist//__main__ > tidy_photos
+    """
+    export_path = r"test/data/testing_folder_with_photos/move_folder"
+    tidy_photos(export_path, move_photos_del_folders)
+    assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_12_14_place_reason_people'))
+    assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_04_24_place_reason_people'))
+    assert "IMG_5494.CR2" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_10_25_place_reason_people'))
 
-# @pytest.fixture()
-# def move_photos_del_folders_month():
-#     photo_roots = traverse_photos_path(r"C:/repos/photonomist_new/test/data/testing_folder_with_photos/bla/blabla")
-#     yield photo_roots
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2019_12_place_reason_people/DSC_0262.NEF", r"test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_04_place_reason_people/DSC_1402.JPG", r"test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_10_place_reason_people/IMG_5494.CR2", r"test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2019_12_place_reason_people")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2020_04_place_reason_people")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2020_10_place_reason_people")
-#     os.remove(r"test/data/testing_folder_with_photos/move_folder/not_transferred.txt")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder")
+@pytest.fixture()
+def move_photos_del_folders_month():
+    photo_roots = traverse_photos_path(os.path.abspath('test/data/testing_folder_with_photos/bla/blabla'))
+    yield photo_roots
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_12_place_reason_people/DSC_0262.NEF'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_04_place_reason_people/DSC_1402.JPG'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_10_place_reason_people/IMG_5494.CR2'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_12_place_reason_people'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_04_place_reason_people'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_10_place_reason_people'))
+    os.remove(os.path.abspath('test/data/testing_folder_with_photos/move_folder/not_transferred.txt'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder'))
 
-# def test_move_all_photos_of_all_folders_month(move_photos_del_folders_month):
-#     """ Test for src//photonomist//__main__ > tidy_photos
-#     """
-#     export_path = r"test/data/testing_folder_with_photos/move_folder"
-#     tidy_photos(export_path, move_photos_del_folders_month, year=False, month=True)
-#     assert "DSC_0262.NEF" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2019_12_place_reason_people")
-#     assert "DSC_1402.JPG" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_04_place_reason_people")
-#     assert "IMG_5494.CR2" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_10_place_reason_people")
+def test_move_all_photos_of_all_folders_month(move_photos_del_folders_month):
+    """ Test for src//photonomist//__main__ > tidy_photos
+    """
+    export_path = r"test/data/testing_folder_with_photos/move_folder"
+    tidy_photos(export_path, move_photos_del_folders_month, year=False, month=True)
+    assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_12_place_reason_people'))
+    assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_04_place_reason_people'))
+    assert "IMG_5494.CR2" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_10_place_reason_people'))
 
-# @pytest.fixture()
-# def move_photos_del_folders_year():
-#     photo_roots = traverse_photos_path(r"C:/repos/photonomist_new/test/data/testing_folder_with_photos/bla/blabla")
-#     yield photo_roots
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2019_place_reason_people/DSC_0262.NEF", r"test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason_people/DSC_1402.JPG", r"test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason_people/IMG_5494.CR2", r"test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2019_place_reason_people")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason_people")
-#     os.remove(r"test/data/testing_folder_with_photos/move_folder/not_transferred.txt")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder")
+@pytest.fixture()
+def move_photos_del_folders_year():
+    photo_roots = traverse_photos_path(os.path.abspath('test/data/testing_folder_with_photos/bla/blabla'))
+    yield photo_roots
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_reason_people/DSC_0262.NEF'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason_people/DSC_1402.JPG'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason_people/IMG_5494.CR2'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_reason_people'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason_people'))
+    os.remove(os.path.abspath('test/data/testing_folder_with_photos/move_folder/not_transferred.txt'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder'))
 
-# def test_move_all_photos_of_all_folders_year(move_photos_del_folders_year):
-#     """ Test for src//photonomist//__main__ > tidy_photos
-#     """
-#     export_path = r"test/data/testing_folder_with_photos/move_folder"
-#     tidy_photos(export_path, move_photos_del_folders_year, year=True, month=False)
-#     assert "DSC_0262.NEF" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2019_place_reason_people")
-#     assert "DSC_1402.JPG" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason_people")
-#     assert "IMG_5494.CR2" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason_people")
+def test_move_all_photos_of_all_folders_year(move_photos_del_folders_year):
+    """ Test for src//photonomist//__main__ > tidy_photos
+    """
+    export_path = r"test/data/testing_folder_with_photos/move_folder"
+    tidy_photos(export_path, move_photos_del_folders_year, year=True, month=False)
+    assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_reason_people'))
+    assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason_people'))
+    assert "IMG_5494.CR2" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason_people'))
 
-# @pytest.fixture()
-# def move_photos_del_folders_place():
-#     photo_roots = traverse_photos_path(r"C:/repos/photonomist_new/test/data/testing_folder_with_photos/bla/blabla")
-#     yield photo_roots
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2019_place/DSC_0262.NEF", r"test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_place/DSC_1402.JPG", r"test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_place/IMG_5494.CR2", r"test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2019_place")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2020_place")
-#     os.remove(r"test/data/testing_folder_with_photos/move_folder/not_transferred.txt")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder")
+@pytest.fixture()
+def move_photos_del_folders_place():
+    photo_roots = traverse_photos_path(os.path.abspath('test/data/testing_folder_with_photos/bla/blabla'))
+    yield photo_roots
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place/DSC_0262.NEF'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place/DSC_1402.JPG'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place/IMG_5494.CR2'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place'))
+    os.remove(os.path.abspath('test/data/testing_folder_with_photos/move_folder/not_transferred.txt'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder'))
 
-# def test_move_all_photos_of_all_folders_place(move_photos_del_folders_place):
-#     """ Test for src//photonomist//__main__ > tidy_photos
-#     """
-#     export_path = r"test/data/testing_folder_with_photos/move_folder"
-#     tidy_photos(export_path, move_photos_del_folders_place, year=True, month=False, name_pattern="_place")
-#     assert "DSC_0262.NEF" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2019_place")
-#     assert "DSC_1402.JPG" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_place")
-#     assert "IMG_5494.CR2" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_place")
+def test_move_all_photos_of_all_folders_place(move_photos_del_folders_place):
+    """ Test for src//photonomist//__main__ > tidy_photos
+    """
+    export_path = os.path.abspath('test/data/testing_folder_with_photos/move_folder')
+    tidy_photos(export_path, move_photos_del_folders_place, year=True, month=False, name_pattern="_place")
+    assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place'))
+    assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place'))
+    assert "IMG_5494.CR2" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place'))
 
-# @pytest.fixture()
-# def move_photos_del_folders_place_reason():
-#     photo_roots = traverse_photos_path(r"C:/repos/photonomist_new/test/data/testing_folder_with_photos/bla/blabla")
-#     yield photo_roots
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2019_place_reason/DSC_0262.NEF", r"test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason/DSC_1402.JPG", r"test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason/IMG_5494.CR2", r"test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2019_place_reason")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason")
-#     os.remove(r"test/data/testing_folder_with_photos/move_folder/not_transferred.txt")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder")
+@pytest.fixture()
+def move_photos_del_folders_place_reason():
+    photo_roots = traverse_photos_path(os.path.abspath('test/data/testing_folder_with_photos/bla/blabla'))
+    yield photo_roots
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_reason/DSC_0262.NEF'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason/DSC_1402.JPG'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason/IMG_5494.CR2'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_reason'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason'))
+    os.remove(os.path.abspath('test/data/testing_folder_with_photos/move_folder/not_transferred.txt'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder'))
 
-# def test_move_all_photos_of_all_folders_place_reason(move_photos_del_folders_place_reason):
-#     """ Test for src//photonomist//__main__ > tidy_photos
-#     """
-#     export_path = r"test/data/testing_folder_with_photos/move_folder"
-#     tidy_photos(export_path, move_photos_del_folders_place_reason, year=True, month=False, name_pattern="_place_reason")
-#     assert "DSC_0262.NEF" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2019_place_reason")
-#     assert "DSC_1402.JPG" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason")
-#     assert "IMG_5494.CR2" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_place_reason")
+def test_move_all_photos_of_all_folders_place_reason(move_photos_del_folders_place_reason):
+    """ Test for src//photonomist//__main__ > tidy_photos
+    """
+    export_path = os.path.abspath('test/data/testing_folder_with_photos/move_folder')
+    tidy_photos(export_path, move_photos_del_folders_place_reason, year=True, month=False, name_pattern="_place_reason")
+    assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_reason'))
+    assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason'))
+    assert "IMG_5494.CR2" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_reason'))
 
-# @pytest.fixture()
-# def move_photos_del_folders_place_people():
-#     photo_roots = traverse_photos_path(r"C:/repos/photonomist_new/test/data/testing_folder_with_photos/bla/blabla")
-#     yield photo_roots
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2019_place_people/DSC_0262.NEF", r"test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_place_people/DSC_1402.JPG", r"test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG")
-#     shutil.move(r"test/data/testing_folder_with_photos/move_folder/2020_place_people/IMG_5494.CR2", r"test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2019_place_people")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder/2020_place_people")
-#     os.remove(r"test/data/testing_folder_with_photos/move_folder/not_transferred.txt")
-#     os.rmdir(r"test/data/testing_folder_with_photos/move_folder")
+@pytest.fixture()
+def move_photos_del_folders_place_people():
+    photo_roots = traverse_photos_path(os.path.abspath('test/data/testing_folder_with_photos/bla/blabla'))
+    yield photo_roots
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_people/DSC_0262.NEF'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/DSC_0262.NEF'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_people/DSC_1402.JPG'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/blablabla/DSC_1402.JPG'))
+    shutil.move(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_people/IMG_5494.CR2'), os.path.abspath('test/data/testing_folder_with_photos/bla/blabla/IMG_5494.CR2'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_people'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_people'))
+    os.remove(os.path.abspath('test/data/testing_folder_with_photos/move_folder/not_transferred.txt'))
+    os.rmdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder'))
 
-# def test_move_all_photos_of_all_folders_place_people(move_photos_del_folders_place_people):
-#     """ Test for src//photonomist//__main__ > tidy_photos
-#     """
-#     export_path = r"test/data/testing_folder_with_photos/move_folder"
-#     tidy_photos(export_path, move_photos_del_folders_place_people, year=True, month=False, name_pattern="_place_people")
-#     assert "DSC_0262.NEF" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2019_place_people")
-#     assert "DSC_1402.JPG" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_place_people")
-#     assert "IMG_5494.CR2" in os.listdir(r"test/data/testing_folder_with_photos/move_folder/2020_place_people")
+def test_move_all_photos_of_all_folders_place_people(move_photos_del_folders_place_people):
+    """ Test for src//photonomist//__main__ > tidy_photos
+    """
+    export_path = r"test/data/testing_folder_with_photos/move_folder"
+    tidy_photos(export_path, move_photos_del_folders_place_people, year=True, month=False, name_pattern="_place_people")
+    assert "DSC_0262.NEF" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2019_place_people'))
+    assert "DSC_1402.JPG" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_people'))
+    assert "IMG_5494.CR2" in os.listdir(os.path.abspath('test/data/testing_folder_with_photos/move_folder/2020_place_people'))
 
 # @pytest.mark.parametrize("random_slashes_path, expected", [
 #     ("this/is/a/random/path/with/backslashes", "this//is//a//random//path//with//backslashes"),
