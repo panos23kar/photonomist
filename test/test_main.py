@@ -67,11 +67,23 @@ def test_user_input_is_string(sample_path):
     with pytest.raises(Exception, match="Your input is not a valid path!"):
         path_string(sample_path)
 
-# def test_extracts_0_photo_roots():
-#     """Test src\\photonomist\\__main__ > traverse_photos_path
-#     """
-#     sample_path =  r'test\data\testing_empty_folder'
-#     assert len(traverse_photos_path(sample_path)) == 0
+@pytest.fixture()
+def delete_create_empty_test_files():
+    test_file_1 = os.path.abspath('test/data/testing_empty_folder/empty/dyanmically_delete_during_test.txt')
+    os.remove(test_file_1)
+    test_file_2 = os.path.abspath('test/data/testing_empty_folder/2016_12_17_place_reason_people/dyanmically_delete_during_test.txt')
+    os.remove(test_file_2)
+    yield ''
+    with open(test_file_1, "w+"):
+        pass
+    with open(test_file_2, "w+"):
+        pass
+
+def test_extracts_0_photo_roots(delete_create_empty_test_files):
+    """Test src\\photonomist\\__main__ > traverse_photos_path
+    """
+    sample_path =  r'test\data\testing_empty_folder'
+    assert len(traverse_photos_path(sample_path)) == 0
 
 # def test_extracts_photo_roots():
 #     """Test src\\photonomist\\__main__ > traverse_photos_path
