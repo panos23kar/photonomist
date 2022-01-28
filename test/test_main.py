@@ -130,61 +130,61 @@ def test_enough_free_disk_space(capsys):
     captured = capsys.readouterr()
     assert 'You have enough free disk space!' in captured.out
 
-# def test_not_enough_free_disk_space(capsys):
-#     """Test src\\photonomist\\__main__ > disk_space
-#     """
-#     sample_path = r'C:'
-#     photos_total_size = 5000000000000000000
-#     with pytest.raises(Exception, match="You need at least 5000000001073741824 free bytes but you only have"):
-#         disk_space(sample_path, photos_total_size)
+def test_not_enough_free_disk_space(capsys):
+    """Test src\\photonomist\\__main__ > disk_space
+    """
+    sample_path = os.path.abspath('/')
+    photos_total_size = 5000000000000000000
+    with pytest.raises(Exception, match="You need at least 5000000001073741824 free bytes but you only have"):
+        disk_space(sample_path, photos_total_size)
 
-# @pytest.mark.parametrize("date, year, month, expected", [
-#     ("2016", True, False, "2016_place_reason_people"),
-#     ("2016:12:17", False, False, "2016_12_17_place_reason_people"),
-#     ("2016:12", False, True, "2016_12_place_reason_people"),
-# ])
-# def test_create_photo_folder_name(date, year, month, expected):
-#     """Test src\\photonomist\\__main__ > photo_dir_name
-#     """
-#     assert expected == photo_dir_name(date, year=year, month=month)
+@pytest.mark.parametrize("date, year, month, expected", [
+    ("2016", True, False, "2016_place_reason_people"),
+    ("2016:12:17", False, False, "2016_12_17_place_reason_people"),
+    ("2016:12", False, True, "2016_12_place_reason_people"),
+])
+def test_create_photo_folder_name(date, year, month, expected):
+    """Test src\\photonomist\\__main__ > photo_dir_name
+    """
+    assert expected == photo_dir_name(date, year=year, month=month)
 
-# def test_create_photo_folder_name_no_keyword_arguments():
-#     """Test src\\photonomist\\__main__ > photo_dir_name
-#     """
-#     date = "2016:12:17"
-#     assert "2016_12_17_place_reason_people" == photo_dir_name(date)
+def test_create_photo_folder_name_no_keyword_arguments():
+    """Test src\\photonomist\\__main__ > photo_dir_name
+    """
+    date = "2016:12:17"
+    assert "2016_12_17_place_reason_people" == photo_dir_name(date)
 
-# @pytest.mark.parametrize("date, year, expected", [
-#     ("2016", True, "2016_place_reason_people"),
-#     ("2016:12:17", False, "2016_12_17_place_reason_people"),
-# ])
-# def test_create_photo_folder_name_no_month_keyword(date, year, expected):
-#     """Test src\\photonomist\\__main__ > photo_dir_name
-#     """
-#     assert expected == photo_dir_name(date, year=year)
+@pytest.mark.parametrize("date, year, expected", [
+    ("2016", True, "2016_place_reason_people"),
+    ("2016:12:17", False, "2016_12_17_place_reason_people"),
+])
+def test_create_photo_folder_name_no_month_keyword(date, year, expected):
+    """Test src\\photonomist\\__main__ > photo_dir_name
+    """
+    assert expected == photo_dir_name(date, year=year)
 
-# @pytest.mark.parametrize("date, month, expected", [
-#     ("2016:12", True, "2016_12_place_reason_people"),
-#     ("2016:12:17", False, "2016_12_17_place_reason_people"),
-# ])
-# def test_create_photo_folder_name_no_year_keyword(date, month, expected):
-#     """Test src\\photonomist\\__main__ > photo_dir_name
-#     """
-#     assert expected == photo_dir_name(date, month=month)
+@pytest.mark.parametrize("date, month, expected", [
+    ("2016:12", True, "2016_12_place_reason_people"),
+    ("2016:12:17", False, "2016_12_17_place_reason_people"),
+])
+def test_create_photo_folder_name_no_year_keyword(date, month, expected):
+    """Test src\\photonomist\\__main__ > photo_dir_name
+    """
+    assert expected == photo_dir_name(date, month=month)
 
-# @pytest.mark.parametrize("date, name_pattern, expected", [
-#     ("2016:12:17", "_place", "2016_12_17_place"),
-#     ("2016:12:17", "_place_reason", "2016_12_17_place_reason"),
-#     ("2016:12:17", "_place_people", "2016_12_17_place_people"),
-#     ("2016:12:17", "_reason", "2016_12_17_reason"),
-#     ("2016:12:17", "_reason_people", "2016_12_17_reason_people"),
-#     ("2016:12:17", "_people", "2016_12_17_people"),
-#     ("2016:12:17", "", "2016_12_17"),
-# ])
-# def test_create_photo_folder_name_specified_name_pattern(date, name_pattern, expected):
-#     """Test src\\photonomist\\__main__ > photo_dir_name
-#     """
-#     assert expected == photo_dir_name(date, name_pattern=name_pattern)
+@pytest.mark.parametrize("date, name_pattern, expected", [
+    ("2016:12:17", "_place", "2016_12_17_place"),
+    ("2016:12:17", "_place_reason", "2016_12_17_place_reason"),
+    ("2016:12:17", "_place_people", "2016_12_17_place_people"),
+    ("2016:12:17", "_reason", "2016_12_17_reason"),
+    ("2016:12:17", "_reason_people", "2016_12_17_reason_people"),
+    ("2016:12:17", "_people", "2016_12_17_people"),
+    ("2016:12:17", "", "2016_12_17"),
+])
+def test_create_photo_folder_name_specified_name_pattern(date, name_pattern, expected):
+    """Test src\\photonomist\\__main__ > photo_dir_name
+    """
+    assert expected == photo_dir_name(date, name_pattern=name_pattern)
 
 # def test_photo_folder_exist_in_export_path():
 #     """Test src\\photonomist\\__main__ > dir_name_exists
