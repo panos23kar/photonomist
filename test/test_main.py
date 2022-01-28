@@ -326,6 +326,7 @@ def test_if_export_and_input_paths_point_to_the_same_disk():
     export_path = os.path.abspath('/test/data/testing_folder_with_photos/move_folder')
     assert paths_same_disk(photos_path, export_path) == True
 
+@pytest.mark.skip(reason="This test works only on Windows machines, so it will never pass in the pipeline. You can use it locally (if windows). ")
 def test_if_export_and_input_paths_do_not_point_to_the_same_disk():
     """Test src//photonomist//__main__ > paths_same_disk
     """
