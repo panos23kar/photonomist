@@ -26,15 +26,24 @@ def test_invalid_path(sample_path):
     with pytest.raises(FileNotFoundError, match="The provided path was not found!"):
         path_exists(sample_path)
 
-# def test_path_contains_photos():
-#     """ Test for src\\photonomist\\__main__ > path_items
+@pytest.fixture()
+def delete_create_empty_test_file():
+    test_file = os.path.abspath('test/data/testing_empty_folder/empty/dyanmically_delete_during_test.txt')
+    os.remove(test_file)
+    sample_path = os.path.abspath('test/data/testing_empty_folder/empty')
+    yield sample_path
+    with open(test_file, "w+"):
+        pass
 
-#     Testing_empty_folder was created in test\\data for testing purposes.
-#     """
-#     #Need an empty dir for testing
-#     sample_path = os.path.abspath('test/data/testing_empty_folder/empty')
-#     with pytest.raises(Exception, match="The provided path does not contain any files!"):
-#         path_items(sample_path)
+def test_path_contains_photos(delete_create_empty_test_file):
+    """ Test for src\\photonomist\\__main__ > path_items
+
+    Testing_empty_folder was created in test\\data for testing purposes.
+    """
+    #Need an empty dir for testing
+    sample_path = delete_create_empty_test_file
+    with pytest.raises(Exception, match="The provided path does not contain any files!"):
+        path_items(sample_path)
 
 def test_clean_path():
     """Test src\\photonomist\\__main__ > clean_path
