@@ -40,7 +40,7 @@ class Exclude:
         self.__draws_checkboxes()
         self.__draws_run_button()
         self.__resize_canvas()
-        if self.main_window.language!='en':
+        if hasattr(self.main_window, 'language') and self.main_window.language!='en':
             self.__change_language()
 
     def __exclude_window(self):
