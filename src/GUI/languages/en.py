@@ -54,3 +54,9 @@ EXCL_RUN_BUTTON = "Good2Go"
 
 # Loading window
 LOAD_TITLE = "I'm working on it"
+
+# Exceptions
+NOT_VALID_PATH = "Your input is not a valid path!"
+NO_FILES_IN_PATH = "The provided path does not contain any files!"
+NO_PHOTOS_IN_PATH = "The provided path does not contain any .jpg, .jpeg, .nef or .cr2 files!"
+NOT_ENOUGH_SPACE = "You dont have enough free space!"

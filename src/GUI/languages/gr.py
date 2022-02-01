@@ -54,3 +54,9 @@ EXCL_RUN_BUTTON = "Έτοιμος"
 
 # Loading window
 LOAD_TITLE = "Το δουλεύω! Περιμένε"
+
+# Exceptions
+NOT_VALID_PATH = "Ο φάκελος δεν υπάρχει!"
+NO_FILES_IN_PATH = "Ο φάκελος δεν περιέχει αρχεία!"
+NO_PHOTOS_IN_PATH = "Ο φάκελος δεν περιέχει .jpg, .jpeg, .nef or .cr2 αρχεία!"
+NOT_ENOUGH_SPACE = "Δεν υπάρχει αρκετός χώρος στο δίσκο!"
