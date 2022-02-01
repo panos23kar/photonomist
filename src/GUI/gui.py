@@ -336,7 +336,10 @@ class Main:
         try:
             self.photos_roots = input_path_validation(self.__input_path_value.get())
         except Exception as e:
-            self.__input_path_invalid_value.set(str(e))
+            if getattr(self.__gui,'language', None)  and self.__gui.language != 'en':
+                self.__input_path_invalid_value.set(self.__show_error_message(str(e)))
+            else:
+                self.__input_path_invalid_value.set(str(e))
         else:
             self.__input_path_invalid_value.set("")
 
@@ -349,9 +352,28 @@ class Main:
         try:
             export_path_validation(self.__export_path_value.get(), self.photos_roots)
         except Exception as e:
-            self.__export_path_invalid_value.set(str(e))
+            if getattr(self.__gui,'language', None)  and self.__gui.language != 'en':
+                self.__export_path_invalid_value.set(self.__show_error_message(str(e)))
+            else:
+                self.__export_path_invalid_value.set(str(e))
         else:
             self.__export_path_invalid_value.set("")
+
+    def __show_error_message(self, error_message):
+        """
+        Returns the translated error message
+        |
+        """
+        language=importlib.import_module('languages.'+ self.__gui.language)
+
+        if "Your input is not a valid path!" == error_message or "The provided path was not found!" == error_message:
+            return getattr(language, 'NOT_VALID_PATH')
+        elif "The provided path does not contain any files!" == error_message:
+            return getattr(language, 'NO_FILES_IN_PATH')
+        elif "The provided path does not contain any .jpg, .jpeg, .nef or .cr2 files" == error_message:
+            return getattr(language, 'NO_PHOTOS_IN_PATH')
+        elif error_message.startswith("You need at least"):
+            return getattr(language, 'NOT_ENOUGH_SPACE')
 
     def __run_app(self):
         """
