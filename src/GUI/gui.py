@@ -17,7 +17,8 @@ from widgets import create_menu, create_label, create_string_variable, \
                     create_entry, create_button, create_frame, create_radio_button, \
                     create_check_button, create_int_var, change_color
 
-from src.app.main import input_path_validation, export_path_validation
+from src.app.main import input_path_validation, export_path_validation, \
+                         tidy_photos, open_export_folder
 
 class Main:
     """
@@ -70,6 +71,7 @@ class Main:
         """
         self.__gui.title(en.MAIN_TITLE)
         self.__gui.geometry("440x420")
+        self.__gui.language = 'en'
 
     def __input_path(self):
         """
@@ -283,7 +285,6 @@ class Main:
         depending on user's option
         |
         """
-        #TODO Use it later in run_app
         user_option = self.__group_by_string_variable.get()
 
         if user_option == 'month':
@@ -298,12 +299,11 @@ class Main:
         Constructs the name pattern to be user as folders' name
         |
         """
-        #TODO Use it later in run_app
-        #TODO Hardcoded --> store name_pattern variables in a dict and dynamically get their names
+        language=importlib.import_module('languages.' + self.__gui.language)
         name_pattern = ""
-        for var_name in [(self.__int_variable_place, '_place'), 
-                         (self.__int_variable_reason, '_reason'), 
-                         (self.__int_variable_people, '_people')]:
+        for var_name in [(self.__int_variable_place, getattr(language, 'MAIN_NAME_PATTERN_PLACE')), 
+                         (self.__int_variable_reason, getattr(language, 'MAIN_NAME_PATTERN_REASON')), 
+                         (self.__int_variable_people, getattr(language, 'MAIN_NAME_PATTERN_PEOPLE'))]:
             if var_name[0].get():
                 name_pattern += var_name[1]
         return name_pattern
@@ -336,7 +336,7 @@ class Main:
         try:
             self.photos_roots = input_path_validation(self.__input_path_value.get())
         except Exception as e:
-            if getattr(self.__gui,'language', None)  and self.__gui.language != 'en':
+            if self.__gui.language != 'en':
                 self.__input_path_invalid_value.set(self.__show_error_message(str(e)))
             else:
                 self.__input_path_invalid_value.set(str(e))
@@ -350,9 +350,9 @@ class Main:
         |
         """
         try:
-            export_path_validation(self.__export_path_value.get(), self.photos_roots)
+            export_path_validation(self.__export_path_value.get(), self.__input_path_value.get(), self.photos_roots)
         except Exception as e:
-            if getattr(self.__gui,'language', None)  and self.__gui.language != 'en':
+            if self.__gui.language != 'en':
                 self.__export_path_invalid_value.set(self.__show_error_message(str(e)))
             else:
                 self.__export_path_invalid_value.set(str(e))
@@ -384,12 +384,11 @@ class Main:
         self.__validate_input_path()
         self.__validate_export_path()
         
-        #TODO
-        print('------'*30)
-        print(hasattr(self.__gui, 'exclude_window_state'))
-        print(len(self.photos_roots))
-        # for root in self.photos_roots:
-        #     print(root)
+        year, month = self.__group_option()
+        name_pattern = self.__create_name_pattern()
+
+        #tidy_photos(self.__export_path_value.get(), self.photos_roots, year=year, month=month, name_pattern=name_pattern)
+        open_export_folder(self.__export_path_value.get())
 
 
 if __name__ == "__main__":
