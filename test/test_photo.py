@@ -12,11 +12,11 @@ environment or setuptools develop mode to test against the development version.
 
 import pytest
 import os, shutil
-from src.photo import Photo
+from app.photo import Photo
 
 @pytest.fixture
 def my_photo():
-    photo_path = r"test\data\testing_folder_with_photos\bla\DSC_0262.NEF"
+    photo_path =  os.path.abspath("test/data/testing_folder_with_photos/bla/DSC_0262.NEF")
     my_photo = Photo(photo_path)
     return my_photo
 
@@ -104,16 +104,16 @@ def test_return_date_with_month_keyword(my_photo, month, expected):
 
 @pytest.fixture()
 def move_photo_del_folder():
-    photo_path = r"test\data\testing_folder_with_photos\bla\DSC_0262.NEF"
+    photo_path = os.path.abspath("test/data/testing_folder_with_photos/bla/DSC_0262.NEF")
     move_photo_del_folder = Photo(photo_path)
     yield move_photo_del_folder
-    shutil.move(r"test\data\testing_folder_with_photos\move_folder\DSC_0262.NEF", r"C:\repos\photonomist_new\test\data\testing_folder_with_photos\bla\DSC_0262.NEF")
-    os.rmdir(r"test\data\testing_folder_with_photos\move_folder")
+    shutil.move(os.path.abspath("test/data/testing_folder_with_photos/move_folder/DSC_0262.NEF"), photo_path)
+    os.rmdir(os.path.abspath("test/data/testing_folder_with_photos/move_folder"))
 
 def test_move_to_photo_to_other_folder(move_photo_del_folder):
     """Test src\\photonomist\\photo.Photo> move_to_folder
     """
-    new_dir = r"test\data\testing_folder_with_photos\move_folder"
+    new_dir = os.path.abspath("test/data/testing_folder_with_photos/move_folder")
     move_photo_del_folder.move_to_folder(new_dir)
     file_list = os.listdir(new_dir)
     assert "DSC_0262.NEF" in file_list

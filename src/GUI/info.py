@@ -82,6 +82,10 @@ class Info:
         self.__github_text_label = create_label(self.__info, text=en.INFO_GITHUB_TEXT, x=75, y=340)
     
     def __open_url(self, url):
+        """
+        Opens a browser tab with the provided url
+        |
+        """
         webbrowser.open_new(url)
 
     def __email(self):

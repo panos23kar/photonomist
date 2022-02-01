@@ -6,7 +6,7 @@
 """
 import os, shutil, subprocess
 import collections
-from src.photo import Photo
+from app.photo import Photo
 
 
 def path_string(path:str)->str:
@@ -86,7 +86,7 @@ def traverse_photos_path(photos_path:str)->list:
     for root, _ , files in os.walk(photos_path):
         for _file in files:
             if _file.lower().endswith('jpg') or _file.lower().endswith('nef') or _file.lower().endswith('jpeg') or _file.lower().endswith('cr2'):
-                photos_roots[root].append(root + '\\' + _file)
+                photos_roots[root].append(os.path.join(root, _file))
     
     return photos_roots
 
@@ -100,10 +100,7 @@ def path_photos(photos_roots:dict):
     |
     """
     if not photos_roots:
-        raise Exception("The provided path does not contain any files with .jpg, .jpeg, .nef or .cr2 extension!")#TODO Log it
-    else:#TODO Log it
-        print('I found photos in: ')
-        #print(*photos_roots, sep = "\n")
+        raise Exception("The provided path does not contain any .jpg, .jpeg, .nef or .cr2 files")#TODO Log it
 
 
 def photos_size(photos_roots:dict)->int:

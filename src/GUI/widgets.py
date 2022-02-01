@@ -11,12 +11,12 @@ def create_menu(master, tearoff=None):
     return tk.Menu(master, tearoff=tearoff)
 
 
-def create_label(master, text, x=0, y=0, font="Helvetica 10", justify=None, fg=None, cursor=None):
+def create_label(master, text, x=0, y=0, font="Helvetica 10",textvariable=None, justify=None, fg=None, cursor=None):
     """
     Creates a Label widget
     |
     """
-    label = tk.Label(master, text=text, font=font, justify=justify, fg=fg, cursor=cursor)
+    label = tk.Label(master, text=text, font=font, justify=justify, fg=fg, cursor=cursor, textvariable=textvariable)
     if x and y:
         label.place(x=x, y=y)
     return label
@@ -51,14 +51,16 @@ def create_entry(master, x, y, w, textvariable):
     return entry
 
 
-def create_button(master, x, y, h, text, command, state='active'):
+def create_button(master, text, command, x=0, y=0, h=0, state='active'):
     """
     Creates a Button widget
     |
     """
     button = tk.Button(master, text=text, command = command, state=state)
-    button.place(x=x, y=y, height=h)
+    if x and y and h:
+        button.place(x=x, y=y, height=h)
     return button
+
 
 def create_frame(master, x=0, y=0, bd=0, background="grey95", padx=0):
     """
@@ -70,6 +72,7 @@ def create_frame(master, x=0, y=0, bd=0, background="grey95", padx=0):
         frame.place(x=x, y=y)
     return frame
 
+
 def create_radio_button(master, text, row, column, width, variable, value, indicatoron=None, bd=None):
     """
     Create a Radio Button widget
@@ -80,21 +83,22 @@ def create_radio_button(master, text, row, column, width, variable, value, indic
     radio_button.grid(row=row, column=column)
     return radio_button
 
-def create_check_button(master, text, x, y, variable):
+def create_check_button(master, text, variable, x=0, y=0, onvalue = 1,  offvalue = 0):
     """
     Create a Check Button widget
     |
     """
-    check_button = tk.Checkbutton(master, text=text, variable=variable)
-    check_button.place(x=x, y=y)
+    check_button = tk.Checkbutton(master, text=text, variable=variable, onvalue=onvalue, offvalue=offvalue)
+    if x and y:
+        check_button.place(x=x, y=y)
     return check_button
 
-def create_int_var():
+def create_int_var(value=0):
     """
     Create an Int variable widget
     |
     """
-    return tk.IntVar()
+    return tk.IntVar(value=value)
 
 
 def change_color(widget, color):
@@ -105,13 +109,15 @@ def change_color(widget, color):
     widget.config(background=color)
 
 
-def create_canvas(master, borderwidth=0, side='left', fill='both', expand=True):
+def create_canvas(master, borderwidth=0, side='left', fill='both', expand=True, width=None, height=None):
     """
     Create a Canvas widget
     |
     """
-    canvas = tk.Canvas(master, borderwidth=borderwidth)
-    
+    if width and height:
+        canvas = tk.Canvas(master, width=width, height=height, borderwidth=borderwidth)
+    else:
+        canvas = tk.Canvas(master, borderwidth=borderwidth)
     canvas.pack(side=side, fill=fill, expand=expand)
     return canvas
 
