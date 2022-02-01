@@ -37,3 +37,34 @@ What makes it standing out:
 - It verifies that the **provided input path contains** *.jpg*, *.jpeg*, *.nef* (*Nikon* raw), *.cr2* (*Canon* raw) photos
 - It checks if you have *enough disk space* **ONLY** in case that the **input** and the **export** path point to different disks. I.e. if you move your photos from a cellphone to a hard drive! (Applies only to *Windows*)
 - It **creates** and **writes** in the *not_transferred.txt*, all the photos that was not possible to be moved
+
+
+# Developer Edition
+
+## Project Setup
+
+### Create the project directory
+    mkdir photonomist
+    cd photonomist
+
+### Clone Repo
+
+    git clone https://github.com/panos23kar/photonomist.git
+
+### Create a virtual environment to isolate our package dependencies locally
+    python3 -m venv env
+
+### Activate Virtual Environment
+    source env/bin/activate  # On Windows use `env\Scripts\activate`
+
+### Install Requirements
+
+Make sure that the `requirements.txt` is listed under your current directory
+
+    ls # On Windows use `dir`
+
+Then
+
+    pip install -r requirements.txt
+
+
