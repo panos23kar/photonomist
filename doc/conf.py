@@ -58,6 +58,6 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 
 
-autodoc_mock_imports = ["tkinter","tk"]
+autodoc_mock_imports = ["tkinter", "languages"]
 
 master_doc = 'index'
