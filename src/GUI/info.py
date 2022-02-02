@@ -1,5 +1,7 @@
 """
 Hosts the code for the info window
+
+|
 """
 
 import tkinter as tk
@@ -13,19 +15,22 @@ from widgets import create_label, create_text
 class Info:
     """
     Draws the Info window
+
     |
     """
-    def __init__(self, main):
+    def __init__(self, main:object):
         """
-        Initializes the info window
+        Initializes the Info window
 
+        :param path: GUI main window
+        :type path: tkinter.Tk
         |
         """
         self.__main_window = main
-    
+
     def show_info_window(self):
         """
-        Shows the info window
+        Shows the Info window. Calls the different methods which compose the Info window
 
         |
         """
@@ -43,14 +48,14 @@ class Info:
 
     def __info_window(self):
         """
-        Title and dimensions for the info window
+        Title and dimensions for the Info window
 
         |
         """
         self.__info = tk.Toplevel(self.__main_window)
         self.__info.title(en.INFO_WINDOW_TITLE)
         self.__info.geometry("640x400")
-    
+
     def __title(self):
         """
         Draws the title for the Info window
@@ -58,18 +63,18 @@ class Info:
         |
         """
         self.__title_label = create_label(self.__info, text=en.INFO_TITLE, x=10, y=10, font="Helvetica 16 bold italic")
-    
+
     def __aim(self):
         """
-        Draws the aim for the Info window
+        'States' the aim of photonomist for the Info window
 
         |
         """
         self.__aim_label = create_label(self.__info, text=en.INFO_AIM, x=10, y=40, justify="left")
-    
+
     def __name(self):
         """
-        Draws the how photonomist took its name in the Info window
+        'States' how photonomist took its name in the Info window
 
         |
         """
@@ -79,7 +84,7 @@ class Info:
     
     def __github(self):
         """
-        Draws the github link in the Info window
+        'Writes' the github link in the Info window
 
         |
         """
@@ -87,18 +92,20 @@ class Info:
         self.__github_link_label.bind("<Button-1>", lambda e: self.__open_url(en.INFO_GITHUB_URL))
 
         self.__github_text_label = create_label(self.__info, text=en.INFO_GITHUB_TEXT, x=75, y=340)
-    
-    def __open_url(self, url):
+
+    def __open_url(self, url:str):
         """
         Opens a browser tab with the provided url
 
+        :param path: url to open
+        :type path: str
         |
         """
         webbrowser.open_new(url)
 
     def __email(self):
         """
-        Draws the email info in the Info window
+        'States' the email info in the Info window
 
         |
         """
