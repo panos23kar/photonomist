@@ -18,6 +18,7 @@ class Info:
     def __init__(self, main):
         """
         Initializes the info window
+
         |
         """
         self.__main_window = main
@@ -25,6 +26,7 @@ class Info:
     def show_info_window(self):
         """
         Shows the info window
+
         |
         """
         self.__info_window()
@@ -42,6 +44,7 @@ class Info:
     def __info_window(self):
         """
         Title and dimensions for the info window
+
         |
         """
         self.__info = tk.Toplevel(self.__main_window)
@@ -51,6 +54,7 @@ class Info:
     def __title(self):
         """
         Draws the title for the Info window
+
         |
         """
         self.__title_label = create_label(self.__info, text=en.INFO_TITLE, x=10, y=10, font="Helvetica 16 bold italic")
@@ -58,6 +62,7 @@ class Info:
     def __aim(self):
         """
         Draws the aim for the Info window
+
         |
         """
         self.__aim_label = create_label(self.__info, text=en.INFO_AIM, x=10, y=40, justify="left")
@@ -65,6 +70,7 @@ class Info:
     def __name(self):
         """
         Draws the how photonomist took its name in the Info window
+
         |
         """
         self.__name_title_label = create_label(self.__info, text=en.INFO_NAME_TITLE, x=10, y=170, font="Helvetica 10 bold")
@@ -74,6 +80,7 @@ class Info:
     def __github(self):
         """
         Draws the github link in the Info window
+
         |
         """
         self.__github_link_label = create_label(self.__info, text=en.INFO_GITHUB_LINK, x=10, y=339, font="Helvetica 10 bold", fg="blue", cursor="hand2")
@@ -84,6 +91,7 @@ class Info:
     def __open_url(self, url):
         """
         Opens a browser tab with the provided url
+
         |
         """
         webbrowser.open_new(url)
@@ -91,6 +99,7 @@ class Info:
     def __email(self):
         """
         Draws the email info in the Info window
+
         |
         """
         self.__email_text = create_text(self.__info, text=en.INFO_EMAIL, insert_num=0.1, width=26, height=1, x=10, y=245)

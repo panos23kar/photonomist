@@ -17,12 +17,14 @@ from threading import Thread
 class Loading:
     """
     Draws the Loading window
+    
     |
     """
 
     def __init__(self, main_window) -> None:
         """
         Initializes the loading window
+        
         |
         """
         self.main_window = main_window
@@ -34,6 +36,7 @@ class Loading:
         Starts 2 threads:
           1) Shows the loading image
           2) Works on user's request
+          
         |
         """
         self.__load_func = Thread(target=func)
@@ -44,6 +47,7 @@ class Loading:
     def __load_draw_image(self):
         """
         Draws rotating image for as long as photonomist is working
+        
         |
         """
         if not self.__load_func.is_alive():
@@ -57,6 +61,7 @@ class Loading:
     def __close_toplevel(self):
         """
         Closes the loading window
+        
         |
         """
         self.__loading_toplevel.destroy()
@@ -65,6 +70,7 @@ class Loading:
     def __loading_window(self):
         """
         Toplevel and title for the loading window
+        
         |
         """
         self.__loading_toplevel = tk.Toplevel(self.main_window)
@@ -74,6 +80,7 @@ class Loading:
     def __draws_canvas(self):
         """
         Draws the canvas for the loading window
+        
         |
         """
         self.__loading_canvas = create_canvas(self.__loading_toplevel, width=500, height=500)
@@ -81,6 +88,7 @@ class Loading:
     def __draw_loading_camera(self):
         """
         Draws and rotates the loading image window while photonomist is working
+        
         |
         """
         while self.__load_func.is_alive():

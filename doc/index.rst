@@ -62,25 +62,31 @@ Project Setup
 ---------------------
 Create the project directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-::
+
+.. code-block:: console
+
     $ mkdir photonomist
     $ cd photonomist
 
 Clone Repo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: console
+
     $ git clone https://github.com/panos23kar/photonomist.git
 
 Create a virtual environment to isolate our package dependencies locally
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-::
+
+.. code-block:: console
+
     $ python3 -m venv env
 
 Activate Virtual Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: console
+
     $ source env/bin/activate  # On Windows use `env\Scripts\activate`
 
 Install Requirements
@@ -88,12 +94,14 @@ Install Requirements
 
 Make sure that the `requirements.txt` is listed under your current directory
 
-::
+.. code-block:: console
+
     $ ls # On Windows use `dir`
 
 Then
 
-::
+.. code-block:: console
+
     $ pip install -r requirements.txt
 
 Source Code
