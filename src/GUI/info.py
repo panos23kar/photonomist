@@ -1,5 +1,5 @@
 """
-Hosts the code for the info window
+Hosts the code for the Info window
 
 |
 """
@@ -18,15 +18,15 @@ class Info:
 
     |
     """
-    def __init__(self, main:object):
+    def __init__(self, main_window:object):
         """
         Initializes the Info window
 
-        :param path: GUI main window
-        :type path: tkinter.Tk
+        :param main_window: GUI main window
+        :type main_window: tkinter.Tk
         |
         """
-        self.__main_window = main
+        self.__main_window = main_window
 
     def show_info_window(self):
         """
@@ -97,8 +97,8 @@ class Info:
         """
         Opens a browser tab with the provided url
 
-        :param path: url to open
-        :type path: str
+        :param url: url to open
+        :type url: str
         |
         """
         webbrowser.open_new(url)

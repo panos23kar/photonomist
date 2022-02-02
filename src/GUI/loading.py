@@ -1,5 +1,7 @@
 """
-Hosts the code for the loading window
+Hosts the code for the Loading window
+
+|
 """
 import tkinter as tk
 
@@ -21,22 +23,27 @@ class Loading:
     |
     """
 
-    def __init__(self, main_window) -> None:
+    def __init__(self, main_window:object):
         """
-        Initializes the loading window
-        
+        Initializes the Loading window
+
+        :param main_window: GUI main window
+        :type main_window: tkinter.Tk        
         |
         """
         self.main_window = main_window
         self.__angle = 0
         self.__load_image = Image.open(BytesIO(b64decode(BYTESTREAM)))
 
-    def start_threads(self, func):
+    def start_threads(self, func:callable):
         """
         Starts 2 threads:
+
           1) Shows the loading image
           2) Works on user's request
-          
+
+        :param func: function to run in a separate thread
+        :type func: callable
         |
         """
         self.__load_func = Thread(target=func)
@@ -46,8 +53,8 @@ class Loading:
 
     def __load_draw_image(self):
         """
-        Draws rotating image for as long as photonomist is working
-        
+        Draws the rotating image for as long as photonomist is working
+
         |
         """
         if not self.__load_func.is_alive():
@@ -60,8 +67,8 @@ class Loading:
 
     def __close_toplevel(self):
         """
-        Closes the loading window
-        
+        Closes the Loading window
+
         |
         """
         self.__loading_toplevel.destroy()
@@ -69,8 +76,8 @@ class Loading:
 
     def __loading_window(self):
         """
-        Toplevel and title for the loading window
-        
+        Toplevel and title for the Loading window
+
         |
         """
         self.__loading_toplevel = tk.Toplevel(self.main_window)
@@ -79,8 +86,8 @@ class Loading:
 
     def __draws_canvas(self):
         """
-        Draws the canvas for the loading window
-        
+        Draws the canvas for the Loading window
+
         |
         """
         self.__loading_canvas = create_canvas(self.__loading_toplevel, width=500, height=500)
@@ -88,7 +95,7 @@ class Loading:
     def __draw_loading_camera(self):
         """
         Draws and rotates the loading image window while photonomist is working
-        
+
         |
         """
         while self.__load_func.is_alive():
