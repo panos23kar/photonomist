@@ -58,6 +58,12 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 
 
+# -- WARNING: autodoc: failed to import module 'gui' from module 'src.GUI'; the following exception was raised: -------------------------------------------------
+# -- libtk8.6.so: cannot open shared object file: No such file or directory -------------------------------------------------
+
+# If sphinx can not import a module while trying to autogenarate documentation from docstrings
+# It gives a warning and skips this module
+# autodoc_mock_imports helps with ingoring the modules that it can not import
 autodoc_mock_imports = ['tkinter', 'languages', 'widgets', 'byte_stream', 'info', 'exclude', 'loading']
 
 master_doc = 'index'
