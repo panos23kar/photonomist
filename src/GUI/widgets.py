@@ -1,21 +1,50 @@
 """
-Provides widgets for all windows
+Provides widgets for all GUI windows
+
+|
 """
 import tkinter as tk
 
-def create_menu(master, tearoff=None):
+
+def create_menu(master:object, tearoff:int=None):
     """
     Creates tkinter menu
-    
+
+    :param master: tkinter instance
+    :type master: tkinter.Tk
+    :param tearoff: tearoff allows you to detach menus for the main window creating floating menus
+    :type tearoff: int
+    :return: Instance of tk.Menu
+    :rtype: tk.Menu
     |
     """
     return tk.Menu(master, tearoff=tearoff)
 
 
-def create_label(master, text, x=0, y=0, font="Helvetica 10",textvariable=None, justify=None, fg=None, cursor=None):
+def create_label(master:object, text:str, x:int=0, y:int=0, font:str="Helvetica 10",textvariable:object=None, justify:str=None, fg:str=None, cursor:str=None):
     """
     Creates a Label widget
-    
+
+    :param master: tkinter instance
+    :type master: tkinter.Tk
+    :param text: text for the label
+    :type text: str
+    :param x: Dimension on x-axis
+    :type x: int
+    :param y: Dimension on y-axis
+    :type y: int
+    :param font: font for the text of the label
+    :type font: str
+    :param textvariable: instance of tk.StringVar
+    :type textvariable: tk.StringVar
+    :param justify: defines where the text of the label will be 'positioned'
+    :type justify: str
+    :param fg: stands for foreground. Defines the color of the text 
+    :type fg: str
+    :param cursor: defines the cursor that will be used when hover over this label
+    :type cursor: str
+    :return: Instance of tk.Label
+    :rtype: tk.Label
     |
     """
     label = tk.Label(master, text=text, font=font, justify=justify, fg=fg, cursor=cursor, textvariable=textvariable)
