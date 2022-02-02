@@ -34,11 +34,15 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     
-    - name: Display the path
-      run: |
-        import os
-        print(os.environ['PATH'])
-      shell: python
+    - run: |
+        output=$(python doc/conf.py v2.21)
+        output="${output//'%'/'%25'}"
+        output="${output//$'\n'/'%0A'}"
+        output="${output//$'\r'/'%0D'}" 
+        echo "::set-output name=changelog::$output"
+      id: step1
+    - name: Print file
+      run: echo "${{ steps.step1.outputs.changelog }}"
       
     #- uses: actions/checkout@v1
     - name: Build Documentation
