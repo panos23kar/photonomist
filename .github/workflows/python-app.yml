@@ -5,7 +5,7 @@ name: Test, Documentation and Build Photonomist
 
 on:
   push:
-    branches: [ gui, master, doocumentation ]
+    branches: [ gui, master, documentation ]
 
 jobs:
   build:
