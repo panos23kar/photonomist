@@ -41,6 +41,8 @@ sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
 pytk
+tkinter
+tk
 termcolor==1.1.0
 toml==0.10.2
 urllib3==1.26.7
