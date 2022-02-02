@@ -33,29 +33,28 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
- 
-    #- uses: actions/checkout@v1
+
+    - name: Test with pytest
+      run: |
+        pytest
+
     - name: Build Documentation
       uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: doc/
-    
+
     - uses: actions/upload-artifact@v1
       with:
         name: DocumentationHTML
         path: doc/_build/html/
 
-    # - name: Test with pytest
-    #   run: |
-    #     pytest
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-windows@main
+      with:
+        path: src/GUI
 
-    # - name: Package Application
-    #   uses: JackMcKew/pyinstaller-action-windows@main
-    #   with:
-    #     path: src/GUI
-
-    # - uses: actions/upload-artifact@v2
-    #   with:
-    #     name: photonomist
-    #     path: src/GUI/dist/windows
+    - uses: actions/upload-artifact@v2
+      with:
+        name: photonomist
+        path: src/GUI/dist/windows
 
