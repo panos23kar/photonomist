@@ -5,7 +5,7 @@ name: Test, Documentation and Build Photonomist
 
 on:
   push:
-    branches: [ gui ]
+    branches: [ gui, master, doocumentation ]
 
 jobs:
   build:
@@ -47,3 +47,9 @@ jobs:
       with:
         name: photonomist
         path: src/GUI/dist/windows
+    
+    #- uses: actions/checkout@v1
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        name: Build Documentation
+        docs-folder: "doc/"
