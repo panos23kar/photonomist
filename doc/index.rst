@@ -55,44 +55,47 @@ What makes it standing out:
 
 |
 
-Minimum Requirements
-====================
-- Python_ 3.8+
-- Download `Anaconda`_
-
-.. _Python: https://www.python.org/downloads/
-.. _Anaconda: https://www.anaconda.com/products/individual
-
-|
-
 Developer Edition
 ====================
 
-## Project Setup
+Project Setup
+---------------------
+Create the project directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-### Create the project directory
-    mkdir photonomist
-    cd photonomist
+.. code-block:: bash
+    $ mkdir photonomist
+    $ cd photonomist
 
-### Clone Repo
+Clone Repo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    git clone https://github.com/panos23kar/photonomist.git
+.. code-block:: bash
+    $ git clone https://github.com/panos23kar/photonomist.git
 
-### Create a virtual environment to isolate our package dependencies locally
-    python3 -m venv env
+Create a virtual environment to isolate our package dependencies locally
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. code-block:: bash
+    $ python3 -m venv env
 
-### Activate Virtual Environment
-    source env/bin/activate  # On Windows use `env\Scripts\activate`
+Activate Virtual Environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-### Install Requirements
+.. code-block:: bash
+    $ source env/bin/activate  # On Windows use `env\Scripts\activate`
+
+Install Requirements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Make sure that the `requirements.txt` is listed under your current directory
 
-    ls # On Windows use `dir`
+.. code-block:: bash
+    $ ls # On Windows use `dir`
 
 Then
 
-    pip install -r requirements.txt
+.. code-block:: bash
+    $ pip install -r requirements.txt
 
 Source Code
 ===============

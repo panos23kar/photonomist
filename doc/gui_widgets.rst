@@ -3,6 +3,6 @@ GUI Widgets Module
 
 |
 
-.. automodule:: src.GUI.widgets
+.. automodule:: GUI.widgets
     :members:
     :private-members:
