@@ -36,7 +36,6 @@ jobs:
     
     - name: Install Tkinter -- libtk8.6.so cannot open shared object file
       run: |
-        sudo pacman -S tk
         sudo apt-get install tk
  
     #- uses: actions/checkout@v1
