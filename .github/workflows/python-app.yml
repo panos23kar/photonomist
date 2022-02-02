@@ -37,6 +37,7 @@ jobs:
     - name: Install Tkinter -- libtk8.6.so cannot open shared object file
       run: |
         sudo apt-get install tk
+        sudo apt-get python3-tk
  
     #- uses: actions/checkout@v1
     - name: Build Documentation
