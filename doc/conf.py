@@ -15,8 +15,10 @@ import sys
 
 _HERE = os.path.dirname(__file__)
 _ROOT_DIR = os.path.abspath(os.path.join(_HERE, '..'))
+_SRC_DIR = os.path.abspath(os.path.join(_HERE, '../src'))
 
 sys.path.insert(0, _ROOT_DIR)
+sys.path.insert(0, _SRC_DIR)
 
 # -- Project information -----------------------------------------------------
 
