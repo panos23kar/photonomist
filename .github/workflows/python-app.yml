@@ -34,10 +34,10 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     
-    - name: Install Tkinter -- libtk8.6.so cannot open shared object file
-      run: |
-        sudo apt-get install tk
-        sudo apt-get python3-tk
+    # - name: Install Tkinter -- libtk8.6.so cannot open shared object file
+    #   run: |
+    #     sudo apt-get install tk
+    #     sudo apt-get python3-tk
  
     #- uses: actions/checkout@v1
     - name: Build Documentation
