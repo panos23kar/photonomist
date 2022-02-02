@@ -3,6 +3,6 @@ GUI Loading Window
 
 |
 
-.. automodule:: GUI.loading
+.. automodule:: src.GUI.loading
     :members:
     :private-members:

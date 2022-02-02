@@ -3,6 +3,6 @@ GUI Main Window
 
 |
 
-.. automodule:: GUI.gui
+.. automodule:: src.GUI.gui
     :members:
     :private-members:

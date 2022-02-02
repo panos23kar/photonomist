@@ -3,6 +3,6 @@ GUI Info Window
 
 |
 
-.. automodule:: GUI.info
+.. automodule:: src.GUI.info
     :members:
     :private-members:

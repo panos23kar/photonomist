@@ -3,6 +3,6 @@ GUI Exclude Window
 
 |
 
-.. automodule:: GUI.exclude
+.. automodule:: src.GUI.exclude
     :members:
     :private-members:
