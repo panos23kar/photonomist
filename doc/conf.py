@@ -12,10 +12,11 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
-#sys.path.insert(0,r'C:\repos\photonomist\src\photonomist')
-#Panos
-print("argument {}".format(sys.argv[1]))
+
+_HERE = os.path.dirname(__file__)
+_ROOT_DIR = os.path.abspath(os.path.join(_HERE, '..'))
+
+sys.path.insert(0, _ROOT_DIR)
 
 # -- Project information -----------------------------------------------------
 
