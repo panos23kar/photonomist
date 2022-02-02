@@ -95,7 +95,7 @@ Then
     pip install -r requirements.txt
 
 Source Code
-=============
+===============
 
 .. toctree::
    :maxdepth: 2
@@ -111,7 +111,7 @@ Source Code
 |
 
 Indices and tables
-==================
+====================
 
 * :ref:`genindex`
 * :ref:`modindex`

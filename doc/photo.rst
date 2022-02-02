@@ -1,5 +1,5 @@
 Photo Class
-=============
+===============
 
 .. autoclass:: src.app.photo.Photo
    :members:
