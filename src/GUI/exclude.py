@@ -88,10 +88,11 @@ class Exclude:
 
         https://stackoverflow.com/questions/17355902/tkinter-binding-mousewheel-to-scrollbar 
 
-        :param event: TODO
-        :type event: TODO
+        :param event: Specifies x, y for mousewheel ex: MouseWheel event delta=-120 x=698 y=340
+        :type event: tkinter.Event
         |
         """
+        print('event-->', type(event), event)
         self.__exclude_canvas.yview_scroll(int(-1*(event.delta/120)), "units")
 
     def __on_frame_configure(self):
