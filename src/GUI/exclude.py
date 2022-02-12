@@ -92,7 +92,6 @@ class Exclude:
         :type event: tkinter.Event
         |
         """
-        print('event-->', type(event), event)
         self.__exclude_canvas.yview_scroll(int(-1*(event.delta/120)), "units")
 
     def __on_frame_configure(self):

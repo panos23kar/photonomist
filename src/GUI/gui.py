@@ -1,5 +1,7 @@
 """
-Hosts the code for the main window
+Hosts the code for the Main window
+
+|
 """
 import tkinter as tk
 from tkinter import messagebox
@@ -22,14 +24,14 @@ from src.app.main import input_path_validation, export_path_validation, \
 
 class Main:
     """
-    Draws the main window of the graphical user interface (GUI)
+    Draws the Main window of the graphical user interface (GUI)
     
     |
     """
 
     def __init__(self) -> None:
         """
-        Initializes the main window
+        Initializes the Main window
         
         |
         """
@@ -49,7 +51,7 @@ class Main:
     
     def __initiate_exclude_window(self):
         """
-        Initiates the exclude window
+        Initiates the Exclude window
         
         |
         """
@@ -57,7 +59,7 @@ class Main:
 
     def __draw_main_window(self):
         """
-        Draws the whole layout of the main window
+        Draws the layout of the Main window
         
         |
         """
@@ -71,7 +73,7 @@ class Main:
 
     def __main_window(self):
         """
-        Title and dimensions for the main window
+        Title, dimensions and languuage for the Main window
         
         |
         """
@@ -81,8 +83,8 @@ class Main:
 
     def __input_path(self):
         """
-        Draws the input folder path widgets
-        
+        Draws the widgets for the 'input path'
+
         |
         """
         #Label
@@ -109,16 +111,16 @@ class Main:
 
     def __draw_find_photos_button(self):
         """
-        Draws the find photos button
-        
+        Draws the 'find photos' button
+
         |
         """
         self.__find_photos_button = create_button(self.__gui, x=340, y=70, h=21, text=en.MAIN_FIND_PHOTOS_BUTTON, command=self.__trigger_exclude_window)
 
     def __export_path(self):
         """
-        Draws the export folder path widgets
-        
+        Draws the widgets for the 'export folder'
+
         |
         """
         #Label
@@ -143,12 +145,12 @@ class Main:
     def __group_by_buttons(self):
         """
         Draws the group by 'day', 'month', 'year' radio buttons
-        
+
         |
         """
         #Frame
         self.__group_by_frame = create_frame(self.__gui, x=20, y=190, bd=2)
-        
+
         #Label
         self.__group_by_label = create_label(self.__group_by_frame, text=en.MAIN_GROUP_BY_LABEL)
         self.__group_by_label.grid(row=0, column=0, columnspan=3, sticky="w", pady=5)
@@ -172,7 +174,7 @@ class Main:
     def __folder_name_pattern(self):
         """
         Draws the checkboxes '_place', '_reason', '_people' which define a folder's name pattern
-        
+
         |
         """
         #Label
@@ -193,7 +195,7 @@ class Main:
     def __run_button(self):
         """
         Draws the run application button
-        
+
         |
         """
         self.__run_button = create_button(self.__gui, x=310, y=380, h=21, text=en.MAIN_RUN_APP_BUTTON, state="disabled", command=partial(Loading(self.__gui).start_threads, self.__run_app))
@@ -201,7 +203,7 @@ class Main:
     def __menu(self):
         """
         Menu on top of the window
-        
+
         |
         """
         #  Main menu
@@ -213,7 +215,7 @@ class Main:
         self.__sub_menu_file = create_menu(self.__main_menu, tearoff=0)
         self.__main_menu.add_cascade(label=en.MAIN_MENU_FILE, menu=self.__sub_menu_file, underline=0)
 
-        #Languages        
+        #Languages
         self.__Lang_sub_menu = create_menu(self.__sub_menu_file, tearoff=0)
         self.__Lang_sub_menu.add_command(label='English', command=partial(self.__change_language, 'en'))
         self.__Lang_sub_menu.add_command(label='Eλληνικά', command=partial(self.__change_language, 'gr'))
@@ -227,11 +229,13 @@ class Main:
 
         ## SubMenu Info
         self.__main_menu.add_command(label=en.MAIN_MENU_INFO, command=Info(self.__gui).show_info_window, underline=1)
-    
-    def __change_language(self, lang):
+
+    def __change_language(self, lang:str):
         """
-        Changes the language depending on user's preference
-        
+        Changes the language of the app
+
+        :param lang: language specified by the user
+        :type lang: str
         |
         """
         language=importlib.import_module('languages.'+lang)
@@ -260,16 +264,18 @@ class Main:
     def __quit(self):
         """
         Quits the applicaton
-        
+
         |
         """
         if messagebox.askyesno("", en.QUIT_MESSAGE):
             self.__gui.destroy()
 
-    def __file_explorer(self, mode):
+    def __file_explorer(self, mode:str):
         """
         Opens file dialog in order the user to open a folder path
-        
+
+        :param mode: could be 'input' or 'export'. Specifies if will open the file explorer for input or export path
+        :type mode: str
         |
         """
         folder_path = filedialog.askdirectory(initialdir = "/",title=en.MAIN_FILE_EXPLORER_MESSAGE)
@@ -283,12 +289,14 @@ class Main:
         #In case that a user has already specify a folder-path and clicks again the input folder path button
         if mode == 'input':
             self.__run_button["state"] = "disabled"
-    
-    def __check_input_path(self, *args):
+
+    def __check_input_path(self, *args:any):
         """
         Whenever the user specifies a new input path, it disables the run button and changes the color
         of the find photos button to indicate that the user has to click it!
-        
+
+        :param *args: *args is there to deal with the error --> TypeError: __check_input_path() takes 1 positional argument but 4 were given
+        :type *args: any
         |
         """
         # *args is there to deal with the error --> TypeError: __check_input_path() takes 1 positional argument but 4 were given
@@ -298,9 +306,10 @@ class Main:
 
     def __group_option(self):
         """
-        Specifies if the photos will be ordered by day, year or month
-        depending on user's option
-        
+        Specifies if the photos will be ordered by 'day', 'year' or 'month'
+
+        :return: Returns a tupple which indicates if the photos will be ordered by day, month, year
+        :rtype: tupple
         |
         """
         user_option = self.__group_by_string_variable.get()
@@ -314,8 +323,10 @@ class Main:
 
     def __create_name_pattern(self):
         """
-        Constructs the name pattern to be user as folders' name
-        
+        Constructs the name pattern to be used as folders' name
+
+        :return: The pattern that will be used as name for the folders
+        :rtype: str
         |
         """
         language=importlib.import_module('languages.' + self.__gui.language)
@@ -330,13 +341,14 @@ class Main:
     def __trigger_exclude_window(self):
         """
         Checks if the input path is valid and contains photos via 
-        validate_input_path and tirggers exclude window
-        
+        validate_input_path
+        Then triggers Exclude window
+
         |
         """
         self.photos_roots = {}
         self.__validate_input_path()
-        
+
         if self.photos_roots:
             self.exclude_window.draw_exclude_window(self.photos_roots)
 
@@ -348,9 +360,9 @@ class Main:
 
     def __validate_input_path(self):
         """
-        Checks if the provided input path is valid and contains photos.
+        Checks if the provided input path is valid and contains photos
         If not, it shows an error message
-        
+
         |
         """
         self.__gui.exclude_window_state = 0
@@ -366,9 +378,9 @@ class Main:
 
     def __validate_export_path(self):
         """
-        Checks if the provided export path is valid and there is enough memory for the photos.
+        Checks if the provided export path is valid and there is enough memory for the photos
         If not, it shows an error message
-        
+
         |
         """
         try:
@@ -384,7 +396,9 @@ class Main:
     def __show_error_message(self, error_message):
         """
         Returns the translated error message
-        
+
+        :return: Error message to be shown
+        :rtype: str
         |
         """
         language=importlib.import_module('languages.'+ self.__gui.language)
@@ -400,14 +414,14 @@ class Main:
 
     def __run_app(self):
         """
-        Gets the photo_roots dict from exclude window without the excluded folders
+        Gets the photo_roots dict from Exclude window without the excluded folders
         Activates the run button
-        
+
         |
         """
         self.__validate_input_path()
         self.__validate_export_path()
-        
+
         year, month = self.__group_option()
         name_pattern = self.__create_name_pattern()
 
