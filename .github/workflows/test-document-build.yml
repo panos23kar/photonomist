@@ -56,5 +56,5 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: photonomist
-        path: src/GUI/dist/windows
+        path: src/dist/windows
 
