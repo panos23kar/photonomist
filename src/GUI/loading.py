@@ -5,9 +5,9 @@ Hosts the code for the Loading window
 """
 import tkinter as tk
 
-from byte_stream import BYTESTREAM
-from languages import en
-from widgets import create_canvas
+from GUI.byte_stream import BYTESTREAM
+from GUI.languages import en
+from GUI.widgets import create_canvas
 
 from PIL import ImageTk, Image
 from base64 import b64decode
