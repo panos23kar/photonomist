@@ -121,6 +121,7 @@ def test_move_to_photo_to_other_folder(move_photo_del_folder):
 def test_object_name_is_photo_name(my_photo, capsys):
     """Test src\\photonomist\\photo.Photo> __str__
     """
+    print(my_photo, end='')
     captured = capsys.readouterr()
     assert captured.out == "DSC_0262.NEF"
 
