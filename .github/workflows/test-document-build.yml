@@ -51,10 +51,10 @@ jobs:
     - name: Package Application
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
-        path: src
+        path: src/GUI
 
     - uses: actions/upload-artifact@v2
       with:
         name: photonomist
-        path: src/dist/windows
+        path: src/GUI/dist/windows
 

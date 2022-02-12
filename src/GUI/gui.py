@@ -3,6 +3,12 @@ Hosts the code for the Main window
 
 |
 """
+# Workarounf for having it working both locally and in github actions
+import sys
+from pathlib import Path
+src_dir = Path(__file__).parents[1]
+sys.path.insert(0, src_dir)
+
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import filedialog
