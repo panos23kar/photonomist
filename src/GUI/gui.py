@@ -3,7 +3,7 @@ Hosts the code for the Main window
 
 |
 """
-# Workarounf for having it working both locally and in github actions
+# Workaround for having it working both locally and in github actions
 import sys
 from pathlib import Path
 src_dir = Path(__file__).parents[1]
