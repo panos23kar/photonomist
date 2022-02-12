@@ -7,10 +7,13 @@ Hosts the code for the Info window
 import tkinter as tk
 import webbrowser
 
-from GUI.languages import en
+# from GUI.languages import en
 
-from GUI.widgets import create_label, create_text
+# from GUI.widgets import create_label, create_text
 
+from languages import en
+
+from widgets import create_label, create_text
 
 class Info:
     """
