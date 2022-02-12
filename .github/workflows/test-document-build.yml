@@ -5,7 +5,7 @@ name: Test, Documentation and Build Photonomist
 
 on:
   push:
-    branches: [ gui ]
+    branches: [ gui, master, documentation ]
 
 jobs:
   build:
@@ -38,6 +38,16 @@ jobs:
       run: |
         pytest
 
+    - name: Build Documentation
+      uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: doc/
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: DocumentationHTML
+        path: doc/_build/html/
+
     - name: Package Application
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
@@ -47,3 +57,4 @@ jobs:
       with:
         name: photonomist
         path: src/GUI/dist/windows
+

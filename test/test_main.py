@@ -91,7 +91,6 @@ def test_extracts_photo_roots():
     sample_path = os.path.abspath('test/data/testing_folder_with_photos')
     num_of_photos = 0
     for photo_list in traverse_photos_path(sample_path).values():
-        print(photo_list)
         num_of_photos += len(photo_list)
     assert num_of_photos == 9
 
@@ -354,7 +353,6 @@ def test_input_path_validation_traverse_photos_path():
     sample_path =  os.path.abspath('test/data/testing_folder_with_photos')
     num_of_photos = 0
     for photo_list in traverse_photos_path(sample_path).values():
-        print(photo_list)
         num_of_photos += len(photo_list)
     assert num_of_photos == 9
 

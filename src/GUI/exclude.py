@@ -1,5 +1,7 @@
 """
-Hosts the code for the exclude window
+Hosts the code for the Exclude window
+
+|
 """
 import tkinter as tk
 
@@ -14,12 +16,16 @@ from src.app.main import open_export_folder
 class Exclude:
     """
     Draws the Exclude window
+
     |
     """
 
     def __init__(self, main_window) -> None:
         """
-        Initializes the exclude window
+        Initializes the Exclude window
+
+        :param main_window: GUI main window
+        :type main_window: tkinter.Tk
         |
         """
         self.__y_check_button_link = 57
@@ -27,7 +33,8 @@ class Exclude:
 
     def draw_exclude_window(self, photos_roots):
         """
-        Draws the whole layout of the exclude window
+        Draws the whole layout of the Exclude window
+
         |
         """
         self.__photo_roots = photos_roots
@@ -45,7 +52,8 @@ class Exclude:
 
     def __exclude_window(self):
         """
-        Toplevel and title for the exclude window
+        Toplevel and title for the Exclude window
+
         |
         """
         self.exclude_toplevel = tk.Toplevel(self.main_window)
@@ -55,8 +63,9 @@ class Exclude:
 
     def __draws_canvas(self):
         """
-        Draws the canvas for the exclude window
+        Draws the canvas for the Exclude window
         Canvas, in combination with the frame, is needed for the scrollbar
+
         |
         """
         self.__exclude_canvas = create_canvas(self.exclude_toplevel)
@@ -64,8 +73,9 @@ class Exclude:
 
     def __draws_frame(self):
         """
-        Draws the frame for the which will be attached to canvas for the exclude window
+        Draws the frame which will be attached to canvas for the Exclude window
         Frame, in combination with the canvas, is needed for the scrollbar
+
         |
         """
         self.__exclude_frame = create_frame(self.__exclude_canvas, padx=40)
@@ -73,10 +83,13 @@ class Exclude:
 
     def __on_mousewheel(self, event):
         """
-        It listens for mouse's wheel scrolling. 
-        Connected with a canvas widget.
+        It listens for mouse's wheel scrolling
+        Connected with a canvas widget
 
         https://stackoverflow.com/questions/17355902/tkinter-binding-mousewheel-to-scrollbar 
+
+        :param event: Specifies x, y for mousewheel ex: MouseWheel event delta=-120 x=698 y=340
+        :type event: tkinter.Event
         |
         """
         self.__exclude_canvas.yview_scroll(int(-1*(event.delta/120)), "units")
@@ -84,6 +97,7 @@ class Exclude:
     def __on_frame_configure(self):
         """
         Resets the scroll region to encompass the inner frame
+
         |
         """
         self.__exclude_canvas.configure(scrollregion=self.__exclude_canvas.bbox("all"))
@@ -91,7 +105,7 @@ class Exclude:
     def __canvas_create_window(self):
         """
         It creates a canvas object, similar to a line, rectangle, image, etc. 
-        Like a line or rectangle, this canvas object has attributes that define what it looks like. 
+        Like a line or rectangle, this canvas object has attributes that define what it looks like.
         In the case of a window object, one of the attributes is window which specifies a widget to 
         be displayed as the object.
 
@@ -103,13 +117,15 @@ class Exclude:
         The value returned from calling create_window is an integer index which can be used later to refer to this object.
 
         https://stackoverflow.com/questions/58009398/tkinter-what-is-a-window-when-calling-tk-canvas-create-window
+
         |
         """
         self.__exclude_canvas.create_window((1,1), window=self.__exclude_frame, anchor="n")
 
     def __draws_scrollbar(self):
         """
-        Draws the scrollbar for the exclude window
+        Draws the scrollbar for the Exclude window
+
         |
         """
         self.__exclude_scrollbar = create_scrollbar(self.exclude_toplevel, command=self.__exclude_canvas.yview)
@@ -118,6 +134,7 @@ class Exclude:
     def __calculate_number_photos(self):
         """
         Calculates the number of photos inside the photo_roots
+
         |
         """
         self.__number_of_photos = 0
@@ -126,7 +143,8 @@ class Exclude:
 
     def __draws_label(self):
         """
-        Draws the label/title for the exclude window
+        Draws the label/title for the Exclude window
+
         |
         """
         self.__calculate_number_photos()
@@ -135,7 +153,8 @@ class Exclude:
 
     def __draws_checkboxes(self):
         """
-        Draws the checkboxes to exclude photo folders from tidying
+        Draws the checkboxes to exclude photo folders from moving to other folder
+
         |
         """
         # Dictionary which will dynamically host a check button for every folder
@@ -155,6 +174,9 @@ class Exclude:
     def __create_check_button(self, photo_folder):
         """
         Creates an Int var together with a Checkbutton
+
+        :param photo_folder: Path of the folder where the photos exist
+        :type photo_folder: str
         |
         """
         self.__check_button_variables[photo_folder] = create_int_var(value=1)
@@ -164,6 +186,9 @@ class Exclude:
     def __create_check_button_link(self, photo_folder):
         """
         Creates the link close to checkbutton label for opening the corresponding folder
+
+        :param photo_folder: Path of the folder where the photos exist
+        :type photo_folder: str
         |
         """
         self.__check_button_links[photo_folder] = create_label(self.__exclude_frame, text=en.EXCL_LINK, font="Helvetica 8 bold", 
@@ -173,6 +198,9 @@ class Exclude:
     def __calculate_x_coord(self, num_of_chars):
         """
         Calculates the x "coordinate" of the link for each folder
+
+        :param num_of_chars: Number of character that a path has
+        :type num_of_chars: int
         |
         """
         l = [6.8, 6.8, 6.7, 6.25, 6.35, 6.2, 6.15, 6.2, 6.05, 6.05, 6, 5.9, 5.85]
@@ -181,6 +209,9 @@ class Exclude:
     def __open_folder(self, photo_folder):
         """
         Opens the corresponding photos folder
+
+        :param photo_folder: Path of the folder where the photos exist
+        :type photo_folder: str
         |
         """
         open_export_folder(photo_folder)
@@ -188,6 +219,7 @@ class Exclude:
     def __resize_canvas(self):
         """
         Resizes the canvas in order the photo folders to fit nicely
+
         |
         """
         self.__exclude_frame.update()
@@ -197,6 +229,7 @@ class Exclude:
     def __draws_run_button(self):
         """
         Draws the 'Good2Go' button
+
         |
         """
         self.__exclude_run_button = create_button(self.__exclude_frame, text=en.EXCL_RUN_BUTTON, command=self.__exclude_paths)
@@ -205,33 +238,34 @@ class Exclude:
     def __exclude_paths(self):
         """
         Excludes the folders that the user has specifed from the tidying process
+
         |
         """
         for check_button in self.__check_buttons:
             if  self.__check_button_variables[check_button.replace('\\\\','\\')].get() == 0:
                 if check_button in self.__photo_roots:
                     del self.__photo_roots[check_button]
-        
+
         self.__close_toplevel()
-    
+
     def __close_toplevel(self):
         """
-        Closes the exclude window
+        Closes the Exclude window
+
         |
         """
         self.main_window.exclude_window_state = 1
         self.exclude_toplevel.destroy()
         self.exclude_toplevel.update()
-    
+
     def __change_language(self):
         """
-        Changes the language depending on user's preference
+        Changes the language
+
         |
         """
-        print('mpikaaaa')
         language=importlib.import_module('languages.'+ self.main_window.language)
-        print('language')
-        
+
         self.exclude_toplevel.title(getattr(language, 'EXCl_TITLE'))
 
         self.__exclude_number_photos_label.config(text=str(self.__number_of_photos) + getattr(language, 'EXCL_NUMBER_PHOTOS_LABEL'))
