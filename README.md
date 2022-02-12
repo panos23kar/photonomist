@@ -43,28 +43,94 @@ What makes it standing out:
 
 ## Project Setup
 
-### Create the project directory
+## Create the project directory
     mkdir photonomist
     cd photonomist
 
-### Clone Repo
+## Clone Repo
 
     git clone https://github.com/panos23kar/photonomist.git
 
-### Create a virtual environment to isolate our package dependencies locally
+## Create a virtual environment to isolate our package dependencies locally
+    cd photonomist
+
+Create virtual env
+
     python3 -m venv env
 
-### Activate Virtual Environment
-    source env/bin/activate  # On Windows use `env\Scripts\activate`
+On Windows:
 
-### Install Requirements
+    python -m venv env
 
+## Activate Virtual Environment
+    source env/bin/activate
+
+On Windows use
+
+    env\Scripts\activate
+
+## Install Requirements
 Make sure that the `requirements.txt` is listed under your current directory
 
-    ls # On Windows use `dir`
+    ls
+On Windows use 
+
+    dir
 
 Then
 
     pip install -r requirements.txt
 
+Verify
 
+    pip freeze
+
+## Install Project In Editable Mode
+
+Make sure that the `setup.py` is listed under your current directory
+
+    ls
+On Windows use 
+
+    dir
+
+Install Project
+
+    pip install -e .
+
+## Run Tests
+
+    pytest test
+
+## Build Documentation
+
+    cd doc
+
+    make html
+
+### Verify
+
+In the `doc` dir
+
+-   Open `_build` dir
+-   Open `html` dir
+-   Open `index.html`
+
+## Build Application (Windows only)
+
+    cd ..
+
+Make sure that the `src` dir is listed
+
+    dir
+
+Build App
+
+    pyinstaller --onefile src\GUI\gui.py
+
+### Verify
+
+In the `photonomist` dir
+
+-   Open `dist` dir
+-   Double click `gui.exe`
