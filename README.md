@@ -126,7 +126,7 @@ Make sure that the `src` dir is listed
 
 Build App
 
-    pyinstaller --onefile src\GUI\gui.py
+    pyinstaller --onefile --noconsole src\GUI\gui.py
 
 ### Verify
 
