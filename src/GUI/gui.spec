@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['gui.py'],
-             pathex=[],
+             pathex=['/home/runner/work/photonomist/photonomist/doc/'],
              binaries=[],
              datas=[],
              hiddenimports=[],
