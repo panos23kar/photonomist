@@ -17,7 +17,7 @@ from widgets import create_label, create_canvas, create_frame, create_scrollbar,
 
 # from app.main import open_export_folder
 
-from srtrialc.app.main import open_export_folder
+from src.app.main import open_export_folder
 
 class Exclude:
     """
