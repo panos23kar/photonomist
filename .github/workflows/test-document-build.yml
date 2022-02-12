@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.6
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v2.2.1
       with:
         python-version: "3.6"
         architecture: 'x64'
@@ -29,7 +29,6 @@ jobs:
     
     - name: Set env variable
       run: |
-        echo "NOW=v$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
         echo "::set-env name=PYTHONPATH::home/runner/work/photonomist/photonomist/src"
 
     - name: Lint with flake8
