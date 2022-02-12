@@ -10,29 +10,29 @@ from tkinter import filedialog
 from functools import partial
 import importlib
 
-from GUI.info import Info
-from GUI.exclude import Exclude
-from GUI.loading import Loading
+# from GUI.info import Info
+# from GUI.exclude import Exclude
+# from GUI.loading import Loading
 
-from GUI.languages import en
-from GUI.widgets import create_menu, create_label, create_string_variable, \
-                    create_entry, create_button, create_frame, create_radio_button, \
-                    create_check_button, create_int_var, change_color
-
-# from info import Info
-# from exclude import Exclude
-# from loading import Loading
-
-# from languages import en
-# from widgets import create_menu, create_label, create_string_variable, \
+# from GUI.languages import en
+# from GUI.widgets import create_menu, create_label, create_string_variable, \
 #                     create_entry, create_button, create_frame, create_radio_button, \
 #                     create_check_button, create_int_var, change_color
 
-from app.main import input_path_validation, export_path_validation, \
-                         tidy_photos, open_export_folder
+from info import Info
+from exclude import Exclude
+from loading import Loading
 
-# from src.app.main import input_path_validation, export_path_validation, \
+from languages import en
+from widgets import create_menu, create_label, create_string_variable, \
+                    create_entry, create_button, create_frame, create_radio_button, \
+                    create_check_button, create_int_var, change_color
+
+# from app.main import input_path_validation, export_path_validation, \
 #                          tidy_photos, open_export_folder
+
+from src.app.main import input_path_validation, export_path_validation, \
+                         tidy_photos, open_export_folder
 
 class Main:
     """
