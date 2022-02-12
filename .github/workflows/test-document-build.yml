@@ -29,6 +29,7 @@ jobs:
     
     - name: Set env variable
       run: |
+        echo "NOW=v$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
         echo "::set-env name=PYTHONPATH::home/runner/work/photonomist/photonomist/src"
 
     - name: Lint with flake8
