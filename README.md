@@ -41,6 +41,13 @@ What makes it standing out:
 
 # Developer Edition
 
+## When Creating Pull Request
+
+In case that you want to expand the current codebase, you don't need to worry about the steps below. 
+All of them are taken care of the pipeline (Github action).
+
+You `need` to provide unit tests though!!!
+
 ## Project Setup
 
 ## Create the project directory
