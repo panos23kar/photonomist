@@ -4,10 +4,10 @@ Hosts the code for the Info window
 |
 """
 # Workaround for having it working both locally and in github actions
-import sys
-from pathlib import Path
-src_dir = Path(__file__).parents[1]
-sys.path.insert(0, src_dir)
+# import sys
+# from pathlib import Path
+# src_dir = Path(__file__).parents[1]
+# sys.path.insert(0, src_dir)
 
 import tkinter as tk
 import webbrowser
@@ -15,10 +15,6 @@ import webbrowser
 from GUI.languages import en
 
 from GUI.widgets import create_label, create_text
-
-# from languages import en
-
-# from widgets import create_label, create_text
 
 class Info:
     """

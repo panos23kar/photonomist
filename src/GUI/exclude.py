@@ -4,10 +4,10 @@ Hosts the code for the Exclude window
 |
 """
 # Workaround for having it working both locally and in github actions
-import sys
-from pathlib import Path
-src_dir = Path(__file__).parents[1]
-sys.path.insert(0, src_dir)
+# import sys
+# from pathlib import Path
+# src_dir = Path(__file__).parents[1]
+# sys.path.insert(0, src_dir)
 
 import tkinter as tk
 
@@ -17,13 +17,7 @@ from GUI.languages import en
 from GUI.widgets import create_label, create_canvas, create_frame, create_scrollbar, \
                     create_check_button, create_int_var, create_button
 
-# from languages import en
-# from widgets import create_label, create_canvas, create_frame, create_scrollbar, \
-#                     create_check_button, create_int_var, create_button
-
 from app.main import open_export_folder
-
-# from src.app.main import open_export_folder
 
 class Exclude:
     """

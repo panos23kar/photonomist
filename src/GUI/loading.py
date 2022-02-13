@@ -4,20 +4,16 @@ Hosts the code for the Loading window
 |
 """
 # Workaround for having it working both locally and in github actions
-import sys
-from pathlib import Path
-src_dir = Path(__file__).parents[1]
-sys.path.insert(0, src_dir)
+# import sys
+# from pathlib import Path
+# src_dir = Path(__file__).parents[1]
+# sys.path.insert(0, src_dir)
 
 import tkinter as tk
 
 from GUI.byte_stream import BYTESTREAM
 from GUI.languages import en
 from GUI.widgets import create_canvas
-
-# from byte_stream import BYTESTREAM
-# from languages import en
-# from widgets import create_canvas
 
 from PIL import ImageTk, Image
 from base64 import b64decode

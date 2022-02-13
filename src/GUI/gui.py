@@ -4,10 +4,10 @@ Hosts the code for the Main window
 |
 """
 # Workaround for having it working both locally and in github actions
-import sys
-from pathlib import Path
-src_dir = Path(__file__).parents[1]
-sys.path.insert(0, src_dir)
+# import sys
+# from pathlib import Path
+# src_dir = Path(__file__).parents[1]
+# sys.path.insert(0, src_dir)
 
 import tkinter as tk
 from tkinter import messagebox
@@ -25,20 +25,8 @@ from GUI.widgets import create_menu, create_label, create_string_variable, \
                     create_entry, create_button, create_frame, create_radio_button, \
                     create_check_button, create_int_var, change_color
 
-# from info import Info
-# from exclude import Exclude
-# from loading import Loading
-
-# from languages import en
-# from widgets import create_menu, create_label, create_string_variable, \
-#                     create_entry, create_button, create_frame, create_radio_button, \
-#                     create_check_button, create_int_var, change_color
-
 from app.main import input_path_validation, export_path_validation, \
                          tidy_photos, open_export_folder
-
-# from src.app.main import input_path_validation, export_path_validation, \
-#                          tidy_photos, open_export_folder
 
 class Main:
     """
