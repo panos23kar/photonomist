@@ -40,8 +40,8 @@ INFO_NAME_TITLE = "It took its name from the words:"
 INFO_NAME = "Photo..   --> Photography (art of captruring the light:: Greek root: (Φως) Φωτογραφία)\n..nomist  --> Taxonomist  (person who groups entities into categories:: Greek root: Ταξινομία ή Ταξινόμηση)"
 
 INFO_GITHUB_LINK = "Click me.. "
-INFO_GITHUB_TEXT = " for Motivation, Features and Development Notes. I definitely deserve your time :D !!"
-INFO_GITHUB_URL = "https://github.com/panos23kar/Photonomist/blob/master/README.rst"
+INFO_GITHUB_TEXT = "for Motivation, Features and Development Notes. I definitely deserve your time!!"
+INFO_GITHUB_URL = "https://github.com/panos23kar/photonomist"
 
 INFO_EMAIL_GOALS = "  - ask for extra functionality \n  - report errors \n  - send your endless love"
 INFO_EMAIL = "photonomist.23@gmail.com"
