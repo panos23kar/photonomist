@@ -12,6 +12,7 @@ from GUI.widgets import create_canvas
 from PIL import ImageTk, Image
 from base64 import b64decode
 from io import BytesIO
+import importlib
 
 from threading import Thread
 
@@ -83,6 +84,8 @@ class Loading:
         self.__loading_toplevel = tk.Toplevel(self.main_window)
         self.__loading_toplevel.title(en.LOAD_TITLE)
         self.__loading_toplevel.grab_set()
+        if self.main_window.language!='en':
+            self.__change_language()
 
     def __draws_canvas(self):
         """
@@ -107,3 +110,13 @@ class Loading:
             self.__angle = (self.__angle-10)%360
 
         self.__close_toplevel()
+
+    def __change_language(self):
+        """
+        Changes the language
+
+        |
+        """
+        language=importlib.import_module('languages.'+ self.main_window.language)
+
+        self.__loading_toplevel.title(getattr(language, 'LOAD_TITLE'))
