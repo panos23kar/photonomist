@@ -7,11 +7,11 @@ import tkinter as tk
 
 import importlib
 
-from languages import en
-from widgets import create_label, create_canvas, create_frame, create_scrollbar, \
+from GUI.languages import en
+from GUI.widgets import create_label, create_canvas, create_frame, create_scrollbar, \
                     create_check_button, create_int_var, create_button
 
-from src.app.main import open_export_folder
+from app.main import open_export_folder
 
 class Exclude:
     """
