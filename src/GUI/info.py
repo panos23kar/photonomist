@@ -4,7 +4,9 @@ Hosts the code for the Info window
 |
 """
 import tkinter as tk
+
 import webbrowser
+import importlib
 
 from GUI.languages import en
 
@@ -44,6 +46,9 @@ class Info:
 
         self.__email()
 
+        if self.__main_window.language!='en':
+            self.__change_language()
+
     def __info_window(self):
         """
         Title and dimensions for the Info window
@@ -52,7 +57,7 @@ class Info:
         """
         self.__info = tk.Toplevel(self.__main_window)
         self.__info.title(en.INFO_WINDOW_TITLE)
-        self.__info.geometry("640x400")
+        self.__info.geometry("685x400")
 
     def __title(self):
         """
@@ -89,7 +94,7 @@ class Info:
         self.__github_link_label = create_label(self.__info, text=en.INFO_GITHUB_LINK, x=10, y=339, font="Helvetica 10 bold", fg="blue", cursor="hand2")
         self.__github_link_label.bind("<Button-1>", lambda e: self.__open_url(en.INFO_GITHUB_URL))
 
-        self.__github_text_label = create_label(self.__info, text=en.INFO_GITHUB_TEXT, x=75, y=340)
+        self.__github_text_label = create_label(self.__info, text=en.INFO_GITHUB_TEXT, x=74, y=339)
 
     def __open_url(self, url:str):
         """
@@ -112,3 +117,23 @@ class Info:
         self.__email_text.configure(bg=self.__info.cget('bg'), relief="flat")
 
         self.__email_label = create_label(self.__info, text=en.INFO_EMAIL_GOALS, x=10, y=265, justify="left")
+
+    def __change_language(self):
+        """
+        Changes the language
+
+        |
+        """
+        language=importlib.import_module('languages.'+ self.__main_window.language)
+
+        self.__info.title(getattr(language, 'INFO_WINDOW_TITLE'))
+
+        self.__aim_label.config(text=getattr(language, 'INFO_AIM'))
+
+        self.__name_title_label.config(text=getattr(language, 'INFO_NAME_TITLE'))
+        self.__name_label.config(text=getattr(language, 'INFO_NAME'))
+
+        self.__email_label.config(text=getattr(language, 'INFO_EMAIL_GOALS'))
+
+        self.__github_link_label.config(text=getattr(language, 'INFO_GITHUB_LINK'))
+        self.__github_text_label.config(text=getattr(language, 'INFO_GITHUB_TEXT'))
